@@ -24,6 +24,16 @@
 					<view v-if="0 == 1" class="padding-tb-sm ft-dark" @click="send_code">获取</view>
 				</view>
 			</view>
+			<view class="w-full dflex padding-bottom-sm">
+				<view class="iconfont iconmima margin-right"></view>
+				<view class="flex1 dflex">
+					<input class="border-line padding-sm flex1" type="password" v-model="passwordtwo" maxlength="11" @input="inputChange" placeholder="请输确认密码" />
+					<view v-if="0 == 1" class="padding-tb-sm ft-dark" @click="send_code">获取</view>
+					
+				</view>
+				
+			</view>
+			
 			<!-- 登陆按钮 -->
 			<view class="w-full margin-top-xl">
 				<view class="dflex-b border-radius-lg">
@@ -47,6 +57,7 @@
 				mobile: '',
 				/* 密码 */
 				password: '',
+				passwordtwo:'',
 				pass:'',
 				login:'',
 				code: '',
@@ -62,9 +73,20 @@
 			/* 手机验证 */
 			disabledto(){
 				return this.phone == ""||this.code ==''
+			},
+			miss(){
+				if(this.password != this.passwordtwo){
+					return "两次密码不相同"
+				}
 			}
 		},
+		onLoad() {
+			console.log(this.passwordtwo)
+		},
 		methods: {
+			missko(){
+				
+			},
 			inputChange(e) {
 				const key = e.currentTarget.dataset.key;
 				this[key] = e.detail.value;
@@ -92,6 +114,7 @@
 						title:"请输入正确的密码及手机号",
 						icon:'none'
 					})
+					
 					return false
 				}
 				return true
@@ -100,9 +123,16 @@
 			subimts(){
 				/* 表单验证 */
 				if(!this.validate())return;
-				
 				/* 提交后端 */
-				this.regin()
+				if(this.password == this.passwordtwo){
+					this.regin()
+				}else{
+					uni.showToast({
+						title:"两次密码不相同",
+						icon:'none'
+					})
+				}
+				
 				/* 登录成功 */
 			},
 			sendCode(){
@@ -123,6 +153,7 @@
 			},
 			async regin() {
 			 const res  = await uni.$http.post('/register',{"customerName":this.mobile,"password": this.password})
+			 console.log(res)
 			 if(res.data.message){
 					uni.showToast({
 						title:'用户已经注册'
@@ -131,11 +162,14 @@
 				 uni.showToast({
 				 	title:'注册成功'
 				 })
-				 setTimeout(()=>{
-				 	uni.navigateTo({
-				 		url:'../login/login'
-				 	})
-				 },1000)
+				 if(this.password == this.passwordtwo){
+					 setTimeout(()=>{
+					 	uni.navigateTo({
+					 		url:'../login/login'
+					 	})
+					 },1000)
+				 }
+				 
 			 }
 			},
 			

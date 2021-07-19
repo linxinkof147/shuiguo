@@ -20,7 +20,7 @@
 			<view class="w-full dflex padding-bottom-sm">
 				<view class="iconfont iconmima margin-right"></view>
 				<view class="flex1 dflex">
-					<input class="border-line padding-sm flex1" type="password" data-key="password" maxlength="11" :value="password" @input="inputChange" placeholder="请输入手机号" />
+					<input class="border-line padding-sm flex1" type="password" data-key="password" maxlength="11" :value="password" @input="inputChange" placeholder="请输入密码" />
 					<view v-if="0 == 1" class="padding-tb-sm ft-dark" @click="send_code">获取</view>
 				</view>
 			</view>
@@ -124,10 +124,9 @@
 			async loginopen() {
 			  //发起请求swpier
 			 const { data: res } = await uni.$http.post('/login',
-			{"customerName":this.mobile,"password": this.password},
-			 {})
+			{"customerName":this.mobile,"password": this.password})
 			 console.log(res)
-			 if(res){
+			 if(res.body){
 				 uni.showToast({
 				 	title:'登陆成功'
 				 })
@@ -138,6 +137,10 @@
 				 		url:'../Home/Home'
 				 	})
 				 },1000)
+			 }else{
+				 uni.showToast({
+				 	title:'用户名或密码错误!'
+				 })
 			 }
 			},
 			
