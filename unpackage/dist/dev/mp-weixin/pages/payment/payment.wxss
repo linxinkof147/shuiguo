@@ -1,0 +1,10 @@
+
+.ml9{margin-left: 43%;margin-top: 10%;}
+.font{font-size: 32rpx;}
+.price1{font-size: 78rpx;margin-left: -28rpx;}
+.weiimg{width: 90rpx;height: 90rpx;}
+.fontlg{font-weight: bold;font-size: 36rpx;}
+.styleradio{background-color: #fd6801}
+.unroadi{width: 30rpx;height: 30rpx;border-radius: 500rpx;}
+.cssfont{width: 80%;height: 80rpx;margin: 0 auto;margin-bottom: 40rpx;}
+

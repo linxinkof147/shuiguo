@@ -1,0 +1,1 @@
+<view class="w-100 mt-3 h5 flex justify-center align-center mt-8"><view data-event-opts="{{[['tap',[['miss']]]]}}" bindtap="__e"><image class="col" src="../../static/images/user/vx.png" mode></image><view class=" text-hover-light">微信登陆</view></view></view>

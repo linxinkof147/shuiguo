@@ -1,0 +1,8 @@
+
+.toppop.data-v-4cb888c6{width: 120rpx;height: 120rpx;border-radius: 20rpx;}
+.font-i.data-v-4cb888c6{font-size: 38rpx;font-weight: bold;}
+.b-cc.data-v-4cb888c6{background-color: rgba(0, 0, 0, 0.7);}
+.vip-card-area.data-v-4cb888c6 {color: #f7d680;background: -webkit-linear-gradient(right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8));background: linear-gradient(to left, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8));}
+.item.data-v-4cb888c6 {padding: 30rpx 0;position: relative;font-size: $font-sm;color: $font-color-base;-webkit-box-flex: 1;-webkit-flex: 1;flex: 1;}
+	
+

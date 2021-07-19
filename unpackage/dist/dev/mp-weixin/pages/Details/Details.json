@@ -1,0 +1,13 @@
+{
+  "navigationBarTitleText": "商品详情页",
+  "enablePullDownRefresh": false,
+  "navigationBarBackgroundColor": "#FFFFFF",
+  "usingComponents": {
+    "use-list-title": "/components/use-list-title/use-list-title",
+    "uni-goods-nav": "/components/uni-goods-nav/uni-goods-nav",
+    "uni-popup": "/components/uni-popup/uni-popup",
+    "uni-number-box": "/uni_modules/uni-number-box/components/uni-number-box/uni-number-box",
+    "unigoodsnav": "/components/uni-goods-nav/uni-goods-nav",
+    "unipopup": "/components/uni-popup/uni-popup"
+  }
+}

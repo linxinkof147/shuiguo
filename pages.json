@@ -1,0 +1,184 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/Home/Home",
+			"style": {
+				"navigationBarTitleText": "商城首页",
+				"navigationBarBackgroundColor":"#ffffff"
+				/* "enablePullDownRefresh": true */
+			}
+		}
+        ,{
+            "path" : "pages/Cart/Cart",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "购物车",
+                "enablePullDownRefresh": false,
+				"navigationBarBackgroundColor":"#FFFFFF",
+				"enablePullDownRefresh":true
+            }
+        }
+        ,{
+            "path" : "pages/My/My",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "我的",
+                "enablePullDownRefresh": false,
+				"navigationBarBackgroundColor":"#f4f4f4"
+            }
+            
+        }
+        ,{
+            "path" : "pages/search/search",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "搜索",
+                "enablePullDownRefresh": false,
+				"navigationBarBackgroundColor":"#FFFFFF"
+				
+            }
+            
+        }
+        ,{
+            "path" : "pages/Details/Details",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "商品详情页",
+                "enablePullDownRefresh": false,
+				"navigationBarBackgroundColor":"#FFFFFF"
+            }
+            
+        }
+        ,{
+            "path" : "pages/buy/buy",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "订单支付页面",
+                "enablePullDownRefresh": false,
+				"navigationBarBackgroundColor":"#f4f4f4"
+            }
+            
+        }
+        ,{
+            "path" : "pages/login/login",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "登陆",
+				/* "navigationStyle": "custom", */
+				"navigationBarBackgroundColor":"#FFFFFF"
+            }
+            
+        }
+        ,{
+            "path" : "pages/register/register",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "注册",
+                "enablePullDownRefresh": false,
+				"navigationBarBackgroundColor":"#f4f4f4"
+            }
+            
+        }
+        ,{
+            "path" : "pages/order/order",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "全部订单",
+                "enablePullDownRefresh": false,
+					"navigationBarBackgroundColor":"#FFFFFF"
+            }
+            
+        }
+        ,{
+            "path" : "pages/hot/hot",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "热门推荐",
+                "enablePullDownRefresh": false,
+				"navigationBarBackgroundColor":"#FFFFFF"
+            }
+            
+        }
+        ,{
+            "path" : "pages/Dddress/Dddress",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "收获地址",
+                "enablePullDownRefresh": false,
+				"navigationBarBackgroundColor":"#FFFFFF"
+            }
+            
+        }
+        ,{
+            "path" : "pages/Setup/Setup",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "设置",
+                "enablePullDownRefresh": false,
+				"navigationBarBackgroundColor":"#FFFFFF"
+            }
+            
+        }
+        ,{
+            "path" : "pages/Dddress/Addaddress/Addaddress",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "增加地址",
+                "enablePullDownRefresh": false,
+				"navigationBarBackgroundColor":"#FFFFFF"
+            }
+            
+        }
+        ,{
+            "path" : "pages/Setup/personal/personal",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "个人资料",
+                "enablePullDownRefresh": false,
+				"navigationBarBackgroundColor":"#FFFFFF"
+            }
+            
+        }
+        ,{
+            "path" : "pages/payment/payment",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "支付",
+                "enablePullDownRefresh": false,
+				"navigationBarBackgroundColor":"#FFFFFF"
+            }
+            
+        }
+    ],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar":{
+		"color": "#C0C4CC",
+		"selectedColor": "#ff6a6c",
+		"borderStyle": "white",
+		"backgroundColor": "#ffffff",
+		"list": [{
+		        "pagePath": "pages/Home/Home",
+		        "iconPath": "static/images/tabbar/home.png",
+		        "selectedIconPath": "static/images/tabbar/home-active.png",
+		        "text": "首页"
+		    },
+		    {
+		        "pagePath": "pages/Cart/Cart",
+		        "iconPath": "static/images/tabbar/cart.png",
+		        "selectedIconPath": "static/images/tabbar/cart-active.png",
+		        "text": "购物车"
+		    },
+		    {
+		        "pagePath": "pages/My/My",
+		        "iconPath": "static/images/tabbar/user.png",
+		        "selectedIconPath": "static/images/tabbar/user-active.png",
+		        "text": "我的"
+		    }
+		]
+	}
+}

@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "登陆",
+  "navigationBarBackgroundColor": "#FFFFFF",
+  "usingComponents": {
+    "other-login": "/components/other-login/other-login"
+  }
+}

@@ -1,0 +1,6 @@
+
+.fontmm1{font-size: 32rpx;font-weight: bold;width: 93%;}
+.fontmm{font-size: 28rpx;width: 93%;}
+.styleradio{background-color: #fd6801}
+.unroadi{width: 30rpx;height: 30rpx;border-radius: 500rpx;}
+

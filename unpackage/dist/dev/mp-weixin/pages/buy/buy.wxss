@@ -1,0 +1,22 @@
+
+.buyht{min-height: 100rpx;border-radius: 20rpx;}
+.buyht-shop{height: 700rpx;border-radius: 20rpx;}
+.buyht1{border-radius: 20rpx;}
+.buyshop{width: 50rpx;height: 50rpx;}
+.col{width: 110rpx;height: 40rpx;font-size: 18rpx;}
+.text-i{color: #ff6a6c;}
+.lt{margin-left: 85rpx;}
+.lt1{margin-left: 39rpx;}
+.flot{float: right;margin-right: 30rpx;}
+.hrli{min-height: 80rpx;}
+.lun{color: rgb(14, 157, 153);font-size: 30rpx;font-weight: bold;}
+.lg{width: 50rpx;height: 50rpx;}
+.font-m{margin-top: 8rpx;font-size: 20rpx;}
+.font-m1{font-size: 20rpx;}
+.lg1{width: 40rpx;height: 40rpx;}
+.my{width: 200rpx;height: 60rpx;}
+.he{height: 80rpx;}
+.fonh{overflow : hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp:2;-webkit-box-orient: vertical;}
+.fontlg{font-size: 28rpx;}
+.footer{width: 100%;position: absolute;bottom: 0px;}
+
