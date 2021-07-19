@@ -73,11 +73,6 @@
 			/* 手机验证 */
 			disabledto(){
 				return this.phone == ""||this.code ==''
-			},
-			miss(){
-				if(this.password != this.passwordtwo){
-					return "两次密码不相同"
-				}
 			}
 		},
 		onLoad() {

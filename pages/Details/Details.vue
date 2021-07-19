@@ -144,7 +144,7 @@
 			...mapGetters(["total"])
 		},
 		watch:{
-			total(newVal) {
+			/* total(newVal) {
 			      // 2. 通过数组的 find() 方法，找到购物车按钮的配置对象
 			      const findResult = this.ss.find((x) => x === '0')
 			
@@ -152,7 +152,7 @@
 			        // 3. 动态为购物车按钮的 info 属性赋值
 			        findResult.info = newVal
 			      }
-			    },
+			    }, */
 		},
 		onLoad() {
 			this.detailsopen(),

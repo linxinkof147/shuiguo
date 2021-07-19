@@ -6,44 +6,44 @@
 			<view class="flex align-center justify-center ">
 				<view @click="changeTab(index)" class="miss flex-1 justify-center align-center"
 				v-for="(item,index) in taBaers"  :key="index" :class=" tabIndex === index ? 'textmian' : '' " :id="'tab'+index">{{item.name}}</view>
-			</view>
-				
+			</view>	
 		</scroll-view>
 		
 		<view :style="{height: wh + 'px'}" class="bg-hover-light ">
 			<swiper  :duration="150" :current="tabIndex" @change="onChangeTab" :style="{height: wh + 'px'}" class="bg-hover-light ">
-				<swiper-item   class="he-8"  v-for="i in 3" :key="i">
-					<view class="flex justify-center align-center" :style="{height: wh + 'px'}">
+				<swiper-item   class="he-8"  v-for="i in 3" :key="i" >
+					<view class="flex justify-center align-center" :style="{height: wh + 'px'}" v-if="orderList==''">
 						<view>暂无购买数据...</view>
 					</view>
 						<!-- 订单 -->
-						<!-- <view class="w-95 m-auto bg-white border-radius-sm he-6 mt-3" v-for="i in 2" :key="i">
-							<view class="flex"> -->
+						<view class="w-95 m-auto bg-white border-radius-sm he-6 mt-3" v-for="i in 2" :key="i" v-if="orderList!=''">
+							<view class="flex">
 								<!-- 图片 -->
-								<!-- <view class="w-30 mt-5 ml-2">
+								<view class="w-30 mt-5 ml-2">
 									<image class="order-img" src="../../static/images/user/l2.jpg" mode=""></image>
-								</view> -->
+								</view>
 								<!-- 文字 -->
-								<!-- <view class="w-70 mt-2 ml-2">
+								<view class="w-70 mt-2 ml-2">
 									<view class="line-0">实打实打算</view>
 									<view class="line-0">大撒大撒大苏打</view>
 									<view class="text-hover-light ">x1 黑色</view>
 									<view class="mt-3 font-lg">￥539</view>
 									<view class="flotl mr-4 font-lg">实付：￥539</view>
 								</view>
-							</view> -->
+							</view>
 							<!-- 底部 -->
-							<!-- <view class="mt-1 ml-3 flex justify-between">
+							<view class="mt-1 ml-3 flex justify-between">
 								<view>已取消</view>
 								<view class="mr-5 ds flex justify-center align-center" @click="order()">
 									<text>删除订单</text>
 								</view>
 							</view>
-						</view> -->
+						</view>
 				</swiper-item>
 				
 			</swiper>
 		</view>
+		
 		
 		
 		<!-- <block v-for="(item,index) in list" :key="index"> -->
@@ -68,7 +68,8 @@
 				{'name':"待收货","id":1},
 				{'name':"待发货","id":2}],
 				newsList:[],
-				wh:0
+				wh:0,
+				orderList:[]
 			}
 		},
 		onLoad() {

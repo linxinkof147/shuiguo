@@ -69,7 +69,7 @@
 		<view class="footer flex justify-between " v-if="this.LoginOrNot == true">
 			<view class="mt-4 ml-3 flex">
 				<text  class="price mr-2">
-					{{this.cart !=""?valttpp:0}}
+					{{this.cart != "" ? valttpp : 0}}
 				</text>
 			</view>
 			<view class="mt-4 mr-3 flex ">
@@ -135,7 +135,7 @@
 				
 				if(this.cart[0].goods_state == true){
 					return this.cart[0].goods_price*this.cart[0].goods_count 
-				} else if(this.cart[0] == ""){
+				} else if(this.cart[0].goods_state == false){
 					return 0
 				} 
 				
@@ -221,7 +221,7 @@
 				})
 			},
 			createOrder(){
-				if(this.LoginOrNot == true && this.cart.goods_count!=""&&this.vale*this.pip!=0){
+				if(this.LoginOrNot == true && this.cart[0].goods_count!= 0&&this.valttpp!= 0&&this.cart[0].goods_state == true){
 					uni.navigateTo({
 						url:"../buy/buy"
 					})

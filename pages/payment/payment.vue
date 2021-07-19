@@ -4,7 +4,7 @@
 		<view class="w-100 ml9">
 			<view class="">
 				<view class="font-lg font text-hover-light">支付金额</view>
-				<view class="mt-2"><text class="price1 price">300</text></view>
+				<view class="mt-2"><text class="price1 price">{{valttpp}}</text></view>
 			</view>
 		</view>
 		<view class="flex justify-center align-center mt-5">
@@ -38,7 +38,16 @@
 			}
 		},
 		computed:{
-			...mapState(['cart'])
+			...mapState(['cart']),
+			valttpp(){
+				
+				if(this.cart[0].goods_state == true){
+					return this.cart[0].goods_price*this.cart[0].goods_count 
+				} else if(this.cart[0] == ""){
+					return 0
+				} 
+				
+			}
 		},
 		methods: {
 			...mapMutations(['saveToStorage','addToCart','saveToStoragopen']),
