@@ -47,7 +47,8 @@
 			this.wh =sysInfo.windowHeight
 		},
 		computed:{
-			...mapGetters(['addstr'])
+			...mapGetters(['addstr']),
+			
 		},
 		methods: {
 			...mapMutations(['Addressopen']),
@@ -62,7 +63,7 @@
 			},
 			openaddress(item){
 				this.Addressopen(item)
-				/* console.log(item) */
+				console.log(item)
 				
 				if(this.OpenAddresstrue == true){
 					uni.navigateBack({
@@ -73,8 +74,11 @@
 				}
 			},
 			openmodify(index){
-				console.log(index)
-				console.log("修")
+				/* console.log(index)
+				console.log("修") */
+				uni.navigateTo({
+					url:"../Dddress/Change/Change"
+				})
 			},
 			opendelete(index){
 				console.log(index)

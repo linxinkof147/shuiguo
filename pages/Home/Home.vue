@@ -64,7 +64,7 @@
 			
 		},
 		computed:{
-			...mapState(['LoginOrNot'])
+			...mapState(['LoginOrNot','token'])
 		},
 		/* onReachBottom() {
 			console.log(123)
@@ -82,6 +82,7 @@
 			 this.gethotList()
 			 const sysInfo = uni.getSystemInfoSync()
 			 this.wh =sysInfo.windowHeight
+			 console.log(this.token)
 		},
 		methods: {
 			async getSwiperList() {

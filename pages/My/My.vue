@@ -87,7 +87,7 @@
 			const sysInfo = uni.getSystemInfoSync()
 			this.wh =sysInfo.windowHeight
 			this.LoginOrNot
-			this.openwet()
+			
 		},
 		computed:{
 			...mapState(['list','LoginOrNot','cart'])
@@ -155,10 +155,10 @@
 					this.navigateTo()
 				}
 			},
-			async openwet(){
+			/* async openwet(){
 				 const res  = await uni.$http.post('mallGoods/goods?pageSize=10&pageNum=1&isHot=true')
 				console.log(res)
-			}
+			} */
 		}
 	}
 </script>

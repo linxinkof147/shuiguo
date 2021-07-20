@@ -33,6 +33,7 @@
 </template>
 
 <script>
+	import {mapMutations,mapState} from 'vuex'
 	import pickerAddress from '../../../components/wangding-pickerAddress/wangding-pickerAddress.vue';
 	export default {
 		components:{pickerAddress},
@@ -42,15 +43,22 @@
 				txt: '选择地址',
 				inputname:'',
 				inputpohe:'',
-				inputaddress:''
+				inputaddress:'',
+				Address:[]
 				
 			}
 		},
 		onLoad() {
 			const sysInfo = uni.getSystemInfoSync()
 			this.wh =sysInfo.windowHeight
+			
+			
+		},
+		computed:{
+			...mapState(['LoginOrNot','token'])
 		},
 		methods: {
+			...mapMutations(['Addressopen']),
 			change(data) {
 				console.log(data)
 				this.txt = data.data.join('')
@@ -64,12 +72,17 @@
 					    success: res =>  {
 					        if (res.confirm) {
 								if(this.inputpohe !=""&&this.txt !=""&&this.inputaddress !=""&&this.txt !="选择地址"){
-									const goods = {
-									         goods_id: this.inputname,      
-									         goods_name: this.inputpohe,   
-									         goods_price: this.inputaddress,
-									         goods_count: this.txt,                          
-									      }
+									const goods = [{
+									         goods_id: this.inputaddress,      
+									         goods_name:this.inputname,   
+									         goods_price:this.inputpohe,
+									         goods_count:this.txt+this.inputaddress ,
+											 goods_token:this.token
+									      }]
+										 /* console.log(JSON.stringify(goods)) */
+										 this.Address.push(goods)
+										 console.log(this.Address)
+										 console.log(this.token)
 									uni.showToast({
 										title: '添加成功'
 									})

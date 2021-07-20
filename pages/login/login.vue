@@ -122,7 +122,7 @@
 				console.log(123)
 			},
 			async loginopen() {
-			  //发起请求swpier
+			  //发起请求登陆
 			 const { data: res } = await uni.$http.post('/login',
 			{"customerName":this.mobile,"password": this.password})
 			 console.log(res)

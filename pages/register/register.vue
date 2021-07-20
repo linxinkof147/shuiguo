@@ -20,14 +20,14 @@
 			<view class="w-full dflex padding-bottom-sm">
 				<view class="iconfont iconmima margin-right"></view>
 				<view class="flex1 dflex">
-					<input class="border-line padding-sm flex1" type="password" data-key="password" maxlength="11" @input="inputChange" placeholder="请输入密码" />
+					<input class="border-line padding-sm flex1" type="password" data-key="password" maxlength="11" @input="inputChange" placeholder="请输入密码/请勿输入特殊字符" />
 					<view v-if="0 == 1" class="padding-tb-sm ft-dark" @click="send_code">获取</view>
 				</view>
 			</view>
 			<view class="w-full dflex padding-bottom-sm">
 				<view class="iconfont iconmima margin-right"></view>
 				<view class="flex1 dflex">
-					<input class="border-line padding-sm flex1" type="password" v-model="passwordtwo" maxlength="11" @input="inputChange" placeholder="请输确认密码" />
+					<input class="border-line padding-sm flex1" type="password" v-model="passwordtwo" maxlength="11" @input="inputChange" placeholder="请确认密码/请勿输入特殊字符" />
 					<view v-if="0 == 1" class="padding-tb-sm ft-dark" @click="send_code">获取</view>
 					
 				</view>
@@ -104,12 +104,18 @@
 			validate(){
 				/* return false */
 				var mPattern = /^1[345678]\d{9}$/;
-				if(!mPattern.test(this.mobile) || this.password.length<4){
+				var reg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$/;
+				if(!mPattern.test(this.mobile)){
 					uni.showToast({
-						title:"请输入正确的密码及手机号",
+						title:"请输入正确手机号",
 						icon:'none'
 					})
-					
+					return false
+				} else if(!reg.test(this.password)){
+					uni.showToast({
+						title:"密码不包含特殊字符并6位以上",
+						icon:'none'
+					},1500)
 					return false
 				}
 				return true

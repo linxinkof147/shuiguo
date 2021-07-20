@@ -149,6 +149,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/Dddress/Change/Change",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

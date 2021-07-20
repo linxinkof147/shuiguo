@@ -12,20 +12,20 @@ const store = new Vuex.Store({
 		/* 登陆的状态 */
 		LoginOrNot:uni.getStorageSync('storage_key')||false,
 		/* token值 */
-		tokenL:uni.getStorageSync('token') || '',
+		token: uni.getStorageSync('token') || '',
 		/* 用户的基本信息 */
 		list:JSON.parse(uni.getStorageSync('list') || '{}'),
 		/* 购物车 */
 		 // { goods_id, goods_name, goods_price, goods_count, goods_small_logo, goods_state }
 		cart:JSON.parse(uni.getStorageSync('cart') || '[]'),
 		/* 收货地址 */
-		Address: JSON.parse(uni.getStorageSync('address') || '{}'),
+		Address: JSON.parse(uni.getStorageSync('address') || '[]'),
     },
 	mutations:{
 		/* 收货地址 */
 		Addressopen(state, add){
 			 state.Address = add
-			 console.log(state.Address)
+			console.log(state.Address)
 			this.commit("saveAddressopen")
 		},
 		saveAddressopen(state){
@@ -96,13 +96,14 @@ const store = new Vuex.Store({
 		  /* token */
 		  updateToken(state, token) {
 		      state.token = token
+			 
 		      // 通过 this.commit() 方法，调用 m_user 模块下的 saveTokenToStorage 方法，将 token 字符串持久化存储到本地
-		      this.commit('m_user/saveTokenToStorage')
-			  console.log(state.token)
+		      this.commit('saveTokenToStorage')
 		    },
 		  saveTokenToStorage(state) {
-			    uni.setStorageSync('token', state.token)
-			 },
+		      uni.setStorageSync('token', state.token)
+			   console.log(state.token)
+		    },
 			 /* 加减购物车数量 */
 			 /* 地址 */
 			
