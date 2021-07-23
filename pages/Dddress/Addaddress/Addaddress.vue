@@ -44,8 +44,7 @@
 				inputname:'',
 				inputpohe:'',
 				inputaddress:'',
-				Address:[]
-				
+				Address:[]			
 			}
 		},
 		onLoad() {
@@ -58,7 +57,7 @@
 			...mapState(['LoginOrNot','token'])
 		},
 		methods: {
-			...mapMutations(['Addressopen']),
+			...mapMutations(['Addressopen','Addharvest']),
 			change(data) {
 				console.log(data)
 				this.txt = data.data.join('')
@@ -72,17 +71,18 @@
 					    success: res =>  {
 					        if (res.confirm) {
 								if(this.inputpohe !=""&&this.txt !=""&&this.inputaddress !=""&&this.txt !="选择地址"){
-									const goods = [{
+									let goods = [{
 									         goods_id: this.inputaddress,      
 									         goods_name:this.inputname,   
 									         goods_price:this.inputpohe,
 									         goods_count:this.txt+this.inputaddress ,
 											 goods_token:this.token
 									      }]
+										 this.increaseList()
 										 /* console.log(JSON.stringify(goods)) */
-										 this.Address.push(goods)
-										 console.log(this.Address)
-										 console.log(this.token)
+										/* this.Address.push(goods)
+										 console.log(this.Address) */
+										/* this.Addharvest(goods) */
 									uni.showToast({
 										title: '添加成功'
 									})
@@ -104,7 +104,32 @@
 			},
 			miss(){
 				console.log(this.inputname);
-			}
+			},
+			 increaseList() {
+			  //发起请求地址增加
+			  uni.request({
+				  method:'POST',
+			      url: 'http://117.175.58.188:9005/api-test//p/myAddress/addAddr', //仅为示例，并非真实接口地址。
+			      data: {
+			          "receiver":this.inputname,
+					  "addr":this.txt+this.inputaddress,
+					  "mobile":this.inputpohe
+			      },
+			      header: {
+			         "account_token":this.token
+					
+			      },
+			      success: (res) => {
+			          console.log(res);
+			         
+			      }
+			  });
+			  
+			  }
+			/* const  res  = await uni.$http.post('/p/myAddress/addAddr',
+			 {"receiver":this.inputname,"addr":this.txt+this.inputaddress,"mobile":this.inputpohe})
+			console.log(res)
+			}, */
 		}
 	}
 </script>

@@ -228,9 +228,9 @@
 				})
 			},
 			async detailsopen() {
-			  //发起请求swpier
+			 //详情页
 			 const { data: res } = await uni.$http.get('mallGoods/goodsDetail/296b5762c1301a92d8462193f0f32f39')
-			 /* console.log(res.body) */
+			 console.log(res.body)
 			 this.openderailsList = res.body
 			},
 		}

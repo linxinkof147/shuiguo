@@ -2,14 +2,14 @@
 	<view class="bg-hover-light w-100 " :style="{height: wh + 'px'}">
 		
 		<!-- 收获 -->	
-		<view v-for="(item,index) in AddressList" :key="index" >
+		<view v-for="(item,index) in informationlist" :key="index" >
 			<view class="gap"></view>
 			<view  class="w-90 m-auto mt-1 bg-white he4 border-radius-sm">
 				<view  @click="openaddress(item)">
-					<view class="mt-3 ml-2 fontmm1">{{item.Addressname}}</view>
+					<view class="mt-3 ml-2 fontmm1">{{item.addr}}</view>
 					<view class="ml-2 mt-1 fontmm">
-						<text>{{item.name}}</text>
-						<text class="ml-3">{{item.phopen}}</text>
+						<text>{{item.receiver}}</text>
+						<text class="ml-3">{{item.mobile}}</text>
 					</view>
 				</view>
 				<!-- 修改删除 -->
@@ -39,16 +39,18 @@
 				radio:false,
 				OpenAddresstrue:true,
 				AddressList:[{Addressname:'四川省成都市武清蓝路弘法栋3单元55楼504',name:'张悦月',phopen:'136xxxxx123'},
-				{Addressname:'四川省成都市武清蓝路弘法栋3单元55楼503',name:'林鑫',phopen:'187xxxx221'}]
+				{Addressname:'四川省成都市武清蓝路弘法栋3单元55楼503',name:'林鑫',phopen:'187xxxx221'}],
+				informationlist:[]
 			}
 		},
 		onLoad() {
+			this. queryList()
 			const sysInfo = uni.getSystemInfoSync()
 			this.wh =sysInfo.windowHeight
 		},
 		computed:{
 			...mapGetters(['addstr']),
-			
+			...mapState(['token'])
 		},
 		methods: {
 			...mapMutations(['Addressopen']),
@@ -64,7 +66,6 @@
 			openaddress(item){
 				this.Addressopen(item)
 				console.log(item)
-				
 				if(this.OpenAddresstrue == true){
 					uni.navigateBack({
 					    delta: 1
@@ -96,6 +97,20 @@
 					    }
 				})
 				
+			},
+			//地址
+			 queryList(){
+				uni.request({
+					method:'GET',
+				    url: 'http://117.175.58.188:9005/api-test//p/myAddress/list', //仅为示例，并非真实接口地址。
+				    header: {
+				       "account_token":this.token			
+				    },
+				    success: (res) => {
+				        console.log(res.data.body);
+				      this.informationlist = res.data.body
+				    }
+				});
 			}
 		}
 	}

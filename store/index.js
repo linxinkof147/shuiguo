@@ -20,8 +20,20 @@ const store = new Vuex.Store({
 		cart:JSON.parse(uni.getStorageSync('cart') || '[]'),
 		/* 收货地址 */
 		Address: JSON.parse(uni.getStorageSync('address') || '[]'),
+		/* 添加收货地址 */
+		harvest: JSON.parse(uni.getStorageSync('address') || '[]'),
     },
 	mutations:{
+		/* 添加收货地址 */
+		/* Addharvest(state,harl){
+		  state.harvest.push(harl)
+			
+			console.log(state.harvest)
+			this.commit("openharvest")
+		},
+		openharvest(){
+			uni.setStorageSync('harvest', JSON.stringify(state.harvest))
+		}, */
 		/* 收货地址 */
 		Addressopen(state, add){
 			 state.Address = add

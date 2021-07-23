@@ -5,13 +5,13 @@
 		<view class=" w-95 m-auto buyht border-radius-sm bg-white" @click="adder">
 			<navigator url="../Dddress/Dddress"><UseListtItle title="收获地址管理" size="32" fwt="600" color="#333" iconfont="icondaishouhuo-" ></UseListtItle></navigator>
 			<view class="flex flex-wrap">
-				<view class="w-20 flex justify-center align-center"><text>{{Address.name}}</text></image></view>
+				<view class="w-20 flex justify-center align-center"><text class="text-ellipsis">{{Address.receiver}}</text></image></view>
 				<view class="w-70">
 					<view class="mt-1">
 						
-						<text class="font-sm text-danger">{{Address.phopen}}</text>
+						<text class="font-sm text-danger text-ellipsis">{{Address.mobile}}</text>
 					</view>
-					<view> {{Address.Addressname}}</view>
+					<view class="text-ellipsis"> {{Address.addr}}</view>
 				</view>
 			</view>
 		</view>
@@ -141,7 +141,7 @@
 		},
 		methods: {
 			Submit(){
-				if(this.addtrue==true){
+				if(this.addtrue==true||this.Address!=''){
 					uni.navigateTo({
 						url:"../payment/payment"
 					})

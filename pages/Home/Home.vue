@@ -24,7 +24,7 @@
 			</view>
 		</view> -->
 		<view class="gap"></view>
-  
+		<!-- 	<web-view src="http://app.joy-ec.cn/user/category"></web-view> -->
 		<!-- 热门推荐 -->
 			<view class="use-hot-goods" :style="{height: wh + 'px'}">
 				<!-- 列表标题 -->
