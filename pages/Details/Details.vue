@@ -121,11 +121,16 @@
 				tagDatasimg:[{img:'../../static/images/tab/top1.png'},{img:'../../static/images/tab/top2.png'}],
 				tagDatasimg1:[{img:'../../static/images/user/l1.jpg'},{img:'../../static/images/user/l2.jpg'},
 				{img:'../../static/images/user/l3.jpg'},{img:'../../static/images/user/l4.png'}],
-				options: [{
-					icon: 'cart',
-					text: '购物车',
-					info: 0
-				} ],
+				options: [
+					{
+						icon: 'cart',
+						text: '购物车',
+						info: 0
+					},
+					{
+						icon: 'headphones',
+						text: '客服'
+					}],
 				buttonGroup: [{
 						text: '加入购物车',
 						backgroundColor: '#ffa200',
@@ -153,6 +158,16 @@
 			        findResult.info = newVal
 			      }
 			    }, */
+		},
+		/* 监听导航栏上的客服消息 */
+		onNavigationBarButtonTap(index){
+			console.log(index.index)
+			if(index.index == 0){
+				uni.navigateTo({
+					url:"../news/news"
+				})
+			}
+			
 		},
 		onLoad() {
 			this.detailsopen()

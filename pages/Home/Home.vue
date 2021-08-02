@@ -1,5 +1,5 @@
 <template>
-	<view class="use-hot-goods " :style="{height: wh + 'px'}">
+	<view class="bg-light " :style="{height: wh + 'px'}">
 		
 		<!-- 头部组件 -->
 		<!-- <use-header @click="search()"></use-header> -->

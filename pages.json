@@ -48,7 +48,19 @@
             {
                 "navigationBarTitleText": "商品详情页",
                 "enablePullDownRefresh": false,
-				"navigationBarBackgroundColor":"#FFFFFF"
+				"navigationBarBackgroundColor":"#FFFFFF",
+				"app-plus":{//app端特有属性
+						"titleNView":{
+							"buttons":[{//右侧操作按钮样式定义,是以数组形式定义，可定义多个
+								"color":"#000000",
+								"fontSize":"35rpx",
+								"text":"消息",
+								"fontSrc":"/static/iconfont.ttf",
+								"text":"\ue884"
+							}]
+						}
+					}
+				
             }
             
         }
@@ -178,6 +190,17 @@
                 "navigationBarTitleText": "支付",
                 "enablePullDownRefresh": false,
 				"navigationBarBackgroundColor":"#FFFFFF"
+            }
+            
+        }
+        ,{
+            "path" : "pages/news/news",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "椒云客服",
+                "enablePullDownRefresh": false,
+				"fontSize":"24px",
+				"navigationBarBackgroundColor":"#f8f9fa"
             }
             
         }

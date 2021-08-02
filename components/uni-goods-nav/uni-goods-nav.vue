@@ -73,9 +73,18 @@
 		},
 		methods: {
 			onClick(index, item) {
-				uni.switchTab({
-				    url: '/pages/Cart/Cart'
-				});
+				
+				if(index == 0){
+					uni.switchTab({
+					    url: '/pages/Cart/Cart'
+					});
+				}else if(index==1){
+					console.log("客服")
+					uni.navigateTo({
+						url:"../../pages/news/news"
+					})
+				}
+				
 			},
 			buttonClick(index, item) {
 				if (uni.report) {

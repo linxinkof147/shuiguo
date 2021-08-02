@@ -8,7 +8,7 @@
 			</view>
 			<view class="dflex">
 				<view v-if="nuberss != ''"
-				class="flex justify-center align-center" style="width: 125rpx;height: 50rpx;background-color: #ff503b;border-radius: 25rpx;color: #f1ffff;">
+				class="flex justify-center align-center" style="width: 125rpx;height: 50rpx;background-color: #ff503b;border-radius: 25rpx;color: #000000;">
 					{{nuberss}}
 				</view>
 				<text v-if="tip" class="tip margin-right-xs">{{tip}}</text>
