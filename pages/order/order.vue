@@ -12,28 +12,28 @@
 		<view :style="{height: wh + 'px'}" class="bg-hover-light ">
 			<swiper  :duration="150" :current="tabIndex" @change="onChangeTab" :style="{height: wh + 'px'}" class="bg-hover-light ">
 				<swiper-item   class="he-8"  v-for="i in 3" :key="i" >
-					<view class="flex justify-center align-center" :style="{height: wh + 'px'}" v-if="orderList==''">
+					<view class="flex justify-center align-center" :style="{height: wh + 'px'}" v-if="param ==''">
 						<view>暂无购买数据...</view>
 					</view>
 						<!-- 订单 -->
-						<view class="w-95 m-auto bg-white border-radius-sm he-6 mt-3" v-for="i in 2" :key="i" v-if="orderList!=''">
+						<view class="w-95 m-auto bg-white border-radius-sm he-6 mt-3" v-for="i in 1" :key="i" v-else >
 							<view class="flex">
 								<!-- 图片 -->
 								<view class="w-30 mt-5 ml-2">
-									<image class="order-img" src="../../static/images/user/l2.jpg" mode=""></image>
+									<image class="order-img" src="../../static/images/mg2.png" mode=""></image>
 								</view>
 								<!-- 文字 -->
 								<view class="w-70 mt-2 ml-2">
-									<view class="line-0">实打实打算</view>
-									<view class="line-0">大撒大撒大苏打</view>
-									<view class="text-hover-light ">x1 黑色</view>
-									<view class="mt-3 font-lg">￥539</view>
-									<view class="flotl mr-4 font-lg">实付：￥539</view>
+									<view class="line-0 mt-1">新鲜水蜜桃现摘脆甜桃子10斤整箱</view>
+									<view class="line-0 mt-1">孕妇时令当季水果油蜜毛桃包邮</view>
+									<view class="text-hover-light mt-1">x1 </view>
+									<view class="mt-1 font-lg mt-1">￥{{param}}</view>
+									<view class="flotl mr-4 font-lg">实付：￥{{param}}</view>
 								</view>
 							</view>
 							<!-- 底部 -->
 							<view class="mt-1 ml-3 flex justify-between">
-								<view>已取消</view>
+								<view class="text-danger">已购买</view>
 								<view class="mr-5 ds flex justify-center align-center" @click="order()">
 									<text>删除订单</text>
 								</view>
@@ -69,7 +69,8 @@
 				{'name':"待发货","id":2}],
 				newsList:[],
 				wh:0,
-				orderList:[]
+				orderList:[],
+				param:""
 			}
 		},
 		onLoad() {
@@ -77,6 +78,18 @@
 				/* 获取自适应宽度 */
 				const sysInfo = uni.getSystemInfoSync()
 				this.wh =sysInfo.windowHeight
+				/* 获取路径信息 */
+				let routes = getCurrentPages(); // 获取当前打开过的页面路由数组
+				let curRoute = routes[routes.length - 1].route //获取当前页面路由
+				let curParam = routes[routes.length - 1].options; //获取路由参数
+				// 拼接参数
+				let param = ''
+				for (let key in curParam) {
+				    param += curParam[key]
+					/* param += key + '=' + curParam[key] */
+				}
+				this.param = param
+				console.log(this.param)
 				
 		},
 		/* 原生导航栏监听 */
@@ -85,7 +98,12 @@
 				url:"../addinput/addinput"
 			})
 		},
-		
+		onBackPress(){
+			uni.switchTab({
+				url:'../My/My'
+			})
+			  return true
+		},
 		onReachBottom(){
 			console.log(123)
 		}

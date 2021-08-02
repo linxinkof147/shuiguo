@@ -4,8 +4,8 @@
 			<uni-transition key="1" v-if="maskShow" name="mask" mode-class="fade" :styles="maskClass" :duration="duration" :show="showTrans" @click="onTap" />
 		</view>
 
-		<uni-transition key="2" :mode-class="ani" name="content" :styles="transClass" :duration="duration" :show="showTrans" @click="onTap">
-			<view class="uni-popup__wrapper" :style="{ backgroundColor: bg }" :class="[popupstyle]" @click="clear">
+		<uni-transition key="2" class="miss" :mode-class="ani" name="content" :styles="transClass" :duration="duration" :show="showTrans" @click="onTap" >
+			<view class="uni-popup__wrapper" :style="{ backgroundColor: bg }" :class="[popupstyle]" @click="clear" >
 				<slot />
 			</view>
 		</uni-transition>
@@ -406,4 +406,5 @@ import unitransition from "@/components/uni-transition/uni-transition.vue"
 	.fixforpc-top {
 		top: 0;
 	}
+	.miss{border-radius: 20rpx;}
 </style>

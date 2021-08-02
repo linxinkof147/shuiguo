@@ -1,15 +1,14 @@
 <template>
-	<view>
-		<view>
-		  </view>
+	<view class="use-hot-goods " :style="{height: wh + 'px'}">
+		
 		<!-- 头部组件 -->
 		<!-- <use-header @click="search()"></use-header> -->
-		<view class="swiper-area pos-r" v-if="swiperDatas && swiperDatas.length > 0">
+		<view class="swiper-area pos-r bgw he-5" v-if="swiperDatas && swiperDatas.length > 0">
 			<!-- 轮播组件 -->
 			<swiper class="swiper w-full" autoplay indicator-dots indicator-color="#f7f7f7" indicator-active-color="#ff6a6c">
-				<swiper-item class="swiper-item padding-lr wh-full box-sizing-b" v-for="(item, index) in swiperDatas" :key="index">
+				<swiper-item class="swiper-item padding-lr wh-full box-sizing-b" v-for="(item, index) in swiperDatas" :key="item.imgId">
 					<view class="wh-full" >
-						<image class="border-radius wh-full"  :lazy-load="true" :src="item" />
+						<image class="border-radius wh-full"  :lazy-load="true" :src="item.imgUrl" />
 					</view>
 				</swiper-item>
 			</swiper>
@@ -23,10 +22,39 @@
 				<view>{{item.name}}</view>
 			</view>
 		</view> -->
+		
 		<view class="gap"></view>
+		<use-list-title title="限时精选" size="32" fwt="600" color="#333" iconfont="icondaishouhuo-" @goto="limit">
+		</use-list-title>
+		<view class="limit-area bgw">
+			<scroll-view class="list padding-lr" scroll-x>
+				<view class="dflex padding-bottom">
+					<view class="item margin-right-sm" v-for="(item, index) in goodsHotDatas" :key="index"
+						@click="togoods(item)">
+						<image class="border-radius-xs" mode="aspectFill" :lazy-load="true" src="../../static/images/mg1.png"></image>
+						<text class="title clamp padding-bottom-xs">{{ item.name }}</text>
+						<text class="price">{{ 56 }}</text><text class="m-price">{{ 76 }}</text>
+					</view>
+					<!-- <view class="item margin-right-sm" v-for="(item, index) in goodsHotDatas" :key="index"
+						@click="togoods(item)">
+						<image class="border-radius-xs" mode="aspectFill" :lazy-load="true" src="../../static/images/mg3.png"></image>
+						<text class="title clamp padding-bottom-xs">{{ item.name }}</text>
+						<text class="price">{{ 56 }}</text><text class="m-price">{{ 76 }}</text>
+					</view> -->
+					<!-- <view class="item margin-right-sm" v-for="(item, index) in goodsHotDatas" :key="index"
+						@click="togoods(item)">
+						<image class="border-radius-xs" mode="aspectFill" :lazy-load="true" src="../../static/images/mg1.png"></image>
+						<text class="title clamp padding-bottom-xs">{{ item.name }}</text>
+						<text class="price">{{ 56 }}</text><text class="m-price">{{ 76 }}</text>
+					</view> -->
+				</view>
+			</scroll-view>
+		</view>
+	
+		<view class="gap mm"></view>
 		<!-- 	<web-view src="http://app.joy-ec.cn/user/category"></web-view> -->
 		<!-- 热门推荐 -->
-			<view class="use-hot-goods" :style="{height: wh + 'px'}">
+			<view class="use-hot-goods " :style="{height: wh + 'px'}">
 				<!-- 列表标题 -->
 				<UseHotGoods :datas="goodsHotDatas" autoload="none" title="热卖产品"></UseHotGoods> 
 				<!-- 用云版权 -->
@@ -41,10 +69,13 @@
 	import UseHeader from "@/components/use-header/use-header.vue"
 	import UseListtItle from "@/components/use-list-title/use-list-title.vue"
 	import UseHotGoods from "@/components/use-hot-goods/use-hot-goods.vue"
+	import countdown from "@/components/cz-countdown/cz-countdown.vue"
 	export default {
-		components:{UseHeader,UseListtItle,UseHotGoods},
+		components:{UseHeader,UseListtItle,UseHotGoods,countdown},
 		data() {
 			return {
+				startTime:'2020-01-01 00:00:00',
+				enTime:'2020-02-01 00:00:00',
 				wh:0,
 				dropDowns:'下拉刷新',
 				 swiperList: [],
@@ -82,19 +113,20 @@
 			 this.gethotList()
 			 const sysInfo = uni.getSystemInfoSync()
 			 this.wh =sysInfo.windowHeight
-			 console.log(this.token)
+			/* console.log(this.token) */
 		},
 		methods: {
 			async getSwiperList() {
 			  //发起请求swpier
-			 const { data: res } = await uni.$http.post('/mallGoods/banner')
-			 this.swiperDatas = res.body.banner
+			 const { data: res } = await uni.$http.get('indexImg/indexImgs/1')
+			this.swiperDatas = res.body
+			console.log(res.body)
 			},
 			//发起请求热卖
 			async gethotList() {
 			  const { data: res } = await uni.$http.get('mallGoods/goods?pageSize=10&pageNum=1&isHot=true')
 			  this.goodsHotDatas = res.body.rows
-			 console.log(res)
+			console.log(res)
 			},
 			
 			limit(){
@@ -104,9 +136,9 @@
 				console.log("11111")
 			},
 			togoods(index){
-				console.log(index)
-				console.log("xiangqingye")
-				
+				uni.navigateTo({
+					url:'../hot/hot'
+				})
 			},
 			miss(){
 				
@@ -124,6 +156,7 @@
 .item {width: 240rpx;}
 .hot{background-color: #f3f4f8;width: 100%;}
 .hot-view{width: 95%;margin: 0 auto;display: flex;flex-wrap: wrap;}
+.he7{height: 460rpx;}
 .use-hot-goods {
 	background-color: #f3f4f6;
 	
@@ -157,5 +190,6 @@
 		}
 	}
 }
-
+.he6{width: 100%;background-color: #f7f7f7;}
+.mt1{margin-top: 9rpx;}
 </style>

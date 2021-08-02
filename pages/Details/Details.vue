@@ -155,11 +155,16 @@
 			    }, */
 		},
 		onLoad() {
-			this.detailsopen(),
+			this.detailsopen()
+			/* ,
+			console.log(this.cart) */
 			
-			
-			console.log(this.cart)
-			
+		},
+		onBackPress(){
+			uni.switchTab({
+				url:'../Home/Home'
+			})
+			  return true
 		},
 		methods: {
 			...mapMutations(['addToCart','updateGoodsCount']),
@@ -169,11 +174,11 @@
 			changeValue(value) {
 				/* console.log('返回数值：', value); */
 				this.numberValue = value
-				console.log(this.numberValue)
+				/* console.log(this.numberValue) */
 				
 			},
 			changeValueplp(item){
-				console.log(item)
+				/* console.log(item) */
 				let valpoppe = {
 					goods_id : item.goods_id,
 					goods_count : +this.numberValue
@@ -189,7 +194,7 @@
 			buttonClick(e) {
 				var ss = e.index
 				this.ss = e.index
-				console.log(this.ss)
+				/* console.log(this.ss) */
 				this.navigateTo()
 				if(ss == 1 && this.LoginOrNot == true){
 					this.$refs.popup.open('bottom')
@@ -222,15 +227,15 @@
 				this.$refs.popup.close('bottom')
 			},
 			buy(){
-				
+				this.$refs.popup.close('bottom')
 				uni.navigateTo({
 					url:"../buy/buy"
 				})
 			},
 			async detailsopen() {
 			 //详情页
-			 const { data: res } = await uni.$http.get('mallGoods/goodsDetail/296b5762c1301a92d8462193f0f32f39')
-			 console.log(res.body)
+			 const { data: res } = await uni.$http.get('mallGoods/goodsDetail/787ef070d02002b2c2d215e3b52148e3')
+			/* console.log(res.body) */
 			 this.openderailsList = res.body
 			},
 		}

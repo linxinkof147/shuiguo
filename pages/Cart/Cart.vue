@@ -113,13 +113,13 @@
 		onLoad() {
 			if(this.lognb == true){this.lognstatus = this.lognstatus1}	
 			this.cartlist = this.cart
-			console.log(this.checkedGoodsAmount)
+			/* console.log(this.checkedGoodsAmount) */
 			this.gethotList()
 			const sysInfo = uni.getSystemInfoSync()
 			this.wh =sysInfo.windowHeight
 		},
 		onReachBottom() {
-			console.log(123)
+			/* console.log(123) */
 			/* this.dropDowns = "下拉加载中..." */
 			setTimeout(()=>{
 				/* 加载数据 */
@@ -194,7 +194,7 @@
 			},
 			/* 删除 */
 			deleteCart(item){
-				console.log(item)
+				/* console.log(item) */
 			uni.showModal({
 				/* 提示 */
 				 title: '提示',

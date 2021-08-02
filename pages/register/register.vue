@@ -20,14 +20,14 @@
 			<view class="w-full dflex padding-bottom-sm">
 				<view class="iconfont iconmima margin-right"></view>
 				<view class="flex1 dflex">
-					<input class="border-line padding-sm flex1" type="password" data-key="password" maxlength="11" @input="inputChange" placeholder="请输入密码/请勿输入特殊字符" />
+					<input class="border-line padding-sm flex1" type="password" data-key="password" maxlength="11" @input="inputChange" placeholder="请输入密码" />
 					<view v-if="0 == 1" class="padding-tb-sm ft-dark" @click="send_code">获取</view>
 				</view>
 			</view>
 			<view class="w-full dflex padding-bottom-sm">
 				<view class="iconfont iconmima margin-right"></view>
 				<view class="flex1 dflex">
-					<input class="border-line padding-sm flex1" type="password" v-model="passwordtwo" maxlength="11" @input="inputChange" placeholder="请确认密码/请勿输入特殊字符" />
+					<input class="border-line padding-sm flex1" type="password" v-model="passwordtwo" maxlength="11" @input="inputChange" placeholder="请确认密码" />
 					<view v-if="0 == 1" class="padding-tb-sm ft-dark" @click="send_code">获取</view>
 					
 				</view>
@@ -113,9 +113,9 @@
 					return false
 				} else if(!reg.test(this.password)){
 					uni.showToast({
-						title:"密码不包含特殊字符并6位以上",
+						title:"密码不包含特殊字符并且数字字母组合",
 						icon:'none'
-					},1500)
+					},2500)
 					return false
 				}
 				return true

@@ -280,6 +280,7 @@
 .font { font-size: 30rpx;}
 .font-md { font-size: 35rpx;}
 .font-lg { font-size: 40rpx;}
+.font-big { font-size: 60rpx;}
 .h1{font-size:80rpx; line-height:1.8;}
 .h2{font-size:60rpx; line-height:1.8;}
 .h3{font-size:45rpx; line-height:1.8;}
@@ -319,6 +320,7 @@
 .font-weight-bolder { font-weight: bold;} /*更粗*/
 .font-italic { font-style: italic;} /*斜体*/
 /* 文字颜色 */
+.text-75{color: #757575;}
 .text-white {color: #ffffff;}
 .text-primary {color: #007bff;}
 .text-hover-primary { color: #0056b3;}
@@ -338,13 +340,14 @@
 .text-hover-dark{ color: #121416;}
 .text-body { color: #212529;}
 .text-muted { color: #6c757d;}
-
+.text-F4{color: #939393;}
 /* 浅灰色 */
 .text-light-muted { color: #A9A5A0;}
 .text-light-black { color: rgba(0, 0, 0, 0.5);}
 .text-light-white { color: rgba(255, 255, 255, 0.5);}
 
 /* 背景颜色 */
+.bgw{background-color: #FFFFFF;}
 .bg-primary { background-color: #007bff;}
 .bg-hover-primary:hover{ background-color: #0062cc;}
 .bg-secondary { background-color: #6c757d;}

@@ -1,6 +1,9 @@
 <template>
 	<view class="bg-hover-light w-100" :style="{height: wh + 'px'}">
 		<view class="gap"></view>
+		<view class="gap"></view>
+		<view class="gap"></view>
+		<view class="gap"></view>
 		<!-- 头像 -->
 		<view  @click="t" class="flex ml-2">
 			<view><image class="toppop" src="../../static/images/img/dianpu.png" mode=""></image></view>
@@ -53,8 +56,14 @@
 						<text>待收货</text>
 					</view>
 				</view>
+				<!-- 分类 -->
+				<use-list-title title="优惠券" iconfont="iconshoucang-" color="#ff6a6c" fwt="600"
+					@goto="to()"></use-list-title>
 			</view>
+			
 		</view>
+	
+		
 		<view class="gap"></view>
 		<view class="border-radius margin-top-sm bg-main w-95 m-auto">
 		</view>
@@ -87,13 +96,12 @@
 			const sysInfo = uni.getSystemInfoSync()
 			this.wh =sysInfo.windowHeight
 			this.LoginOrNot
-			
 		},
 		computed:{
-			...mapState(['list','LoginOrNot','cart'])
+			...mapState(['list','LoginOrNot','cart','token'])
 		},
 		methods: {
-			...mapMutations(['logionyes','icn']),
+			...mapMutations(['logionyes','icn','saveToStoragopen']),
 			t(){
 				uni.navigateTo({
 					url:"../login/login"
@@ -102,18 +110,22 @@
 			openActionSheet(){
 				uni.showModal({
 					/* 提示 */
-					 title: '提示',
+					 title: '是否退出',
 					    content: '退出确认',
 					    success: res =>  {
 					        if (res.confirm) {
 								uni.navigateTo({
 									url:"../login/login"
 								})
+								/* 清空vuex和本地储存 */
 								this.logionyes(false)
 								this.icn({})
 								this.updateToken('')
 								uni.removeStorageSync('cart')
-								uni.removeStorageSync('cart');
+								uni.removeStorageSync('Address');
+								this.saveToStoragopen()
+								/* 退出登陆 */
+								this.openwet()
 								
 					        } else if (res.cancel) {
 					            console.log('用户点击取消');
@@ -122,7 +134,14 @@
 				})
 			},
 			openActionSheetindex(){
-				this.navigateTo()
+				uni.showToast({
+					title:'请先登陆',
+					icon:'none'
+					
+				})
+				setTimeout(()=> {
+					this.navigateTo()
+				}, 1000);
 			},
 			toOrder(){
 				
@@ -131,11 +150,15 @@
 						url:"../order/order"
 					})
 				}else{
-						this.navigateTo()
+					uni.showToast({
+						title:'请先登陆',
+						icon:'none'
+						
+					})
+						setTimeout(()=> {
+							this.navigateTo()
+						}, 1000);
 					}
-			},
-			to(){
-				this.navigateTo()
 			},
 			metokiss(){
 				if(this.LoginOrNot ==true){
@@ -143,7 +166,14 @@
 						url:'../Dddress/Dddress'
 					})
 				} else{
-					this.navigateTo()
+					uni.showToast({
+						title:'请先登陆',
+						icon:'none'
+						
+					})
+					setTimeout(()=> {
+						this.navigateTo()
+					}, 1000);
 				}
 			},
 			metosetup(){
@@ -152,13 +182,46 @@
 						url:'../Setup/Setup'
 					})
 				} else{
-					this.navigateTo()
+					uni.showToast({
+						title:'请先登陆',
+						icon:'none'
+						
+					})
+					setTimeout(()=> {
+						this.navigateTo()
+					}, 1000);
 				}
 			},
-			/* async openwet(){
-				 const res  = await uni.$http.post('mallGoods/goods?pageSize=10&pageNum=1&isHot=true')
-				console.log(res)
-			} */
+			to(){
+				if(this.LoginOrNot == true){
+					uni.navigateTo({
+						url:'../coupon/coupon'
+					})
+				}else{
+					uni.showToast({
+						title:'请先登陆',
+						icon:'none'
+						
+					})
+					setTimeout(()=> {
+						this.navigateTo()
+					}, 1000);
+				}
+			},
+			/* 出登陆 */
+			 openwet(){
+				uni.request({
+					method:'POST',
+				    url: 'http://117.175.58.188:9005/api-test//loginOut', //仅为示例，并非真实接口地址。
+				    header: {
+				       "account_token":this.token			
+				    },
+				    success: (res) => {
+				        console.log(res);
+				     
+				    }
+				});
+			}
 		}
 	}
 </script>
@@ -169,5 +232,5 @@
 .b-cc{background-color: rgba(0, 0, 0, 0.7);}
 .vip-card-area {color: #f7d680;background: linear-gradient(to left, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8));}
 .item {padding: 30rpx 0;position: relative;font-size: $font-sm;color: $font-color-base;flex: 1;}
-	
+.m-b{border-radius: 20rpx;}
 </style>

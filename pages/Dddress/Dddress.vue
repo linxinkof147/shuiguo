@@ -6,7 +6,7 @@
 			<view class="gap"></view>
 			<view  class="w-90 m-auto mt-1 bg-white he4 border-radius-sm">
 				<view  @click="openaddress(item)">
-					<view class="mt-3 ml-2 fontmm1">{{item.addr}}</view>
+					<view class="mt-3 ml-2 fontmm1 text-ellipsis">{{item.addr}}</view>
 					<view class="ml-2 mt-1 fontmm">
 						<text>{{item.receiver}}</text>
 						<text class="ml-3">{{item.mobile}}</text>

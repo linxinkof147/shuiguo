@@ -4,7 +4,7 @@
 		<view class="w-100 ml9">
 			<view class="">
 				<view class="font-lg font text-hover-light">支付金额</view>
-				<view class="mt-2"><text class="price1 price">{{valttpp}}</text></view>
+				<view  class="mt-2"><text class="price1 price">{{this.param !='id=-￥10'?valttpp:valttpp-10  }}</text></view>	
 			</view>
 		</view>
 		<view class="flex justify-center align-center mt-5">
@@ -17,30 +17,48 @@
 				<view class="text-hover-light font-weight-bold">推荐使用</view>
 			</view>
 			<view class="w-20">
-				<view style="width: 50rpx;height: 50rpx;border-radius: 500rpx;border: 2rpx solid #CCCCCC;" class="flex align-center justify-center ">
-					<view class="unroadi"  :class="radio1 === true ? 'styleradio' :''"
-					@click="ralio1"></view>
-				</view>
+				<radio :checked="radio" color="#DD524D" @click="openradio"/><text></text>
 			</view>
 			
 		</view>
-		<view class="cssfont bg-red text text-r border-radius-lg flex justify-center align-center fixed-bottom " @click="payment">{{loading == true ? '支付中':'确认支付'}}</view>
+		<view class="flex justify-center align-center mt-5">
+			<view class="mt-5"></view>
+			<view class="w-20 ml-3 ">
+				<image class="weiimg mt-1" src="../../static/images/empty/zfb.png" mode=""></image>
+			</view>
+			<view class="w-60">
+				<view class="fontlg">支付宝支付</view>
+				<view class="text-hover-light font-weight-bold">推荐使用</view>
+			</view>
+			<view class="w-20">
+				<label class="radio">
+					<radio :checked="mito" color="#DD524D" @click="openmito"/><text></text>
+				</label>
+			</view>
+			
+		</view>
+		<payKeyboard v-if="showKeyBoard == true" title="Mi安全键盘" @success="enterSuccess" @close="close" style="z-index: 9999;"></payKeyboard>
+		<view class="cssfont bg-red text text-r border-radius-lg flex justify-center align-center fixed-bottom " @click="openModal">{{loading == true ? '支付中...':'确认支付'}}</view>
 	</view>
 </template>
 
 <script>
+	 import payKeyboard from '@/components/mi-payKeyboard/mi-payKeyboard.vue'
 	import {mapMutations,mapState} from 'vuex'
 	export default {
+		 components: { payKeyboard },
 		data() {
 			return {
-				radio1:true,
-				loading:false
+				radio:true,
+				loading:false,
+				param:'',
+				mito:false,
+				showKeyBoard: false
 			}
 		},
 		computed:{
 			...mapState(['cart']),
 			valttpp(){
-				
 				if(this.cart[0].goods_state == true){
 					return this.cart[0].goods_price*this.cart[0].goods_count 
 				} else if(this.cart[0] == ""){
@@ -48,6 +66,19 @@
 				} 
 				
 			}
+		},
+		onLoad() {
+			let routes = getCurrentPages(); // 获取当前打开过的页面路由数组
+			let curRoute = routes[routes.length - 1].route //获取当前页面路由
+			let curParam = routes[routes.length - 1].options; //获取路由参数
+			// 拼接参数
+			let param = ''
+			for (let key in curParam) {
+			    param += key + '=' + curParam[key]
+			}
+			console.log(this.param)
+			this.param = param
+			console.log(this.param)
 		},
 		methods: {
 			...mapMutations(['saveToStorage','addToCart','saveToStoragopen']),
@@ -68,20 +99,63 @@
 					})
 				},1000)
 				setTimeout(()=>{
-					uni.showToast({
-						title:"支付成功",
-						duration:2000
+					uni.redirectTo({
+						url:'../success/success'
 					})
-					console.log(this.cart)
 				},3000)
 				this.saveToStoragopen()
-				console.log(this.cart)
+				/* console.log(this.cart)
 				setTimeout(()=>{
 					uni.switchTab({
 						url:'../Cart/Cart'
 					})
-				},5000)
-			}
+				},5000) */
+				/* uni.requestPayment({
+				    provider: 'alipay',
+				    orderInfo: 'orderInfo', //微信、支付宝订单数据 【注意微信的订单信息，键值应该全部是小写，不能采用驼峰命名】
+				    success: function (res) {
+				        console.log('success:' + JSON.stringify(res));
+				    },
+				    fail: function (err) {
+				        console.log('fail:' + JSON.stringify(err));
+				    }
+				}); */
+			},
+			openmito(){
+				this.mito = true
+				this.radio = false
+			},
+			openradio(){
+				this.mito = false
+				this.radio = true
+			},
+			openModal() {
+			                this.showKeyBoard = true
+							console.log(123)
+			},
+			 enterSuccess(password) {
+				 if(this.loading) return;
+				 this.loading = true
+			               /* console.log(password) */ // 输入的密码
+			                this.showKeyBoard = false
+							
+							setTimeout(()=>{
+								uni.showLoading({
+									title:"支付中...",
+									duration:2500
+								})
+							},1000)
+							setTimeout(()=>{
+								uni.redirectTo({
+									url:'../success/success'
+								})
+								this.saveToStoragopen()
+							},3800)
+							
+			 },
+			 close(){
+			                 this.showKeyBoard = false
+			 }
 		}
 	}
 </script>

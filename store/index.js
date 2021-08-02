@@ -19,7 +19,7 @@ const store = new Vuex.Store({
 		 // { goods_id, goods_name, goods_price, goods_count, goods_small_logo, goods_state }
 		cart:JSON.parse(uni.getStorageSync('cart') || '[]'),
 		/* 收货地址 */
-		Address: JSON.parse(uni.getStorageSync('address') || '[]'),
+		Address: JSON.parse(uni.getStorageSync('Address') || '[]'),
 		/* 添加收货地址 */
 		harvest: JSON.parse(uni.getStorageSync('address') || '[]'),
     },
@@ -37,7 +37,6 @@ const store = new Vuex.Store({
 		/* 收货地址 */
 		Addressopen(state, add){
 			 state.Address = add
-			console.log(state.Address)
 			this.commit("saveAddressopen")
 		},
 		saveAddressopen(state){
