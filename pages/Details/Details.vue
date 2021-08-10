@@ -28,7 +28,9 @@
 		<view class="gap"></view>
 	
 		<!-- 1-1 服务标签 -->
-		<use-list-title title="优惠" tip="领取优惠券" color="#ff6a6c" iconfont="iconyouhui" @goto="couponShow = true"></use-list-title>
+		<view @click="openpon">
+			<use-list-title title="优惠" tip="领取优惠券" color="#ff6a6c" iconfont="iconyouhui" @goto="couponShow = true"></use-list-title>
+		</view>
 			<view class="bg-main padding-lr padding-top padding-bottom-xs pos-r" @click="tagShow = true">
 				<view class="dflex dflex-wrap-w">
 					<view v-for="(item,index) in tagDatas" :key="index" class="margin-right-sm margin-bottom-sm dflex">
@@ -253,6 +255,11 @@
 			/* console.log(res.body) */
 			 this.openderailsList = res.body
 			},
+			openpon(){
+				uni.navigateTo({
+					url:'../coupon/coupon'
+				})
+			}
 		}
 	}
 </script>

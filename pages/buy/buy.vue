@@ -78,10 +78,7 @@
 		<view class=" w-95 m-auto buyht1 border-radius-sm bg-white" @click="Discount">
 			<!-- <view class="ml-3">买家留言</view>
 			<view><input type="text" value="商家留言" class="text-hover-light"></view> -->
-			<use-list-title title="优惠券" iconfont="iconshoucang-" color="#ff6a6c" fwt="600" :nuberss='money'
-				@goto="to()" ></use-list-title>
-				
-				
+			<use-list-title title="优惠券" iconfont="iconshoucang-" color="#ff6a6c" fwt="600" :nuberss='money' ></use-list-title>
 		</view>
 		<!-- 标志 -->
 		<view class="gap flex"></view>
@@ -116,26 +113,7 @@
 					</view>
 				</view>
 				<view class="he-13 mt-2">
-					<view class="w-95 m-auto bgw he4 border-radius flex">
-						<view class="w--w flex align-center justify-center flex-wrap">
-							<view>
-								<view class="price font-big text-center">10</view>
-								<view class="font-sm text-secondary mt-1 ml-2 text-center">优惠券</view>
-							</view>
-							
-						</view>
-						<view class="w-60">
-							<view class="mt-3 flex">
-								<view class="Coupons flex justify-center align-center font-sm">品累券</view>
-								<view class="font-weight-bold font-md ml-1 Coupons-pop">新鲜水果10元红包</view>
-							</view>
-							<view class="text-F4">2021/07/30到期</view>
-							<view class="text-F4">满60可用</view>
-						</view>
-						<view class="w-20 flex justify-center align-center">
-							<view class="use flex justify-center align-center" @click="use">使用</view>
-						</view>
-					</view>
+					<Coupons :datas="popdata" userpop='去使用'></Coupons>
 				</view>
 			</view>
 		</uni-popup>
@@ -143,13 +121,15 @@
 </template>
 
 <script>
+	import Coupons from '../../components/Coupons/Coupons.vue'
 	import UseListtItle from "@/components/use-list-title/use-list-title.vue"
 	import unipopup from "@/components/uni-popup/uni-popup.vue"
 	import {mapMutations,mapState} from 'vuex'
 	export default {
-		components:{UseListtItle,unipopup},
+		components:{UseListtItle,unipopup,Coupons},
 		data() {
 			return {
+				popdata:[{voucher:'品累券',vouchername:'新鲜水果10元红包',expire:'2021/07/30到期',Reduced:'满60可用',pore:'10'}],
 				wh:0,
 				cartlist:[],
 				Addresslist:[],
@@ -191,11 +171,8 @@
 			},
 			Discount(){
 				this.$refs.popup.open('bottom')
-				console.log(123)
 			},
-			to(){
-				console.log(123)
-			},
+			
 			Submit(){
 				console.log(this.Address)
 				if(this.addtrue === true || this.Address.addrId != null){

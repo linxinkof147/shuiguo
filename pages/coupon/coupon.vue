@@ -1,47 +1,59 @@
 <template>
 	<view class="bghover w-100" :style="{height: wh + 'px'}">
 		<view class="bghover h"></view>
-		<view class="w-95 m-auto bgw he4 border-radius flex">
-			<view class="w--w flex align-center justify-center flex-wrap">
-				<view>
-					<view class="price font-big text-center">10</view>
-					<view class="font-sm text-secondary mt-1 ml-2 text-center">优惠券</view>
-				</view>
-				
-			</view>
-			<view class="w-60">
-				<view class="mt-3 flex">
-					<view class="Coupons flex justify-center align-center font-sm">品累券</view>
-					<view class="font-weight-bold font-md ml-1 Coupons-pop">新鲜水果10元红包</view>
-				</view>
-				<view class="text-F4">2021/07/30到期</view>
-				<view class="text-F4">满60可用</view>
-			</view>
-			<view class="w-20 flex justify-center align-center">
-				<view class="use flex justify-center align-center" @click="use">去使用</view>
-			</view>
+		<view v-if="router == 'pages/My/My'">
+			<Coupons :datas="popdata" userpop='去使用' ></Coupons>
 		</view>
 		<!-- 弹出层 -->
+		<view v-if="router == 'pages/Details/Details'">
+			<Coupons :datas="popdata" userpop='点击领取' ></Coupons>
+		</view>
 	</view>
 </template>
 
 <script>
+	import Coupons from '../../components/Coupons/Coupons.vue'
+	import {mapMutations,mapState,mapGetters} from 'vuex'
 	export default {
+		components:{Coupons},
 		data() {
 			return {
-				
+				popdata:[{voucher:'品累券',vouchername:'新鲜水果10元红包',expire:'2021/07/30到期',Reduced:'满60可用',pore:'10'}],
+				router:''
 			}
 		},
 		onLoad() {
 			const sysInfo = uni.getSystemInfoSync()
 			this.wh =sysInfo.windowHeight
+			var pages = getCurrentPages(); // 当前页面
+			var beforePage = pages[pages.length - 2]; // 前一个页面
+			
+			this.router = beforePage.route
+			/* this.openget() */
+		},
+		computed:{
+
+			...mapState(['token'])
 		},
 		methods: {
 			use(){
 				uni.navigateTo({
 					url:'../hot/hot'
 				})
-			}
+			},
+			 openget() {
+			  //发起请求swpier
+			uni.request({
+				method:'GET',
+			    url: 'http://117.175.58.188:9005/api-test//coupon/canAvailable', //仅为示例，并非真实接口地址。
+			    header: {
+			       "account_token":this.token			
+			    },
+			    success: (res) => {
+			        console.log(res);
+			    }
+			});a
+			},
 		}
 	}
 </script>

@@ -108,7 +108,7 @@
 				    },
 				    success: (res) => {
 				        console.log(res.data.body);
-				      this.informationlist = res.data.body
+				     this.informationlist = res.data.body
 				    }
 				});
 			}
