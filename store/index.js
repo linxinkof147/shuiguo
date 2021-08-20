@@ -107,7 +107,6 @@ const store = new Vuex.Store({
 		  /* token */
 		  updateToken(state, token) {
 		      state.token = token
-			 
 		      // 通过 this.commit() 方法，调用 m_user 模块下的 saveTokenToStorage 方法，将 token 字符串持久化存储到本地
 		      this.commit('saveTokenToStorage')
 		    },
@@ -117,20 +116,17 @@ const store = new Vuex.Store({
 		    },
 			 /* 加减购物车数量 */
 			 /* 地址 */
-			
+			updateAddress(state, Address) {
+			    state.Address = Address
+			    // 通过 this.commit() 方法，调用 m_user 模块下的 saveTokenToStorage 方法，将 token 字符串持久化存储到本地
+			    this.commit('saveAddressToStorage')
+			  },
+			saveAddressToStorage(state) {
+			    uni.setStorageSync('Address', state.Address)
+						   console.log(state.Address)
+			  },
 	},
-	getters:{
-		total(state){
-			let c = 0
-			state.cart.forEach(x=> c += x.goods_count )
-			return c
-		},
-		addstr(state) {
-		    if (!state.Address.Addressname) return ''
-		    // 拼接 省，市，区，详细地址 的字符串并返回给用户
-		    return state.Address
-		  }
-	},
+	
 	checkedGoodsAmount(state){
 		return state.cart.filter(x => x.goods_state)
 		                 .reduce((total, item) => total += item.goods_count * item.goods_price, 0)

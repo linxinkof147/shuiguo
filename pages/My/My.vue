@@ -15,7 +15,7 @@
 				<view class="vip-card-area pos-r padding-lr padding-tb-sm b-cc">
 					<view>
 						<text class="iconfont iconhuiyuan"></text>
-						<text class="margin-left-sm">用云电商 会员</text>
+						<text class="margin-left-sm" >用云电商 会员</text>
 					</view>
 				</view>
 			
@@ -96,12 +96,13 @@
 			const sysInfo = uni.getSystemInfoSync()
 			this.wh =sysInfo.windowHeight
 			this.LoginOrNot
+			
 		},
 		computed:{
 			...mapState(['list','LoginOrNot','cart','token'])
 		},
 		methods: {
-			...mapMutations(['logionyes','icn','saveToStoragopen']),
+			...mapMutations(['logionyes','icn','saveToStoragopen','updateAddress']),
 			t(){
 				uni.navigateTo({
 					url:"../login/login"
@@ -113,6 +114,11 @@
 					 title: '是否退出',
 					    content: '退出确认',
 					    success: res =>  {
+							uni.clearStorage();
+							uni.clearStorageSync();
+							uni.removeStorageSync('cart')
+							uni.removeStorageSync('Address');
+							this.updateAddress('')
 					        if (res.confirm) {
 								uni.navigateTo({
 									url:"../login/login"
@@ -123,6 +129,7 @@
 								this.updateToken('')
 								uni.removeStorageSync('cart')
 								uni.removeStorageSync('Address');
+								this.updateAddress('')
 								this.saveToStoragopen()
 								/* 退出登陆 */
 								this.openwet()
@@ -218,7 +225,6 @@
 				    },
 				    success: (res) => {
 				        console.log(res);
-				     
 				    }
 				});
 			}

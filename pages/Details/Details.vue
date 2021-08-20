@@ -173,8 +173,8 @@
 		},
 		onLoad() {
 			this.detailsopen()
-			/* ,
-			console.log(this.cart) */
+			,
+			console.log(this.cart)
 			
 		},
 		onBackPress(){
@@ -223,7 +223,11 @@
 						goods_small_logo:this.good_info.goodslogo,
 						goods_state:true
 					}
-					this.addToCart(good)
+					/* this.addToCart(good) */
+					if(this.cart.length===0){
+						this.addToCart(good)
+					}
+					console.log(this.cart)
 				}else if(ss == 0 && this.LoginOrNot == true){
 					const good = {
 						goods_id:this.openderailsList.goodsId,
@@ -244,10 +248,21 @@
 				this.$refs.popup.close('bottom')
 			},
 			buy(){
-				this.$refs.popup.close('bottom')
-				uni.navigateTo({
-					url:"../buy/buy"
-				})
+				
+				if(this.cart[0].goods_count != 0 ){
+					this.$refs.popup.close('bottom')
+					uni.navigateTo({
+						url:"../buy/buy"
+					})
+				}else {
+					console.log(123)
+					uni.showToast({
+						title:'请添加购买数量',
+						icon:'none'
+						
+					})
+				}
+				
 			},
 			async detailsopen() {
 			 //详情页

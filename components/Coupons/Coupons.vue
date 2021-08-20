@@ -59,7 +59,14 @@
 					uni.navigateTo({
 						url:'../hot/hot'
 					})
+				}else {
+					console.log(123)
+					this.open()
 				}
+			},
+			open(){
+				this.$emit('openpopup')
+				console.log(777)
 			}
 		}
 	}

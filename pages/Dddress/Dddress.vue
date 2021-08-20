@@ -44,9 +44,10 @@
 			}
 		},
 		onLoad() {
-			this. queryList()
+		/* 	this. queryList() */
 			const sysInfo = uni.getSystemInfoSync()
 			this.wh =sysInfo.windowHeight
+			this.getTranslate()
 		},
 		computed:{
 			...mapGetters(['addstr']),
@@ -98,19 +99,13 @@
 				})
 				
 			},
-			//地址
-			 queryList(){
-				uni.request({
-					method:'GET',
-				    url: 'http://117.175.58.188:9005/api-test//p/myAddress/list', //仅为示例，并非真实接口地址。
-				    header: {
-				       "account_token":this.token			
-				    },
-				    success: (res) => {
-				        console.log(res.data.body);
-				     this.informationlist = res.data.body
-				    }
-				});
+			//地址，
+			async getTranslate() {
+			  //发起请求地址
+			const { data: res } = await uni.$http.get('/p/myAddress/list')
+			console.log(res)
+			this.swiperDatas = res.body
+			this.informationlist = res.body
 			}
 		}
 	}

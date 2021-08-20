@@ -9,7 +9,7 @@
 		
 		<view class="list dflex-b dflex dflex-wrap-w w-full">
 			<view v-for="(item, index) in datas" :key="item.goodsId" class="item border-radius-sm padding-bottom-sm" @click="to_detail(item.goodsId)">
-				<view class="image-wrapper"><image mode="aspectFill" :lazy-load="true" src="../../static/images/tab/top1.png"></image></view>
+				<view class="image-wrapper"><image mode="aspectFill" :lazy-load="true" src="../../static/images/mg3.png"></image></view>
 				<text class="title clamp padding-sm">{{ item.name }}</text>
 				<view class="padding-left-sm">
 					<text class="price">{{ item.salePrice }}</text>
@@ -59,7 +59,9 @@ export default {
 			to_detail(index){
 				
 				uni.navigateTo({
-					url:"../Details/Details?id="+index
+					url:"../Details/Details?userId="+18228403380+'&totalFee='+'1'
+					/* url:"../Details/Details?userId=18228403380&totalFee=1" */
+					
 				})
 			},
 			hot(){

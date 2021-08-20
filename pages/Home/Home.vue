@@ -61,6 +61,7 @@
 			</view>
 			<!-- 下拉加载 -->
 			<!-- <view class="he-1 flex justify-center align-center">{{dropDowns}}</view> -->
+			
 	</view>
 </template>
 
@@ -124,9 +125,9 @@
 			},
 			//发起请求热卖
 			async gethotList() {
-			  const { data: res } = await uni.$http.get('mallGoods/goods?pageSize=10&pageNum=1&isHot=true')
+			  const { data: res } = await uni.$http.get('/goods/list?pageSize=15&pageNum=1&field=createTime&order=asc')
 			  this.goodsHotDatas = res.body.rows
-			console.log(res)
+			  console.log(res)
 			},
 			
 			limit(){

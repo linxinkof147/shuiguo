@@ -50,8 +50,6 @@
 		onLoad() {
 			const sysInfo = uni.getSystemInfoSync()
 			this.wh =sysInfo.windowHeight
-			
-			
 		},
 		computed:{
 			...mapState(['LoginOrNot','token'])
@@ -64,10 +62,11 @@
 				console.log(data.data.join(''))
 			},
 			openActionSheet(){
+				/* 判断地址有无填写正确 */
 				uni.showModal({
 					/* 提示 */
 					 title: '提示',
-					    content: '这是一个模态弹窗',
+					    content: '确认地址无误?',
 					    success: res =>  {
 					        if (res.confirm) {
 								if(this.inputpohe !=""&&this.txt !=""&&this.inputaddress !=""&&this.txt !="选择地址"){
@@ -78,11 +77,7 @@
 									         goods_count:this.txt+this.inputaddress ,
 											 goods_token:this.token
 									      }]
-										 this.increaseList()
-										 /* console.log(JSON.stringify(goods)) */
-										/* this.Address.push(goods)
-										 console.log(this.Address) */
-										/* this.Addharvest(goods) */
+										 this.getincreaseList()
 									uni.showToast({
 										title: '添加成功'
 									})
@@ -105,31 +100,13 @@
 			miss(){
 				console.log(this.inputname);
 			},
-			 increaseList() {
-			  //发起请求地址增加
-			  uni.request({
-				  method:'POST',
-			      url: 'http://117.175.58.188:9005/api-test//p/myAddress/addAddr', //仅为示例，并非真实接口地址。
-			      data: {
-			          "receiver":this.inputname,
-					  "addr":this.txt+this.inputaddress,
-					  "mobile":this.inputpohe
-			      },
-			      header: {
-			         "account_token":this.token
-					
-			      },
-			      success: (res) => {
-			          console.log(res);
-			         
-			      }
-			  });
-			  
-			  }
-			/* const  res  = await uni.$http.post('/p/myAddress/addAddr',
-			 {"receiver":this.inputname,"addr":this.txt+this.inputaddress,"mobile":this.inputpohe})
-			console.log(res)
-			}, */
+			async getincreaseList() {
+			  //发起添加地址
+			const { data: res } = await uni.$http.post('/p/myAddress/addAddr',{
+				"receiver":this.inputname,
+				"addr":this.txt+this.inputaddress,
+				"mobile":this.inputpohe
+			})}
 		}
 	}
 </script>

@@ -17,7 +17,7 @@
 				<view class="text-hover-light font-weight-bold">推荐使用</view>
 			</view>
 			<view class="w-20">
-				<radio :checked="radio" color="#DD524D" @click="openradio"/><text></text>
+				<radio :checked="radio" color="#DD524D" @click="openradio(1)"/><text></text>
 			</view>
 			
 		</view>
@@ -43,21 +43,22 @@
 </template>
 
 <script>
-	 import payKeyboard from '@/components/mi-payKeyboard/mi-payKeyboard.vue'
-	import {mapMutations,mapState} from 'vuex'
+	import {mapMutations,mapState,token} from 'vuex'
 	export default {
-		 components: { payKeyboard },
 		data() {
 			return {
 				radio:true,
 				loading:false,
 				param:'',
 				mito:false,
-				showKeyBoard: false
+				showKeyBoard: false,
+				openpayment:'wxpay',//wxpay微信 alipay支付宝
+				detailid:'18228403380',
+				payMethod:1
 			}
 		},
 		computed:{
-			...mapState(['cart']),
+			...mapState(['cart','token','Address']),
 			valttpp(){
 				if(this.cart[0].goods_state == true){
 					return this.cart[0].goods_price*this.cart[0].goods_count 
@@ -79,6 +80,7 @@
 			console.log(this.param)
 			this.param = param
 			console.log(this.param)
+			
 		},
 		methods: {
 			...mapMutations(['saveToStorage','addToCart','saveToStoragopen']),
@@ -87,58 +89,147 @@
 				if(this.radio1 == false){this.radio1 = true}
 				else if (this.radio1 == true){this.radio1 = false}
 			},
-			payment(){
-				/* 防止重复支付 */
-				if(this.loading) return;
-				this.loading = true
-				
-				setTimeout(()=>{
-					uni.showLoading({
-						title:"支付中...",
-						duration:1500
-					})
-				},1000)
-				setTimeout(()=>{
-					uni.redirectTo({
-						url:'../success/success'
-					})
-				},3000)
-				this.saveToStoragopen()
-				/* console.log(this.cart)
-				setTimeout(()=>{
-					uni.switchTab({
-						url:'../Cart/Cart'
-					})
-				},5000) */
-				/* uni.requestPayment({
-				    provider: 'alipay',
-				    orderInfo: 'orderInfo', //微信、支付宝订单数据 【注意微信的订单信息，键值应该全部是小写，不能采用驼峰命名】
-				    success: function (res) {
-				        console.log('success:' + JSON.stringify(res));
-				    },
-				    fail: function (err) {
-				        console.log('fail:' + JSON.stringify(err));
-				    }
-				}); */
-			},
 			openmito(){
 				this.mito = true
 				this.radio = false
+				this.openpayment = "alipay"
+				console.log(this.openpayment)
 			},
-			openradio(){
+			openradio(e){
 				this.mito = false
 				this.radio = true
+				this.openpayment = "wxpay"
+				console.log(this.openpayment)
 			},
 			openModal() {
-			                this.showKeyBoard = true
-							console.log(123)
+				if(this.loading) return;
+				this.loading = true
+				/* 微信 支付*/
+				if(this.openpayment === "wxpay"){
+					uni.request({
+						method:'POST',
+					  /* url: "http://117.175.58.188:9005/api-test/weixin/pay?userId=18228403380&totalFee=1", */
+					   url: "http://117.175.58.188:9005/api-test/order/confirm",
+					    header: {
+					       "account_token":this.token			
+					    },
+						data:{
+							"shopCartIds":[],
+							"addrId":this.Address.addrId,
+							"remarks":"多发点",
+							"orderSku":
+							 [{
+							 "skuId":"e79cd4463995c89c0e02f3c17011496a",
+							 "goodsId":"787ef070d02002b2c2d215e3b52148e3",
+							 "number":2
+							 }],
+							"couponIds":[],
+							"payWay":'WECHAT_PAY'
+						},
+					    success: (res) => {
+							console.log(res)
+							uni.requestPayment({
+							    "provider": "wxpay", 
+							    "orderInfo": {
+							        "appid": res.data.body.appid,  // 微信开放平台 - 应用 - AppId，注意和微信小程序、公众号 AppId 可能不一致
+							        "noncestr": res.data.body.noncestr, // 随机字符串
+							        "package": res.data.body.package,        // 固定值
+							        "partnerid": res.data.body.partnerid,      // 微信支付商户号
+							        "prepayid": res.data.body.prepayid, // 统一下单订单号 
+							        "timestamp": res.data.body.timestamp,        // 时间戳（单位：秒）
+							        "sign": res.data.body.sign // 签名，这里用的 MD5 签名
+							    },
+							    success:(res)=> {
+									console.log(res)
+									uni.redirectTo({
+										url:'../success/success'
+											})
+								},
+							    fail:(e)=> {
+									console.log(e)
+									console.log("失败")
+								}
+							})
+					    }
+					})
+					this.loading = false
+				} else if(this.openpayment === "alipay"){
+					/* 支付宝 支付*/
+					console.log(this.token)
+					uni.request({
+						method:'POST',
+						/* url: "192.168.3.87:8090/order/payment?+orderNo="+20210819113033022120177107046+"&totalPrice="+1.00+"&payWay="+'ALI_PAY', */
+					    url: "http://117.175.58.188:9005/api-test/order/confirm",
+					    header: {
+					       "account_token":this.token			
+					    },
+						data:{
+							"shopCartIds":[],
+							"addrId":this.Address.addrId,
+							"remarks":"多发点",
+							"orderSku":
+							 [{
+							 "skuId":"e79cd4463995c89c0e02f3c17011496a",
+							 "goodsId":"787ef070d02002b2c2d215e3b52148e3",
+							 "number":1
+							 }],
+							"couponIds":[],
+							"payWay":'ALI_PAY'
+						},
+					    success: (res) => {
+					        console.log(res);
+							uni.requestPayment({
+							    provider: 'alipay',
+							    orderInfo: res.data.body, //微信、支付宝订单数据 【注意微信的订单信息，键值应该全部是小写，不能采用驼峰命名】
+							    success: (res)=> {
+							        uni.redirectTo({
+							        	url:'../success/success'
+							        		})
+							    },
+							    fail:(err) =>{
+							        console.log('fail:' + JSON.stringify(err));
+							    }
+							});
+							/* uni.request({
+								method:'POST',
+								url: "http://117.175.58.188:9005/api-test/order/payment",
+								header: {
+								   "account_token":this.token			
+								},
+								data:{
+								 "orderNo":res.data.body.orderNo,
+								 "totalPrice":res.data.body.totalPrice,
+								 "payWay":"ALI_PAY"
+								},
+								success:(res)=>{
+									console.log(res)
+									
+								}
+							}) */
+							
+					    }
+					})
+					
+					/* uni.requestPayment({
+					    provider: 'alipay',
+					    orderInfo: 'orderInfo', //微信、支付宝订单数据 【注意微信的订单信息，键值应该全部是小写，不能采用驼峰命名】
+					    success: (res)=> {
+					        console.log('success:' + JSON.stringify(res));
+					    },
+					    fail:(err) =>{
+					        console.log('fail:' + JSON.stringify(err));
+					    }
+					}); */
+					
+				}
+
+							
 			},
 			 enterSuccess(password) {
 				 if(this.loading) return;
-				 this.loading = true
+					this.loading = true
 			               /* console.log(password) */ // 输入的密码
 			                this.showKeyBoard = false
-							
 							setTimeout(()=>{
 								uni.showLoading({
 									title:"支付中...",

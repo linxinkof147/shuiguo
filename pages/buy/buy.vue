@@ -4,11 +4,10 @@
 		<view class="gap"></view>
 		<view class=" w-95 m-auto buyht border-radius-sm bg-white" @click="adder">
 			<navigator url="../Dddress/Dddress"><UseListtItle title="收获地址管理" size="32" fwt="600" color="#333" iconfont="icondaishouhuo-" ></UseListtItle></navigator>
-			<view class="flex flex-wrap">
+			<view class="flex flex-wrap" v-if="this.Address.length!=0">
 				<view class="w-20 flex justify-center align-center"><text class="text-ellipsis">{{Address.receiver}}</text></image></view>
 				<view class="w-70">
 					<view class="mt-1">
-						
 						<text class="font-sm text-danger text-ellipsis">{{Address.mobile}}</text>
 					</view>
 					<view class="text-ellipsis"> {{Address.addr}}</view>
@@ -113,7 +112,7 @@
 					</view>
 				</view>
 				<view class="he-13 mt-2">
-					<Coupons :datas="popdata" userpop='去使用'></Coupons>
+					<Coupons :datas="popdata" userpop='使用' @openpopup='openpopup'></Coupons>
 				</view>
 			</view>
 		</uni-popup>
@@ -160,11 +159,14 @@
 			this.wh =sysInfo.windowHeight
 			this.cartlist = this.cart
 			console.log(this.Address)
+			
 		},
 		methods: {
-			use(){
-				this.money = '-￥10'
+			openpopup(){
 				this.$refs.popup.close('bottom')
+				if(this.cart[0].goods_price*this.cart[0].goods_count>60){
+					this.money = '-￥10'
+				}
 			},
 			clsopen(){
 				this.$refs.popup.close('bottom')
@@ -174,8 +176,7 @@
 			},
 			
 			Submit(){
-				console.log(this.Address)
-				if(this.addtrue === true || this.Address.addrId != null){
+				if(this.addtrue === true || this.Address.addrId != null||this.Address.length!=0||this.Address!=''){
 					uni.navigateTo({
 						url:"../payment/payment?id="+this.money
 					})

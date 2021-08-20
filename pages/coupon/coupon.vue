@@ -29,7 +29,7 @@
 			var beforePage = pages[pages.length - 2]; // 前一个页面
 			
 			this.router = beforePage.route
-			/* this.openget() */
+			this.openget()
 		},
 		computed:{
 
