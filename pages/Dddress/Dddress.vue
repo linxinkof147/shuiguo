@@ -55,12 +55,19 @@
 		},
 		methods: {
 			...mapMutations(['Addressopen']),
+			async claseTranslate(index){
+				let claseeadd = this.informationlist[index].addrId
+				const { data: res } = await uni.$http.delete("p/myAddress/delete/"+ claseeadd)
+				console.log(res)
+				console.log(index)
+				
+			},
 			ralio(){
 				if(this.radio == false){this.radio = true}
 				else if (this.radio == true){this.radio = false}
 			},
 			openActionSheet(){
-				uni.navigateTo({
+				uni.redirectTo({
 					url:"../Dddress/Addaddress/Addaddress"
 				})
 			},
@@ -76,10 +83,10 @@
 				}
 			},
 			openmodify(index){
-				/* console.log(index)
-				console.log("修") */
+				console.log(index)
+				console.log("修")
 				uni.navigateTo({
-					url:"../Dddress/Change/Change"
+					url:"../Dddress/Change/Change?"+index
 				})
 			},
 			opendelete(index){
@@ -91,7 +98,13 @@
 					    content: '确认删除',
 					    success: res =>  {
 					        if (res.confirm) {
-								this.AddressList.splice(index,1)
+								this.claseTranslate(index)
+								setTimeout(()=>{
+									uni.showToast({
+										title:'删除成功'
+									})
+									this.getTranslate()
+								},1000)
 					        } else if (res.cancel) {
 					            console.log('用户点击取消');
 					        }
@@ -104,7 +117,6 @@
 			  //发起请求地址
 			const { data: res } = await uni.$http.get('/p/myAddress/list')
 			console.log(res)
-			this.swiperDatas = res.body
 			this.informationlist = res.body
 			}
 		}

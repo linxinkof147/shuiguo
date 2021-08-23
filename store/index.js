@@ -89,7 +89,6 @@ const store = new Vuex.Store({
 		/* 登陆是否 */
 		logionyes(state,loign){
 			state.LoginOrNot = loign
-			console.log(state.LoginOrNot)
 			this.commit("saveLoginOrNot")
 		},
 		saveLoginOrNot(state) {
@@ -112,7 +111,6 @@ const store = new Vuex.Store({
 		    },
 		  saveTokenToStorage(state) {
 		      uni.setStorageSync('token', state.token)
-			   console.log(state.token)
 		    },
 			 /* 加减购物车数量 */
 			 /* 地址 */

@@ -78,6 +78,9 @@
 											 goods_token:this.token
 									      }]
 										 this.getincreaseList()
+										 uni.redirectTo({
+										     url: '../Dddress'
+										 })
 									uni.showToast({
 										title: '添加成功'
 									})

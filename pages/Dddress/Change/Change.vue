@@ -29,6 +29,7 @@
 			@click="openActionSheet">
 			<text class="cell-tit text-r">确认修改</text>
 		</view>
+		{{txt}}{{inputname}}{{inputaddress}}
 	</view>
 </template>
 
@@ -42,13 +43,27 @@
 				txt: '选择地址',
 				inputname:'',
 				inputpohe:'',
-				inputaddress:''
-				
+				inputaddress:'',
+				param:'',
+				addid:''
 			}
 		},
 		onLoad() {
 			const sysInfo = uni.getSystemInfoSync()
 			this.wh =sysInfo.windowHeight
+			 this.missto()
+			 /* 接受路径数据 */
+			 let routes = getCurrentPages(); // 获取当前打开过的页面路由数组
+			 let curRoute = routes[routes.length - 1].route //获取当前页面路由
+			 let curParam = routes[routes.length - 1].options; //获取路由参数
+			 // 拼接参数
+			 let param = ''
+			 for (let key in curParam) {
+			     param += key + '=' + curParam[key]
+			 }
+			 this.param = param.substring(1, param.lastIndexOf('?'))
+			 console.log(this.param)
+			 
 		},
 		methods: {
 			change(data) {
@@ -60,7 +75,7 @@
 				uni.showModal({
 					/* 提示 */
 					 title: '提示',
-					    content: '这是一个模态弹窗',
+					    content: '确认修改',
 					    success: res =>  {
 					        if (res.confirm) {
 								if(this.inputpohe !=""&&this.txt !=""&&this.inputaddress !=""&&this.txt !="选择地址"){
@@ -70,6 +85,7 @@
 									         goods_price: this.inputaddress,
 									         goods_count: this.txt,                          
 									      }
+										  this.miss()
 									uni.showToast({
 										title: '添加成功'
 									})
@@ -89,9 +105,20 @@
 					    }
 				})
 			},
-			miss(){
-				console.log(this.inputname);
-			}
+			async miss(){
+				const { data: res } = await uni.$http.put('/p/myAddress/update',{
+					"receiver":this.inputname,
+					"addr":this.txt+this.inputaddress,
+					"mobile":this.inputpohe,
+					"addrId":this.addid.body[this.param].addrId
+				})
+				console.log(res)
+			},
+			async missto(){
+				const { data: res } = await uni.$http.get('/p/myAddress/list')
+				this.addid = res
+				console.log(this.addid.body[this.param])
+			},
 		}
 	}
 </script>

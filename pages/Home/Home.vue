@@ -61,7 +61,7 @@
 			</view>
 			<!-- 下拉加载 -->
 			<!-- <view class="he-1 flex justify-center align-center">{{dropDowns}}</view> -->
-			
+			<app-update ref="app_update" :force="true" :tabbar="false" v-if="this.edition<this.newedition"></app-update>
 	</view>
 </template>
 
@@ -71,8 +71,9 @@
 	import UseListtItle from "@/components/use-list-title/use-list-title.vue"
 	import UseHotGoods from "@/components/use-hot-goods/use-hot-goods.vue"
 	import countdown from "@/components/cz-countdown/cz-countdown.vue"
+	import appUpdate from "@/components/yzhua006-update/app-update.vue"
 	export default {
-		components:{UseHeader,UseListtItle,UseHotGoods,countdown},
+		components:{UseHeader,UseListtItle,UseHotGoods,countdown,appUpdate},
 		data() {
 			return {
 				startTime:'2020-01-01 00:00:00',
@@ -86,7 +87,9 @@
 				{"name":"华为折叠手机","img":"../../static/images/user/3.png",price:'2000'},{"name":"华为荣耀20","img":"../../static/images/user/4.png",price:'8000'},
 				{"name":"黑鲨游戏手机","img":"../../static/images/user/5.jpg",price:'4000'},{"name":"iPhone 11 Pro Max","img":"../../static/images/user/6.jpg",price:'1000'}
 				],
-				goodsHotDatas:[]
+				goodsHotDatas:[],
+				edition:"1.1.0",
+				newedition:"1.0.0"
 				/* categoryDatas:[{"name":"桃子","img":"../../static/images/img/1.png"},{"name":"苹果","img":"../../static/images/img/2.png"},
 								{"name":"荔枝","img":"../../static/images/img/3.png"},{"name":"李子","img":"../../static/images/img/4.png"},
 								{"name":"火龙果","img":"../../static/images/img/5.png"},{"name":"葡萄","img":"../../static/images/img/6.png"},
@@ -115,19 +118,30 @@
 			 const sysInfo = uni.getSystemInfoSync()
 			 this.wh =sysInfo.windowHeight
 			/* console.log(this.token) */
+			this.oldVersion()
 		},
+		mounted() {
+		               if(this.edition<this.newedition){
+						    this.$refs.app_update.update();  //调用子组件 检查更新
+					   }
+		            },
 		methods: {
+			/* 热更新更改 */
+			/* 热更新请求 */
+			async oldVersion(){
+				const { data: res } = await uni.$http.post('version/checkVersion')
+				console.log(res)
+				this.newedition = res.body.versionNo
+			},
 			async getSwiperList() {
 			  //发起请求swpier
 			 const { data: res } = await uni.$http.get('indexImg/indexImgs/1')
 			this.swiperDatas = res.body
-			console.log(res.body)
 			},
 			//发起请求热卖
 			async gethotList() {
 			  const { data: res } = await uni.$http.get('/goods/list?pageSize=15&pageNum=1&field=createTime&order=asc')
 			  this.goodsHotDatas = res.body.rows
-			  console.log(res)
 			},
 			
 			limit(){
