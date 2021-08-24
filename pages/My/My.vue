@@ -5,9 +5,13 @@
 		<view class="gap"></view>
 		<view class="gap"></view>
 		<!-- 头像 -->
-		<view  @click="t" class="flex ml-2">
+		<view  class="flex ml-2">
 			<view><image class="toppop" src="../../static/images/img/dianpu.png" mode=""></image></view>
-			<view class="font-i ml-2 mt-3">椒云商城</view>
+			<view class="ml-3 mt-1">
+				<view class="font-i ">椒云商城</view>
+				<view class="font-m ">帐号:{{receiver}}</view>
+			</view>
+			
 		</view>
 		<!-- 会员卡 -->
 		<view class="mt-4 w-95 m-auto">
@@ -89,25 +93,23 @@
 	export default {
 		data() {
 			return {
-				wh:0
+				wh:0,
+				receiver:'xxxxxxx'
 			}
 		},
 		onLoad() {
 			const sysInfo = uni.getSystemInfoSync()
 			this.wh =sysInfo.windowHeight
 			this.LoginOrNot
-			
+		},
+		onShow(){
+			this.receiver  = uni.getStorageSync('customerName')	
 		},
 		computed:{
-			...mapState(['list','LoginOrNot','cart','token'])
+			...mapState(['list','LoginOrNot','cart','token']),
 		},
 		methods: {
 			...mapMutations(['logionyes','icn','saveToStoragopen','updateAddress']),
-			t(){
-				uni.navigateTo({
-					url:"../login/login"
-				})
-			},
 			openActionSheet(){
 				uni.showModal({
 					/* 提示 */

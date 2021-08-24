@@ -126,6 +126,8 @@
 			 const { data: res } = await uni.$http.post('/login',
 			{"customerName":this.mobile,"password": this.password})
 			 console.log(res)
+			 uni.setStorageSync('customerId', res.body.customerId)
+			 uni.setStorageSync('customerName', res.body.customerName)
 			 if(res.body){
 				 uni.showToast({
 				 	title:'登陆成功'

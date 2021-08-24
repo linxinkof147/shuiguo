@@ -29,7 +29,6 @@
 			@click="openActionSheet">
 			<text class="cell-tit text-r">确认修改</text>
 		</view>
-		{{txt}}{{inputname}}{{inputaddress}}
 	</view>
 </template>
 
@@ -86,9 +85,13 @@
 									         goods_count: this.txt,                          
 									      }
 										  this.miss()
-									uni.showToast({
-										title: '添加成功'
-									})
+										  setTimeout(()=>{
+										  	uni.showToast({
+										  		title:'修改成功'
+										  	})
+										  	this.missto()
+										  },1000)
+									
 									uni.navigateTo({
 										url:'../Dddress'
 									})

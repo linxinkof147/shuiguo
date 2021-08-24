@@ -12,11 +12,11 @@
 		<view :style="{height: wh + 'px'}" class="bg-hover-light ">
 			<swiper  :duration="150" :current="tabIndex" @change="onChangeTab" :style="{height: wh + 'px'}" class="bg-hover-light ">
 				<swiper-item   class="he-8"  v-for="i in 3" :key="i" >
-					<view class="flex justify-center align-center" :style="{height: wh + 'px'}" v-if="param ==''">
+					<!-- <view class="flex justify-center align-center" :style="{height: wh + 'px'}" v-if="param ==''">
 						<view>暂无购买数据...</view>
-					</view>
+					</view> -->
 						<!-- 订单 -->
-						<view class="w-95 m-auto bg-white border-radius-sm he-6 mt-3" v-for="i in 1" :key="i" v-else >
+						<view class="w-95 m-auto bg-white border-radius-sm he-6 mt-3" v-for="i in 1" :key="i"  >
 							<view class="flex">
 								<!-- 图片 -->
 								<view class="w-30 mt-5 ml-2">
@@ -90,6 +90,7 @@
 				}
 				this.param = param
 				console.log(this.param)
+				this.oldVersion()
 				
 		},
 		/* 原生导航栏监听 */
@@ -109,6 +110,14 @@
 		}
 		,
 		methods: {
+			async oldVersion(){
+				let CustomerId = uni.getStorageSync('customerId')
+				console.log(CustomerId)
+				const { data: res } = await uni.$http.post("p/myOrder/myOrder?pageSize=44&pageNum?="+1,{
+				    "consumerId":"b3239eebd09c61ebfcbc057e925976d0"
+				})
+				console.log(res)
+			},
 			details(){
 				uni.navigateTo({
 					url:"../detail/detail",

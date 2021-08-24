@@ -103,7 +103,7 @@
 			},
 			openModal() {
 				if(this.loading) return;
-				this.loading = true
+				
 				/* 微信 支付*/
 				if(this.openpayment === "wxpay"){
 					uni.request({
@@ -127,6 +127,7 @@
 							"payWay":'WECHAT_PAY'
 						},
 					    success: (res) => {
+							this.loading = true
 							console.log(res)
 							uni.requestPayment({
 							    "provider": "wxpay", 
@@ -178,6 +179,7 @@
 						},
 					    success: (res) => {
 					        console.log(res);
+							this.loading = true
 							uni.requestPayment({
 							    provider: 'alipay',
 							    orderInfo: res.data.body, //微信、支付宝订单数据 【注意微信的订单信息，键值应该全部是小写，不能采用驼峰命名】
