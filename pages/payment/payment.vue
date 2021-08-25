@@ -80,7 +80,8 @@
 			console.log(this.param)
 			this.param = param
 			console.log(this.param)
-			
+			uni.getStorageSync('cart')
+			console.log(this.cart[0].goods_count)
 		},
 		methods: {
 			...mapMutations(['saveToStorage','addToCart','saveToStoragopen']),
@@ -121,7 +122,7 @@
 							 [{
 							 "skuId":"e79cd4463995c89c0e02f3c17011496a",
 							 "goodsId":"787ef070d02002b2c2d215e3b52148e3",
-							 "number":2
+							 "number":this.cart[0].goods_count
 							 }],
 							"couponIds":[],
 							"payWay":'WECHAT_PAY'
@@ -172,7 +173,7 @@
 							 [{
 							 "skuId":"e79cd4463995c89c0e02f3c17011496a",
 							 "goodsId":"787ef070d02002b2c2d215e3b52148e3",
-							 "number":1
+							 "number":this.cart[0].goods_count
 							 }],
 							"couponIds":[],
 							"payWay":'ALI_PAY'
@@ -191,41 +192,10 @@
 							    fail:(err) =>{
 							        console.log('fail:' + JSON.stringify(err));
 							    }
-							});
-							/* uni.request({
-								method:'POST',
-								url: "http://117.175.58.188:9005/api-test/order/payment",
-								header: {
-								   "account_token":this.token			
-								},
-								data:{
-								 "orderNo":res.data.body.orderNo,
-								 "totalPrice":res.data.body.totalPrice,
-								 "payWay":"ALI_PAY"
-								},
-								success:(res)=>{
-									console.log(res)
-									
-								}
-							}) */
-							
+							});				
 					    }
-					})
-					
-					/* uni.requestPayment({
-					    provider: 'alipay',
-					    orderInfo: 'orderInfo', //微信、支付宝订单数据 【注意微信的订单信息，键值应该全部是小写，不能采用驼峰命名】
-					    success: (res)=> {
-					        console.log('success:' + JSON.stringify(res));
-					    },
-					    fail:(err) =>{
-					        console.log('fail:' + JSON.stringify(err));
-					    }
-					}); */
-					
-				}
-
-							
+					})	
+				}				
 			},
 			 enterSuccess(password) {
 				 if(this.loading) return;

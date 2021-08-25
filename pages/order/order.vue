@@ -114,7 +114,8 @@
 				let CustomerId = uni.getStorageSync('customerId')
 				console.log(CustomerId)
 				const { data: res } = await uni.$http.post("p/myOrder/myOrder?pageSize=44&pageNum?="+1,{
-				    "consumerId":"b3239eebd09c61ebfcbc057e925976d0"
+				    "consumerId":uni.getStorageSync('customerId'),
+					"status":'WAITING'
 				})
 				console.log(res)
 			},
@@ -124,11 +125,10 @@
 					
 				})
 			},
-			getData(){
-					
-					 
-							
-						},
+			async getData(){
+				const { data: res } = await uni.$http.delete("p/myOrder/20210820163832923139178139921")
+				console.log(res)
+			},
 			/* 监听滑动切换 */	
 			onChangeTab(e){
 				this.changeTab(e.detail.current)
