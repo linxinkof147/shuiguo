@@ -1,6 +1,5 @@
 <template>
 	<view class="bg-light " :style="{height: wh + 'px'}">
-		
 		<!-- 头部组件 -->
 		<!-- <use-header @click="search()"></use-header> -->
 		<view class="swiper-area pos-r bgw he-5" v-if="swiperDatas && swiperDatas.length > 0">
@@ -30,10 +29,10 @@
 			<scroll-view class="list padding-lr" scroll-x>
 				<view class="dflex padding-bottom">
 					<view class="item margin-right-sm" v-for="(item, index) in goodsHotDatas" :key="index"
-						@click="togoods(item)">
-						<image class="border-radius-xs" mode="aspectFill" :lazy-load="true" src="../../static/images/mg1.png"></image>
+						@click="togoods(item,index)">
+						<image class="border-radius-xs" mode="aspectFill" :lazy-load="true" :src="item.mainPicture"></image>
 						<text class="title clamp padding-bottom-xs">{{ item.name }}</text>
-						<text class="price">{{ 56 }}</text><text class="m-price">{{ 76 }}</text>
+						<text class="price">{{ item.salePrice }}</text><text class="m-price">{{item.salePrice*1.2}}</text>
 					</view>
 					<!-- <view class="item margin-right-sm" v-for="(item, index) in goodsHotDatas" :key="index"
 						@click="togoods(item)">
@@ -83,18 +82,12 @@
 				 swiperList: [],
 				 /* 轮播图片 */
 				swiperDatas: [],
-				goodsLimitDatas:[{"name":"Huawei/华为Mate30 全网通5G智能手机","img":"../../static/images/user/1.jpg",price:'5000'},{"name":"小米10","img":"../../static/images/user/2.jpg",price:'3000'},
-				{"name":"华为折叠手机","img":"../../static/images/user/3.png",price:'2000'},{"name":"华为荣耀20","img":"../../static/images/user/4.png",price:'8000'},
-				{"name":"黑鲨游戏手机","img":"../../static/images/user/5.jpg",price:'4000'},{"name":"iPhone 11 Pro Max","img":"../../static/images/user/6.jpg",price:'1000'}
-				],
+				goodsLimitDatas:[],
 				goodsHotDatas:[],
-				edition:"1.1.0",
-				newedition:"1.0.0"
-				/* categoryDatas:[{"name":"桃子","img":"../../static/images/img/1.png"},{"name":"苹果","img":"../../static/images/img/2.png"},
-								{"name":"荔枝","img":"../../static/images/img/3.png"},{"name":"李子","img":"../../static/images/img/4.png"},
-								{"name":"火龙果","img":"../../static/images/img/5.png"},{"name":"葡萄","img":"../../static/images/img/6.png"},
-								{"name":"芒果","img":"../../static/images/img/7.png"},{"name":"车厘子","img":"../../static/images/img/8.png"}
-				], */
+				edition:"1.5.0",
+				newedition:"1.2.0",
+				misstome:[],
+				index:0
 			}
 			
 		},
@@ -126,7 +119,6 @@
 					   }
 		            },
 		methods: {
-			/* 热更新更改 */
 			/* 热更新请求 */
 			async oldVersion(){
 				const { data: res } = await uni.$http.post('version/checkVersion')
@@ -137,22 +129,28 @@
 			  //发起请求swpier
 			 const { data: res } = await uni.$http.get('indexImg/indexImgs/1')
 			this.swiperDatas = res.body
+			 console.log(res.body)
 			},
 			//发起请求热卖
 			async gethotList() {
-			  const { data: res } = await uni.$http.get('/goods/list?pageSize=15&pageNum=1&field=createTime&order=asc')
+			  const { data: res } = await uni.$http.get('goods/list?pageSize=15&pageNum=1&field=createTime&order=asc')
 			  this.goodsHotDatas = res.body.rows
+			  console.log(res.body.rows)
 			},
 			
 			limit(){
-				console.log("123")
+				uni.navigateTo({
+					url:'../hot/hot'
+				})
 			},
 			search(){
 				console.log("11111")
 			},
-			togoods(index){
+			togoods(item,index){
 				uni.navigateTo({
-					url:'../hot/hot'
+					url:"../Details/Details?userId="+item.goodsId+"&use="+1+'sukid'+item.goodsSku[0].skuId
+					/* url:"../Details/Details?userId=18228403380&totalFee=1" */
+					
 				})
 			},
 			miss(){

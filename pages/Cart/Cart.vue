@@ -27,8 +27,8 @@
 							<!-- <view class="example-body" @click="changeValueplp(item)">
 								<uni-number-box @change="changeValue"  :value='item.goods_count'/>
 							</view> -->
-							<view class="example-body he-4" @click="changeValueplp(item)">
-								<uni-number-box @change="changeValue"  :value='item.goods_count'/>
+							<view class="example-body he-4" @click="changeValueplp(item,index)">
+								<uni-number-box @change="changeValue"  :value='item.goods_count' @click='max'/>
 							</view>
 							<view class=" iconfont iconlajitong-01 font-lg"
 								@tap.stop="deleteCart(item)">
@@ -69,7 +69,7 @@
 		<view class="footer flex justify-between " v-if="this.LoginOrNot == true">
 			<view class="mt-4 ml-3 flex">
 				<text  class="price mr-2">
-					{{this.cart != "" ? valttpp : 0}}
+					{{this.cart != "" ? valttpp-x : 0}}
 				</text>
 			</view>
 			<view class="mt-4 mr-3 flex ">
@@ -100,6 +100,7 @@
 				lognstatus1:[{logn:'去逛逛',lognname:'当前没有商品',lognimg:'../../static/images/empty/cart.jpg'}],
 				goodsHotDatas:[],
 				goodsHotDatas1:[],
+				x:0
 				/* ,
 				misslist:[{name:'兴县的撒看见打卡机打击的时间多久啊设计大咖数据库',colour:'黑色',UnitPrice:'198',discount:'200',quantity:'2',choose:false},
 				{name:'兴县的撒看见打卡机打击的时间多久啊设 123654',colour:'黑色1',UnitPrice:'388',discount:'488',quantity:'3',choose:false}
@@ -117,6 +118,7 @@
 			this.gethotList()
 			const sysInfo = uni.getSystemInfoSync()
 			this.wh =sysInfo.windowHeight
+			console.log(this.cart)
 		},
 		onReachBottom() {
 			/* console.log(123) */
@@ -129,68 +131,61 @@
 			},1000)
 		},
 		computed:{
-			...mapState(['list','LoginOrNot','cart']),
+			...mapState(['list','LoginOrNot','cart','tocart']),
 			...mapGetters(['checkedGoodsAmount','addstrpritc','total']),
 			valttpp(){
-				
-				if(this.cart[0].goods_state == true){
-					return this.cart[0].goods_price*this.cart[0].goods_count 
-				} else if(this.cart[0].goods_state == false){
-					return 0
-				} 
-				
+				var prices = 0;
+				for (var i=0;i<this.cart.length;i++){
+					prices +=  this.cart[i].goods_price*this.cart[i].goods_count
+				}
+				return prices;
 			}
 			
 		},
 		watch:{
-
+			
 		},
 		methods: {
-			...mapMutations(['updateGoodsCount','removeGoodsById']),
+			...mapMutations(['updateGoodsCount','removeGoodsById','addCart']),
+			max(){
+				
+			},
 			/* 监听数量 */
 			changeValue(e) {
-				/* console.log(e) */
 				this.vale = e
-				console.log(this.vale)
-				
 			},
 			refresh(){
 				setTimeout(()=>{
 					/* 停止下拉刷 */
 					uni.stopPullDownRefresh()
 				},1500)
+				
 			},
-			changeValueplp(item){
-				console.log(item)
-				let valpoppe = {
-					goods_id : item.goods_id,
-					goods_count : +this.vale
+			changeValueplp(item,index){ 
+				console.log(this.cart[index])
+				/* 当cart里没选中增加数量不修改价格以及不往购物车力加数量 */
+				if(this.cart[index].goods_state === true){
+					let valpoppe = {
+						goods_id : item.goods_id,
+						goods_count : +this.vale
+					}
+					this.updateGoodsCount(valpoppe)
 				}
-				this.updateGoodsCount(valpoppe)
+				
 			},
 			/* 选择价格 */
-			ralio(index){
-				console.log(index)
-				if(this.cart[index].goods_state == false){
-					this.cart[index].goods_state = true
-					if(this.Price != 0 ){
-						this.Price = this.cart[index].goods_price*this.cart[index].goods_count + this.Price
-					} else {
-						this.Price = this.cart[index].goods_price*this.cart[index].goods_count
-					}
-					}
-				else if (this.cart[index].goods_state == true){
-					this.cart[index].goods_state = false
-					this.Price = this.Price - this.cart[index].goods_price*this.cart[index].goods_count
-					}
-			},
 			radioClickHand(item,index){
 				console.log(index)
 				console.log(item.goods_state)
 				item.goods_state = !item.goods_state
+				/* 点击勾选购物篮价格 */
 				if(item.goods_state == false){
-					 this.vale = 0
+					 this.vale = 0 
+					 this.x +=  this.cart[index].goods_price*this.cart[index].goods_count
+				}else if(item.goods_state == true){
+					this.x -=  this.cart[index].goods_price*this.cart[index].goods_count
 				}
+				
 			},
 			/* 删除 */
 			deleteCart(item){
@@ -221,9 +216,10 @@
 				})
 			},
 			createOrder(){
-				if(this.LoginOrNot == true && this.cart[0].goods_count!= 0&&this.valttpp!= 0&&this.cart[0].goods_state == true){
+				if(this.valttpp-this.x !=0 && this.valttpp!=0){
+					this.addCart('')
 					uni.navigateTo({
-						url:"../buy/buy"
+						url:"../buy/buy?idname="+1+"&pick="+this.valttpp+"&pick1="+this.x
 					})
 				} else{
 					this.navigateTo()

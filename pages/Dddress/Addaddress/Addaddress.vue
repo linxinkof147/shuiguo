@@ -15,7 +15,7 @@
 			</view>
 			<view class="flex flex-wrap w-95 m-auto ml-3">
 				<view class="font-s mt-3">地址</view>
-				<view class="ml-7 font-s mt-0 mt"><pickerAddress @change="change">{{txt}}</pickerAddress></view>
+				<view class="ml-7 font-s mt-0 mt"><pickerAddress @change="change" style="width: 450rpx;">{{txt}}</pickerAddress></view>
 				<view class="he-2"></view>
 			</view>
 			<view class="flex flex-wrap w-95 m-auto ml-3">

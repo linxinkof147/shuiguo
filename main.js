@@ -6,14 +6,15 @@ import store from './store'
 /* 封装在npm上 上传 ----------------------------------------*/
 import { $http } from '@escook/request-miniprogram'
 uni.$http = $http
-$http.baseUrl = 'http://117.175.58.188:9005/api-test/'
+/* $http.baseUrl = 'http://117.175.58.188:9005/api-test/' */
+$http.baseUrl = 'http://app.joy-ec.cn/online-mall-api/'
 // 请求开始之前做一些事情
 $http.beforeRequest = function (options) {
   uni.showLoading({
     title: '数据加载中...'
   })
  /* header的自定义 */
-  if (options.url.indexOf('/api-test/') !== -1) {
+  if (options.url.indexOf('/online-mall-api/') !== -1) {
     options.header = {
       "account_token":uni.getStorageSync('token') || ''
     }

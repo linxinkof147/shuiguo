@@ -40,13 +40,14 @@
 					</view>
 					<view class="w-10">
 						<text class="price">{{item.goods_price}}</text>
-						
+						<!-- <text class="price">1</text> -->
 					</view>
 				</view>
 				<!-- 购买数量 -->
 				<view class="flex justify-between w-90 m-auto font-sm">
 					<view class="ml-9 font-sm">购买数量</view>
 					<view class="text-info">x{{item.goods_count}}</view>
+					<!-- <view class="text-info">x1</view> -->
 				</view>
 				<!-- 服务类型 -->
 				<view class="flex w-90 m-auto font-sm lt mt-3">
@@ -67,8 +68,10 @@
 				<!-- 金额 -->
 				<view class="flex mt-3 flot ">
 					<view class="font-sm text-hover-light">共计{{item.goods_price*item.goods_count/item.goods_price}}件</view>
+					<!-- <view class="font-sm text-hover-light">共计1件</view> -->
 					<view class="ml-1 font-sm">原价：</view>
 					<text class="font-sm text-warning">{{item.goods_price*item.goods_count}}</text>
+					<!-- <text class="font-sm text-warning">1</text> -->
 				</view>
 			</view>
 		</view>
@@ -97,11 +100,16 @@
 		</view>
 		<view>
 		</view>
-		<view class="w-100 he bg-white flex justify-between align-center footer">
+		<view class="w-100 he bg-white flex justify-between align-center footer" >
 			<view v-if="this.money === '-￥10'"><text class="price ml-1">{{piplick-10}}</text></view>
 			<view v-else><text class="price ml-1">{{piplick}}</text></view>
 			<view class="flex justify-center align-center my bg-red border-radius-lg text-r mr-2" @click="Submit">提交订单</view>
 		</view>
+		<!-- <view class="w-100 he bg-white flex justify-between align-center footer" v-if="tocart!=''">
+			<view v-if="this.money === '-￥10'"><text class="price ml-1">{{tocart.goods_count*tocart.goods_price-10}}</text></view>
+			<view v-else><text class="price ml-1">{{tocart.goods_count*tocart.goods_price}}</text></view>
+			<view class="flex justify-center align-center my bg-red border-radius-lg text-r mr-2" @click="Submit">提交订单</view>
+		</view> -->
 		<!-- 弹出层 -->
 		<uni-popup ref="popup" background-color="#f8f8f8" class="br">
 			<view class="br">
@@ -130,16 +138,19 @@
 			return {
 				popdata:[{voucher:'品累券',vouchername:'新鲜水果10元红包',expire:'2021/07/30到期',Reduced:'满60可用',pore:'10'}],
 				wh:0,
-				cartlist:[],
+				cartlist:[{}],
 				Addresslist:[],
 				val:59,
 				addtrue:false,
 				money:"1张可用",
-				
+				mo:'',
+				piplick:0,
+				sukid:0,
+				goodsid:0
 			}
 		},
 		computed:{
-			...mapState(['Address','cart']),
+			...mapState(['Address','cart','tocart']),
 			valttpp(){
 				if(this.cart[0].goods_state == true){
 					return this.cart[0].goods_price*this.cart[0].goods_count
@@ -147,19 +158,24 @@
 					return 0
 				}
 				
-			},
-			piplick(){
-				return this.cart[0].goods_price*this.cart[0].goods_count
 			}
 			
+			
 		},
-		onLoad() {
+		onLoad(options) {
 			/* 获取自适应宽度 */
 			const sysInfo = uni.getSystemInfoSync()
 			this.wh =sysInfo.windowHeight
-			this.cartlist = this.cart
-			console.log(this.Address)
-			
+			if(this.tocart != ''){
+				this.cartlist = this.tocart
+				this.piplick = this.cartlist[0].goods_price*this.cartlist[0].goods_count
+			}else if (this.cartlist = '[{}]'){
+				this.cartlist = this.cart
+				this.piplick = options.pick-options.pick1
+			}
+			console.log(options)
+			this.goodsid = options.goodsid
+			this.sukid = options.sukid
 		},
 		methods: {
 			openpopup(){
@@ -178,7 +194,7 @@
 			Submit(){
 				if(this.addtrue === true || this.Address.addrId != null||this.Address.length!=0||this.Address!=''){
 					uni.navigateTo({
-						url:"../payment/payment?id="+this.money
+						url:"../payment/payment?id="+this.money+'&mo='+this.cartlist[0].goods_price*this.cartlist[0].goods_count+'&number='+this.cartlist[0].goods_count+"&pickits="+this.piplick+'&sukid='+this.sukid+'&goodsid='+this.goodsid
 					})
 				}else{
 					uni.showToast({
@@ -215,7 +231,7 @@
 .he{height: 80rpx;}
 .fonh{overflow : hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp:2;-webkit-box-orient: vertical;}
 .fontlg{font-size: 28rpx;}
-.footer{width: 100%;position: absolute;bottom: 0px;}
+.footer{width: 100%;bottom: 0px;position: fixed;}
 .br{border-radius: 50rpx;}
 .bghover{background-color: #F9F9F9;}
 .h{height: 20rpx;}

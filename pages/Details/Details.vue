@@ -25,8 +25,7 @@
 			</view>
 			
 		</view>
-		<view class="gap"></view>
-	
+		<view class="gap"></view
 		<!-- 1-1 服务标签 -->
 		<view @click="openpon">
 			<use-list-title title="优惠" tip="领取优惠券" color="#ff6a6c" iconfont="iconyouhui" @goto="couponShow = true"></use-list-title>
@@ -54,7 +53,7 @@
 		<view>
 			<!-- 普通弹窗 -->
 			<uni-popup ref="popup" background-color="#fff" @change="change">
-				<view class="popup-content" v-for="(item,index) in cart" :key="index">
+				<view class="popup-content" >
 					<!-- 图片 -->
 					<view class="flex mt-3 flex-wrap">
 						<view class="w-40">
@@ -62,9 +61,9 @@
 						</view>
 						<view class="w-40 mt-5 ml-2">
 							<view class="fonh"><!-- {{this.opencartList == ""? item.goods_name:'桃园义◆桃子四川成都龙泉水蜜桃5斤包邮新鲜现摘非奉化阳山无锡'}} -->
-								{{item.goods_name}}
+								{{openderailsList.name}}
 							</view>
-							<text class="price">{{item.goods_price}}</text><text class="m-price">76</text>
+							<text class="price">{{openderailsList.salePrice}}</text><text class="m-price">76</text>
 							<view>一箱</view>
 						</view>
 						<view class="w-10 ml-5 text-hover-light" @click="popon">x</view>
@@ -73,7 +72,7 @@
 					<view class="mt-1 ml-3">
 						<view class="font-weight-bold">净重量</view>
 						<view class="flex flex-wrap">
-							<view class=" col-3 he-1 bg-hover-light border-radius-lg justify-center align-center flex mt-3 ml-3" >10斤</view>
+							<view class=" col-3 he-1 bg-hover-light border-radius-lg justify-center align-center flex mt-3 ml-3" >10袋</view>
 						</view>
 						
 					</view>
@@ -86,9 +85,9 @@
 						
 					</view> -->
 					<!-- 数量 -->
-					<view class="mt-6 ml-3 flex justify-between" @click="changeValueplp(item)">
+					<view class="mt-6 ml-3 flex justify-between" >
 						<view class="font-weight-bold">数量</view>
-						<uni-number-box @change="changeValue" :value="item.goods_count"/>
+						<uni-number-box @change="changeValue" :value="numberValue"/>
 					</view>
 					<!-- 确定 -->
 					<view class="col-10 h3 bg-red border-radius-lg mt-8 m-auto flex justify-center align-center text-r font-small "
@@ -110,10 +109,13 @@
 		components:{unigoodsnav,unipopup},
 		data() {
 			return {
+				sukid:'',
 				ss:'',
-				numberValue:'',
+				listres:null,
+				numberValue:1,
 				openderailsList:[],
 				opencartList:[],
+				openID:'',
 				/* 页面数据 */
 				good_info:{goodid:'28',goodname:'黑布林大李子 黑布林大李子 黑布林大李子',goodprice:88,good_count:1,
 				goodslogo:'../../static/images/tab/top1.png',goodsstate:false},
@@ -168,14 +170,14 @@
 				uni.navigateTo({
 					url:"../news/news"
 				})
-			}
-			
+			}	
 		},
-		onLoad() {
-			this.detailsopen()
-			,
-			console.log(this.cart)
-			
+		onLoad(options) {
+			console.log(options)
+			this.detailsopen(options.userId)
+			/* 接受路径传值 */
+			this.openID = options.userId
+			this.sukid = options.sukid
 		},
 		onBackPress(){
 			uni.switchTab({
@@ -184,15 +186,14 @@
 			  return true
 		},
 		methods: {
-			...mapMutations(['addToCart','updateGoodsCount']),
+			...mapMutations(['addToCart','updateGoodsCount','addCart']),
 			change(value) {
 				
 			},
 			changeValue(value) {
 				/* console.log('返回数值：', value); */
 				this.numberValue = value
-				/* console.log(this.numberValue) */
-				
+				console.log(this.numberValue)
 			},
 			changeValueplp(item){
 				/* console.log(item) */
@@ -215,19 +216,6 @@
 				this.navigateTo()
 				if(ss == 1 && this.LoginOrNot == true){
 					this.$refs.popup.open('bottom')
-					const good = {
-						goods_id:this.openderailsList.goodsId,
-						goods_name:this.openderailsList.name,
-						goods_price:this.openderailsList.salePrice,
-						goods_count:this.good_info.good_count,
-						goods_small_logo:this.good_info.goodslogo,
-						goods_state:true
-					}
-					/* this.addToCart(good) */
-					if(this.cart.length===0){
-						this.addToCart(good)
-					}
-					console.log(this.cart)
 				}else if(ss == 0 && this.LoginOrNot == true){
 					const good = {
 						goods_id:this.openderailsList.goodsId,
@@ -248,14 +236,21 @@
 				this.$refs.popup.close('bottom')
 			},
 			buy(){
-				
-				if(this.cart[0].goods_count != 0 ){
+				if( this.numberValue !=0){
 					this.$refs.popup.close('bottom')
+					const good = {
+						goods_id:this.openderailsList.goodsId,
+						goods_name:this.openderailsList.name,
+						goods_price:this.openderailsList.salePrice,
+						goods_count:this.numberValue,
+						goods_small_logo:this.good_info.goodslogo,
+						goods_state:true
+					}
+					this.addCart(good)
 					uni.navigateTo({
-						url:"../buy/buy"
+						url:"../buy/buy?idname="+0+'&sukid='+this.sukid+'&goodsid='+this.openID
 					})
 				}else {
-					console.log(123)
 					uni.showToast({
 						title:'请添加购买数量',
 						icon:'none'
@@ -264,10 +259,9 @@
 				}
 				
 			},
-			async detailsopen() {
+			async detailsopen(optionsuserId) {
 			 //详情页
-			 const { data: res } = await uni.$http.get('mallGoods/goodsDetail/787ef070d02002b2c2d215e3b52148e3')
-			/* console.log(res.body) */
+			 const { data: res } = await uni.$http.get('mallGoods/goodsDetail/'+optionsuserId)
 			 this.openderailsList = res.body
 			},
 			openpon(){

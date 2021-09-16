@@ -42,7 +42,12 @@
 				</view>
 			</view>
 		</view>
-		
+		<!-- 隐私 -->
+			<view class="mt-3 flex justify-center">
+				<label class="radio">
+					<radio :checked="tiss"  color="#DD524D"  @click="opentiss"/>阅读并接受<text style="color: #007BFF;" @click="privacy">《椒云隐私权保护声明》</text>
+				</label>
+			</view>
 		
 		<!-- 微信授权 -->
 		<view></view>
@@ -63,6 +68,7 @@
 				code: '',
 				is_send:"",
 				codetime:0,
+				tiss:false
 			}
 		},
 		computed:{
@@ -79,8 +85,13 @@
 			console.log(this.passwordtwo)
 		},
 		methods: {
-			missko(){
-				
+			privacy(){
+				uni.navigateTo({
+					url:'../Privacy/Privacy'
+				})
+			},
+			opentiss(){
+				this.tiss = true
 			},
 			inputChange(e) {
 				const key = e.currentTarget.dataset.key;
@@ -125,11 +136,11 @@
 				/* 表单验证 */
 				if(!this.validate())return;
 				/* 提交后端 */
-				if(this.password == this.passwordtwo){
+				if(this.password == this.passwordtwo&&this.tiss == true){
 					this.regin()
 				}else{
 					uni.showToast({
-						title:"两次密码不相同",
+						title:"两次密码不相同或未勾选确认阅读",
 						icon:'none'
 					})
 				}
@@ -154,7 +165,6 @@
 			},
 			async regin() {
 			 const res  = await uni.$http.post('/register',{"customerName":this.mobile,"password": this.password})
-			 console.log(res)
 			 if(res.data.message){
 					uni.showToast({
 						title:'用户已经注册'
@@ -169,8 +179,7 @@
 					 		url:'../login/login'
 					 	})
 					 },1000)
-				 }
-				 
+				 } 
 			 }
 			},
 			

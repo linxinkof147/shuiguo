@@ -56,7 +56,7 @@
 			},
 			//发起请求热卖
 			async gethotList() {
-			  const { data: res } = await uni.$http.get('mallGoods/goods?pageSize=10&pageNum=1&isHot=true')
+			  const { data: res } = await uni.$http.get('goods/list?pageSize=15&pageNum=1&field=createTime&order=asc')
 			  this.goodsHotDatas = res.body.rows
 			  console.log(res.body)
 			},

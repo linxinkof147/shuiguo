@@ -12,9 +12,9 @@
 		<view :style="{height: wh + 'px'}" class="bg-hover-light ">
 			<swiper  :duration="150" :current="tabIndex" @change="onChangeTab" :style="{height: wh + 'px'}" class="bg-hover-light ">
 				<swiper-item   class="he-8"  v-for="i in 3" :key="i" >
-					<!-- <view class="flex justify-center align-center" :style="{height: wh + 'px'}" v-if="param ==''">
+					<view class="flex justify-center align-center" :style="{height: wh + 'px'}" v-if="param ==''">
 						<view>暂无购买数据...</view>
-					</view> -->
+					</view>
 						<!-- 订单 -->
 						<view class="w-95 m-auto bg-white border-radius-sm he-6 mt-3" v-for="i in 1" :key="i"  >
 							<view class="flex">
@@ -65,8 +65,8 @@
 				tabIndex:0,
 				scrollInto:'',
 				taBaers:[{'name':"全部","id":0},
-				{'name':"待收货","id":1},
-				{'name':"待发货","id":2}],
+				{'name':"待支付","id":1},
+				{'name':"待收货","id":2}],
 				newsList:[],
 				wh:0,
 				orderList:[],
@@ -125,8 +125,9 @@
 					
 				})
 			},
+			/* 删除订单 */
 			async getData(){
-				const { data: res } = await uni.$http.delete("p/myOrder/20210820163832923139178139921")
+				const { data: res } = await uni.$http.delete("p/myOrder/20210820170543820166423199990")
 				console.log(res)
 			},
 			/* 监听滑动切换 */	

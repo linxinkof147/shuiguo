@@ -4,7 +4,8 @@
 		<view class="w-100 ml9">
 			<view class="">
 				<view class="font-lg font text-hover-light">支付金额</view>
-				<view  class="mt-2"><text class="price1 price">{{this.param !='id=-￥10'?valttpp:valttpp-10  }}</text></view>	
+				<!-- <view  class="mt-2"><text class="price1 price">{{this.param !='id=-￥10'?valttpp:valttpp-10  }}</text></view> -->	
+				<view  class="mt-2"><text class="price1 price">{{openpope}}</text></view>
 			</view>
 		</view>
 		<view class="flex justify-center align-center mt-5">
@@ -54,7 +55,12 @@
 				showKeyBoard: false,
 				openpayment:'wxpay',//wxpay微信 alipay支付宝
 				detailid:'18228403380',
-				payMethod:1
+				payMethod:1,
+				openpope:'',
+				opennumber:"",
+				suklist:[],
+				sukid:"d028118bbd764968af7cfdc7e925dc72",
+				goodsid:"296b5762c1301a92d8462193f0f32f39"
 			}
 		},
 		computed:{
@@ -68,7 +74,7 @@
 				
 			}
 		},
-		onLoad() {
+		onLoad(options) {
 			let routes = getCurrentPages(); // 获取当前打开过的页面路由数组
 			let curRoute = routes[routes.length - 1].route //获取当前页面路由
 			let curParam = routes[routes.length - 1].options; //获取路由参数
@@ -81,8 +87,19 @@
 			this.param = param
 			console.log(this.param)
 			uni.getStorageSync('cart')
-			console.log(this.cart[0].goods_count)
-		},
+			console.log(this.cart)
+			console.log(options.goodsid)
+			this.openpope = options.mo
+			this.openpope = options.pickits
+			this.opennumber = options.number
+			this.goodsid  = options.goodsid
+			this.sukid = options.sukid
+			console.log(this.goodsid,this.sukid)
+			if(this.goodsid === 'undefined' && this.sukid === 'undefined'){
+				this.goodsid  = "296b5762c1301a92d8462193f0f32f39"
+				this.sukid = "d028118bbd764968af7cfdc7e925dc72"
+			}
+ 		},
 		methods: {
 			...mapMutations(['saveToStorage','addToCart','saveToStoragopen']),
 			ralio1(index){
@@ -107,10 +124,25 @@
 				
 				/* 微信 支付*/
 				if(this.openpayment === "wxpay"){
+					if(this.tocart = '[{}]'){
+						for (let i = 0; i < this.cart.length; i++) {
+						   this.suklist.push({
+						  "skuId":this.sukid,
+						  "goodsId":this.goodsid,
+						   "number":this.opennumber
+						   })
+						 }		
+					}else{
+						this.suklist =  [{
+							"skuId":this.sukid,
+							"goodsId":this.goodsid,
+							"number":this.opennumber
+						}]
+					}	
 					uni.request({
 						method:'POST',
 					  /* url: "http://117.175.58.188:9005/api-test/weixin/pay?userId=18228403380&totalFee=1", */
-					   url: "http://117.175.58.188:9005/api-test/order/confirm",
+					   url: "http://app.joy-ec.cn/online-mall-api/order/confirm",
 					    header: {
 					       "account_token":this.token			
 					    },
@@ -118,12 +150,7 @@
 							"shopCartIds":[],
 							"addrId":this.Address.addrId,
 							"remarks":"多发点",
-							"orderSku":
-							 [{
-							 "skuId":"e79cd4463995c89c0e02f3c17011496a",
-							 "goodsId":"787ef070d02002b2c2d215e3b52148e3",
-							 "number":this.cart[0].goods_count
-							 }],
+							"orderSku":this.suklist,
 							"couponIds":[],
 							"payWay":'WECHAT_PAY'
 						},
@@ -156,12 +183,27 @@
 					})
 					this.loading = false
 				} else if(this.openpayment === "alipay"){
+					/* if(this.tocart = '[{}]'){
+						for (let i = 0; i < this.cart.length; i++) {
+						   this.suklist.push({
+						  "skuId":this.sukid,
+						  "goodsId":this.goodsid,
+						   "number":this.opennumber
+						   })
+						 }		
+					}else{
+						this.suklist =  [{
+							"skuId":this.sukid,
+							"goodsId":this.goodsid,
+							"number":this.opennumber
+						}]
+					}	 */
 					/* 支付宝 支付*/
 					console.log(this.token)
 					uni.request({
 						method:'POST',
 						/* url: "192.168.3.87:8090/order/payment?+orderNo="+20210819113033022120177107046+"&totalPrice="+1.00+"&payWay="+'ALI_PAY', */
-					    url: "http://117.175.58.188:9005/api-test/order/confirm",
+					    url: "http://app.joy-ec.cn/online-mall-api/order/confirm",
 					    header: {
 					       "account_token":this.token			
 					    },
@@ -171,9 +213,9 @@
 							"remarks":"多发点",
 							"orderSku":
 							 [{
-							 "skuId":"e79cd4463995c89c0e02f3c17011496a",
-							 "goodsId":"787ef070d02002b2c2d215e3b52148e3",
-							 "number":this.cart[0].goods_count
+							"skuId":this.sukid,
+							"goodsId":this.goodsid,
+							 "number":this.opennumber
 							 }],
 							"couponIds":[],
 							"payWay":'ALI_PAY'

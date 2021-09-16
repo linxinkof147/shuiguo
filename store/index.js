@@ -18,6 +18,7 @@ const store = new Vuex.Store({
 		/* 购物车 */
 		 // { goods_id, goods_name, goods_price, goods_count, goods_small_logo, goods_state }
 		cart:JSON.parse(uni.getStorageSync('cart') || '[]'),
+		tocart:'',
 		/* 收货地址 */
 		Address: JSON.parse(uni.getStorageSync('Address') || '[]'),
 		/* 添加收货地址 */
@@ -42,7 +43,11 @@ const store = new Vuex.Store({
 		saveAddressopen(state){
 			uni.setStorageSync('Address', JSON.stringify(state.Address))
 		},
-		/* 购物车 */
+		/* 直接购买 */
+		addCart(state, goods) {
+		    state.tocart = [goods]
+		},
+		/* 添加购物车 */
 		addToCart(state, goods) {
 		   // 根据提交的商品的Id，查询购物车中是否存在这件商品
 		   // 如果不存在，则 findResult 为 undefined；否则，为查找到的商品信息对象
@@ -71,7 +76,6 @@ const store = new Vuex.Store({
 			updateGoodsCount(state, goods) {
 			  // 根据 goods_id 查询购物车中对应商品的信息对象
 			  const findResult = state.cart.find(x => x.goods_id === goods.goods_id)
-			
 			  if(findResult) {
 			    // 更新对应商品的数量
 			    findResult.goods_count = goods.goods_count

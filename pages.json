@@ -74,6 +74,7 @@
             }
             
         }
+		
         ,{
             "path" : "pages/login/login",
             "style" :                                                                                    
@@ -201,6 +202,14 @@
                 "enablePullDownRefresh": false,
 				"fontSize":"24px",
 				"navigationBarBackgroundColor":"#f8f9fa"
+            }
+        }
+        ,{
+            "path" : "pages/Privacy/Privacy",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
             }
             
         }

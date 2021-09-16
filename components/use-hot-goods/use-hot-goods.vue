@@ -8,12 +8,12 @@
 		
 		
 		<view class="list dflex-b dflex dflex-wrap-w w-full">
-			<view v-for="(item, index) in datas" :key="item.goodsId" class="item border-radius-sm padding-bottom-sm" @click="to_detail(item.goodsId)">
-				<view class="image-wrapper"><image mode="aspectFill" :lazy-load="true" src="../../static/images/mg3.png"></image></view>
+			<view v-for="(item, index) in datas" :key="item.goodsId" class="item border-radius-sm padding-bottom-sm" @click="to_detail(item.goodsId,item.goodsSku[0].skuId)">
+				<view class="image-wrapper"><image mode="aspectFill" :lazy-load="true" :src="item.mainPicture"></image></view>
 				<text class="title clamp padding-sm">{{ item.name }}</text>
 				<view class="padding-left-sm">
 					<text class="price">{{ item.salePrice }}</text>
-					<text class="m-price">76</text>
+					<text class="m-price">{{item.salePrice*1.2}}</text>
 				</view>
 			</view>
 		</view>
@@ -56,12 +56,9 @@ export default {
 		
 	},
 	methods: {
-			to_detail(index){
-				
+			to_detail(item,index){
 				uni.navigateTo({
-					url:"../Details/Details?userId="+18228403380+'&totalFee='+'1'
-					/* url:"../Details/Details?userId=18228403380&totalFee=1" */
-					
+					url:"../Details/Details?userId="+item+'&sukid='+index
 				})
 			},
 			hot(){
