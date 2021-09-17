@@ -131,7 +131,7 @@
 	import Coupons from '../../components/Coupons/Coupons.vue'
 	import UseListtItle from "@/components/use-list-title/use-list-title.vue"
 	import unipopup from "@/components/uni-popup/uni-popup.vue"
-	import {mapMutations,mapState} from 'vuex'
+	import {mapMutations,mapState,mapGetters} from 'vuex'
 	export default {
 		components:{UseListtItle,unipopup,Coupons},
 		data() {
@@ -146,11 +146,12 @@
 				mo:'',
 				piplick:0,
 				sukid:0,
-				goodsid:0
+				goodsid:0,
+				misstoyou:[{}]
 			}
 		},
 		computed:{
-			...mapState(['Address','cart','tocart']),
+			...mapState(['Address','cart','tocart','aclist']),
 			valttpp(){
 				if(this.cart[0].goods_state == true){
 					return this.cart[0].goods_price*this.cart[0].goods_count
@@ -170,10 +171,14 @@
 				this.cartlist = this.tocart
 				this.piplick = this.cartlist[0].goods_price*this.cartlist[0].goods_count
 			}else if (this.cartlist = '[{}]'){
-				this.cartlist = this.cart
+				/* this.cartlist = this.cart */
+				this.cartlist = this.cart.filter(v=>{
+					return v.goods_state
+				})
 				this.piplick = options.pick-options.pick1
+			
 			}
-			console.log(options)
+		/* 	console.log(options,this.cartlist) */
 			this.goodsid = options.goodsid
 			this.sukid = options.sukid
 		},

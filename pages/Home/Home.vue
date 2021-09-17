@@ -34,18 +34,6 @@
 						<text class="title clamp padding-bottom-xs">{{ item.name }}</text>
 						<text class="price">{{ item.salePrice }}</text><text class="m-price">{{item.salePrice*1.2}}</text>
 					</view>
-					<!-- <view class="item margin-right-sm" v-for="(item, index) in goodsHotDatas" :key="index"
-						@click="togoods(item)">
-						<image class="border-radius-xs" mode="aspectFill" :lazy-load="true" src="../../static/images/mg3.png"></image>
-						<text class="title clamp padding-bottom-xs">{{ item.name }}</text>
-						<text class="price">{{ 56 }}</text><text class="m-price">{{ 76 }}</text>
-					</view> -->
-					<!-- <view class="item margin-right-sm" v-for="(item, index) in goodsHotDatas" :key="index"
-						@click="togoods(item)">
-						<image class="border-radius-xs" mode="aspectFill" :lazy-load="true" src="../../static/images/mg1.png"></image>
-						<text class="title clamp padding-bottom-xs">{{ item.name }}</text>
-						<text class="price">{{ 56 }}</text><text class="m-price">{{ 76 }}</text>
-					</view> -->
 				</view>
 			</scroll-view>
 		</view>
@@ -84,7 +72,7 @@
 				swiperDatas: [],
 				goodsLimitDatas:[],
 				goodsHotDatas:[],
-				edition:"1.5.0",
+				edition:"1.7.0",
 				newedition:"1.2.0",
 				misstome:[],
 				index:0
@@ -148,7 +136,7 @@
 			},
 			togoods(item,index){
 				uni.navigateTo({
-					url:"../Details/Details?userId="+item.goodsId+"&use="+1+'sukid'+item.goodsSku[0].skuId
+					url:"../Details/Details?userId="+item.goodsId+"&use="+1+'&sukid='+item.goodsSku[0].skuId
 					/* url:"../Details/Details?userId=18228403380&totalFee=1" */
 					
 				})

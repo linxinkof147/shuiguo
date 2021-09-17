@@ -118,7 +118,6 @@
 			this.gethotList()
 			const sysInfo = uni.getSystemInfoSync()
 			this.wh =sysInfo.windowHeight
-			console.log(this.cart)
 		},
 		onReachBottom() {
 			/* console.log(123) */
@@ -175,8 +174,6 @@
 			},
 			/* 选择价格 */
 			radioClickHand(item,index){
-				console.log(index)
-				console.log(item.goods_state)
 				item.goods_state = !item.goods_state
 				/* 点击勾选购物篮价格 */
 				if(item.goods_state == false){
@@ -230,9 +227,9 @@
 			},
 			//发起请求热卖
 			async gethotList() {
-			  const { data: res } = await uni.$http.get('mallGoods/goods?pageSize=10&pageNum=1&isHot=true')
+			  const { data: res } = await uni.$http.get('goods/list?pageSize=15&pageNum=1&field=createTime&order=asc')
 			  this.goodsHotDatas = res.body.rows
-			 /* console.log(res) */
+	
 			},
 		}
 	}

@@ -59,12 +59,11 @@
 				openpope:'',
 				opennumber:"",
 				suklist:[],
-				sukid:"d028118bbd764968af7cfdc7e925dc72",
-				goodsid:"296b5762c1301a92d8462193f0f32f39"
+				cartlist:[]
 			}
 		},
 		computed:{
-			...mapState(['cart','token','Address']),
+			...mapState(['cart','token','Address','tocart']),
 			valttpp(){
 				if(this.cart[0].goods_state == true){
 					return this.cart[0].goods_price*this.cart[0].goods_count 
@@ -87,23 +86,44 @@
 			this.param = param
 			console.log(this.param)
 			uni.getStorageSync('cart')
-			console.log(this.cart)
-			console.log(options.goodsid)
+			/* console.log(this.cart)
+			console.log(options.goodsid) */
 			this.openpope = options.mo
 			this.openpope = options.pickits
 			this.opennumber = options.number
-			this.goodsid  = options.goodsid
-			this.sukid = options.sukid
-			console.log(this.goodsid,this.sukid)
-			if(this.goodsid === 'undefined' && this.sukid === 'undefined'){
-				this.goodsid  = "296b5762c1301a92d8462193f0f32f39"
-				this.sukid = "d028118bbd764968af7cfdc7e925dc72"
+			this.goodsid  = "296b5762c1301a92d8462193f0f32f39"
+			this.sukid = "d028118bbd764968af7cfdc7e925dc72"
+			this.cartlist = this.cart.filter(v=>{
+				return v.goods_state
+			})
+			/* if(this.tocart != '[{}]'){
+				this.suklist =  [{
+					"skuId":this.sukid,
+					"goodsId":this.goodsid,
+					"number":this.opennumber
+				}]
+			} */
+			if(options.goodsid != "undefined"){
+				this.goodsid  = options.goodsid
+				this.sukid = options.sukid 
+				this.suklist =  [{
+					"skuId":options.sukid ,
+					"goodsId":options.goodsid,
+					"number":this.opennumber
+				}]
+			}else{
+				for (let i = 0; i < this.cartlist.length; i++) {
+				   this.suklist.push({
+				  "skuId":this.cartlist[i].goods_sukid,
+				  "goodsId":this.cartlist[i].goods_id,
+				   "number":this.cartlist[i].goods_count
+				   })
+				 }
 			}
  		},
 		methods: {
 			...mapMutations(['saveToStorage','addToCart','saveToStoragopen']),
 			ralio1(index){
-				console.log(index)
 				if(this.radio1 == false){this.radio1 = true}
 				else if (this.radio1 == true){this.radio1 = false}
 			},
@@ -121,24 +141,9 @@
 			},
 			openModal() {
 				if(this.loading) return;
-				
+				console.log(this.suklist)
 				/* 微信 支付*/
 				if(this.openpayment === "wxpay"){
-					if(this.tocart = '[{}]'){
-						for (let i = 0; i < this.cart.length; i++) {
-						   this.suklist.push({
-						  "skuId":this.sukid,
-						  "goodsId":this.goodsid,
-						   "number":this.opennumber
-						   })
-						 }		
-					}else{
-						this.suklist =  [{
-							"skuId":this.sukid,
-							"goodsId":this.goodsid,
-							"number":this.opennumber
-						}]
-					}	
 					uni.request({
 						method:'POST',
 					  /* url: "http://117.175.58.188:9005/api-test/weixin/pay?userId=18228403380&totalFee=1", */
@@ -156,7 +161,6 @@
 						},
 					    success: (res) => {
 							this.loading = true
-							console.log(res)
 							uni.requestPayment({
 							    "provider": "wxpay", 
 							    "orderInfo": {
@@ -183,21 +187,6 @@
 					})
 					this.loading = false
 				} else if(this.openpayment === "alipay"){
-					/* if(this.tocart = '[{}]'){
-						for (let i = 0; i < this.cart.length; i++) {
-						   this.suklist.push({
-						  "skuId":this.sukid,
-						  "goodsId":this.goodsid,
-						   "number":this.opennumber
-						   })
-						 }		
-					}else{
-						this.suklist =  [{
-							"skuId":this.sukid,
-							"goodsId":this.goodsid,
-							"number":this.opennumber
-						}]
-					}	 */
 					/* 支付宝 支付*/
 					console.log(this.token)
 					uni.request({
@@ -211,12 +200,7 @@
 							"shopCartIds":[],
 							"addrId":this.Address.addrId,
 							"remarks":"多发点",
-							"orderSku":
-							 [{
-							"skuId":this.sukid,
-							"goodsId":this.goodsid,
-							 "number":this.opennumber
-							 }],
+							"orderSku":this.suklist,
 							"couponIds":[],
 							"payWay":'ALI_PAY'
 						},

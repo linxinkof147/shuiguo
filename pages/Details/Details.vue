@@ -4,11 +4,16 @@
 		<view class="he-13">
 			<!-- 轮播 -->
 			<swiper :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000" class="Details-img">
-				<swiper-item  v-for="(item,index) in tagDatasimg" :key="index">
+				<swiper-item  v-for="(item,index) in openderailsList.goodsPictureList" :key="index">
 					<view class="img" >
-						<image class="Details-img" :src="item.img" mode=""></image>
+						<image class="Details-img" :src="item" mode=""></image>
 					</view>
 				</swiper-item>
+				<!-- <swiper-item  >
+					<view class="img" >
+						<image class="Details-img" :src="openderailsList.goodsPictureList[0]" mode=""></image>
+					</view>
+				</swiper-item> -->
 			</swiper>
 			<!-- 详情数据 -->
 			<view :id="openderailsList.goodsId">
@@ -115,6 +120,7 @@
 				numberValue:1,
 				openderailsList:[],
 				opencartList:[],
+				goodsPictureList:[],
 				openID:'',
 				/* 页面数据 */
 				good_info:{goodid:'28',goodname:'黑布林大李子 黑布林大李子 黑布林大李子',goodprice:88,good_count:1,
@@ -173,7 +179,6 @@
 			}	
 		},
 		onLoad(options) {
-			console.log(options)
 			this.detailsopen(options.userId)
 			/* 接受路径传值 */
 			this.openID = options.userId
@@ -223,7 +228,8 @@
 						goods_price:this.openderailsList.salePrice,
 						goods_count:this.good_info.good_count,
 						goods_small_logo:this.good_info.goodslogo,
-						goods_state:true
+						goods_state:true,
+						goods_sukid:this.sukid
 					}
 					this.options[0].info++
 					this.addToCart(good)
@@ -262,7 +268,10 @@
 			async detailsopen(optionsuserId) {
 			 //详情页
 			 const { data: res } = await uni.$http.get('mallGoods/goodsDetail/'+optionsuserId)
+			
 			 this.openderailsList = res.body
+			
+
 			},
 			openpon(){
 				uni.navigateTo({

@@ -24,6 +24,14 @@ const store = new Vuex.Store({
 		/* 添加收货地址 */
 		harvest: JSON.parse(uni.getStorageSync('address') || '[]'),
     },
+	getters:{
+		aclist:(state)=>{
+			return state.cart.filter(v => {
+				return v.goods_state = true
+			})
+		}
+		
+	},
 	mutations:{
 		/* 添加收货地址 */
 		/* Addharvest(state,harl){
