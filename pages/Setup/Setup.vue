@@ -18,6 +18,11 @@
 			@click="openActionSheet">
 			<text class="cell-tit text-r">退出切换帐号</text>
 		</view>
+		<view class="mt-10 flex justify-center">
+			<label class="radio">
+				<view :checked="tiss"  color="#DD524D"  @click="opentiss"/><text style="color: #007BFF;" ><text @click="privacy">《椒云隐私权保护声明》</text><text@click="privacy1">《用户协议》</text></text>
+			</label>
+		</view>
 	</view>
 </template>
 
@@ -40,6 +45,16 @@
 		},
 		methods: {
 			...mapMutations(['logionyes','icn']),
+			privacy1(){
+				uni.navigateTo({
+					url:'../agreement/agreement'
+				})
+			},
+			privacy(){
+				uni.navigateTo({
+					url:'../Privacy/Privacy'
+				})
+			},
 			openActionSheet(){
 				uni.showModal({
 					/* 提示 */

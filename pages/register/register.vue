@@ -45,7 +45,7 @@
 		<!-- 隐私 -->
 			<view class="mt-3 flex justify-center">
 				<label class="radio">
-					<radio :checked="tiss"  color="#DD524D"  @click="opentiss"/>阅读并接受<text style="color: #007BFF;" @click="privacy">《椒云隐私权保护声明》</text>
+					<radio :checked="tiss"  color="#DD524D"  @click="opentiss"/>阅读并接受<text style="color: #007BFF;" ><text @click="privacy">《椒云隐私权保护声明》</text><text@click="privacy1">《用户协议》</text></text>
 				</label>
 			</view>
 		
@@ -85,6 +85,11 @@
 			console.log(this.passwordtwo)
 		},
 		methods: {
+			privacy1(){
+				uni.navigateTo({
+					url:'../agreement/agreement'
+				})
+			},
 			privacy(){
 				uni.navigateTo({
 					url:'../Privacy/Privacy'
