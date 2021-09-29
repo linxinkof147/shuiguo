@@ -99,7 +99,7 @@ __webpack_require__(/*! uni-pages?{"type":"view"} */ 1);
 function initView() {
   function injectStyles(context) {
 
-    var style0 = __webpack_require__(/*! ./App.vue?vue&type=style&index=0&lang=css& */ 278);
+    var style0 = __webpack_require__(/*! ./App.vue?vue&type=style&index=0&lang=css& */ 283);
     if (style0.__inject__) style0.__inject__(context);
 
   }
@@ -157,6 +157,7 @@ __definePage('pages/coupon/coupon', function () {return Vue.extend(__webpack_req
 __definePage('pages/success/success', function () {return Vue.extend(__webpack_require__(/*! pages/success/success.vue?mpType=page */ 257).default);});
 __definePage('pages/news/news', function () {return Vue.extend(__webpack_require__(/*! pages/news/news.vue?mpType=page */ 265).default);});
 __definePage('pages/Privacy/Privacy', function () {return Vue.extend(__webpack_require__(/*! pages/Privacy/Privacy.vue?mpType=page */ 273).default);});
+__definePage('pages/agreement/agreement', function () {return Vue.extend(__webpack_require__(/*! pages/agreement/agreement.vue?mpType=page */ 278).default);});
 
 /***/ }),
 /* 2 */
@@ -7394,16 +7395,34 @@ var render = function() {
               _vm._v("阅读并接受"),
               _c(
                 "v-uni-text",
-                {
-                  staticStyle: { color: "#007BFF" },
-                  attrs: { _i: 26 },
-                  on: {
-                    click: function($event) {
-                      return _vm.$handleViewEvent($event)
-                    }
-                  }
-                },
-                [_vm._v("《椒云隐私权保护声明》")]
+                { staticStyle: { color: "#007BFF" }, attrs: { _i: 26 } },
+                [
+                  _c(
+                    "v-uni-text",
+                    {
+                      attrs: { _i: 27 },
+                      on: {
+                        click: function($event) {
+                          return _vm.$handleViewEvent($event)
+                        }
+                      }
+                    },
+                    [_vm._v("《椒云隐私权保护声明》")]
+                  ),
+                  _c(
+                    "v-uni-text",
+                    {
+                      attrs: { _i: 28 },
+                      on: {
+                        click: function($event) {
+                          return _vm.$handleViewEvent($event)
+                        }
+                      }
+                    },
+                    [_vm._v("《用户协议》")]
+                  )
+                ],
+                1
               )
             ],
             1
@@ -7411,7 +7430,7 @@ var render = function() {
         ],
         1
       ),
-      _c("v-uni-view", { attrs: { _i: 27 } })
+      _c("v-uni-view", { attrs: { _i: 29 } })
     ],
     1
   )
@@ -8649,6 +8668,63 @@ var render = function() {
             "v-uni-text",
             { staticClass: _vm._$g(5, "sc"), attrs: { _i: 5 } },
             [_vm._v("退出切换帐号")]
+          )
+        ],
+        1
+      ),
+      _c(
+        "v-uni-view",
+        { staticClass: _vm._$g(6, "sc"), attrs: { _i: 6 } },
+        [
+          _c(
+            "v-uni-label",
+            { staticClass: _vm._$g(7, "sc"), attrs: { _i: 7 } },
+            [
+              _c("v-uni-view", {
+                attrs: {
+                  checked: _vm._$g(8, "a-checked"),
+                  color: "#DD524D",
+                  _i: 8
+                },
+                on: {
+                  click: function($event) {
+                    return _vm.$handleViewEvent($event)
+                  }
+                }
+              }),
+              _c(
+                "v-uni-text",
+                { staticStyle: { color: "#007BFF" }, attrs: { _i: 9 } },
+                [
+                  _c(
+                    "v-uni-text",
+                    {
+                      attrs: { _i: 10 },
+                      on: {
+                        click: function($event) {
+                          return _vm.$handleViewEvent($event)
+                        }
+                      }
+                    },
+                    [_vm._v("《椒云隐私权保护声明》")]
+                  ),
+                  _c(
+                    "v-uni-text",
+                    {
+                      attrs: { _i: 11 },
+                      on: {
+                        click: function($event) {
+                          return _vm.$handleViewEvent($event)
+                        }
+                      }
+                    },
+                    [_vm._v("《用户协议》")]
+                  )
+                ],
+                1
+              )
+            ],
+            1
           )
         ],
         1
@@ -11592,9 +11668,9 @@ var render = function() {
     "v-uni-view",
     { attrs: { _i: 0 } },
     [
-      _vm._v("更新日期：2021年4月6日"),
+      _vm._v("更新日期：2021年9月22日"),
       _c("br", { attrs: { _i: 1 } }),
-      _vm._v("生效日期：2021年4月13日"),
+      _vm._v("生效日期：2021年9月23日"),
       _c("br", { attrs: { _i: 2 } }),
       _vm._v(
         "欢迎您使用我们的产品和服务！我们非常重视您的隐私保护和个人信息保护。本隐私政策适用于您对椒云平台的访问和使用留存的信息。\n\t引言：\n\t我们尽量以更清晰、更容易被您理解的方式展现本隐私政策，从而希望能够真实地传达我们希望向您传达的信息，并希望您在向我们提供某些信息（其中很可能包括您的个人信息）以及允许我们处理并分享某些信息之前，能够清晰地了解这些信息收集的目的、可能的用途以及其他方面的内容。为了便于您阅读及理解，我们将专门术语进行了定义，请参见本隐私政策“附录1：定义”来了解这些定义的具体内容。\n\t本隐私政策适用于椒云平台（范围详见附录1：定义）所有产品和服务。"
@@ -11612,140 +11688,130 @@ var render = function() {
         "若您使用椒云平台的服务，即表示您认同我们在本政策中所述内容。在将您的信息用于本隐私权政策未涵盖的用途时，我们会事先征求您的同意。"
       ),
       _c("br", { attrs: { _i: 6 } }),
-      _vm._v("本隐私政策将帮助您了解以下内容："),
-      _c("br", { attrs: { _i: 7 } }),
-      _vm._v("1.我们如何收集和使用您的个人信息"),
-      _c("br", { attrs: { _i: 8 } }),
-      _vm._v("2.我们如何使用 Cookie 和同类技术"),
-      _c("br", { attrs: { _i: 9 } }),
-      _vm._v("3.3. 我们如何共享、转让、公开披露您的个人信息"),
-      _c("br", { attrs: { _i: 10 } }),
-      _vm._v("4.4. 我们如何保存及保护您的个人信息"),
-      _c("br", { attrs: { _i: 11 } }),
-      _vm._v("5.5. 您的权利"),
-      _c("br", { attrs: { _i: 12 } }),
-      _vm._v("6.6. 我们如何处理未成年人的个人信息"),
-      _c("br", { attrs: { _i: 13 } }),
-      _vm._v("7.7. 您的个人信息如何跨境转移"),
-      _c("br", { attrs: { _i: 14 } }),
-      _vm._v("8.8. 隐私政策的修订"),
-      _c("br", { attrs: { _i: 15 } }),
-      _vm._v("9.9. 如何联系我们"),
-      _c("br", { attrs: { _i: 16 } }),
       _vm._v(
         "我们深知个人信息对您的重要性，也深知为您的信息提供有效保护是我们业务健康可持续发展的基石。感谢您对椒云平台的使用和信任！我们致力于维持您对我们的信任，恪守适用法律和我们对您的承诺，尽全力保证您的个人信息安全和合理使用。同时，我们郑重承诺，我们将按业界成熟的安全标准，采取相应的安全保护措施来保护您的个人信息。"
       ),
+      _c("br", { attrs: { _i: 7 } }),
+      _vm._v("椒云集团app尊重并保护所有适用服务用户的个人隐私权。"),
+      _c("br", { attrs: { _i: 8 } }),
+      _vm._v(
+        "为了给您提供更准确、更有个性化的服务，本应用会按照隐私权政策的规定适用和披露您的个人信息。但本应用将以高度的勤勉、审 义务对待这些信息。出本隐私权政策另有规定外，在未征得您事先许可的情况下，本应用不会将这些信息对外披露或向第三方提供。本应用会不时更新隐私政策。您在同意本应用政策全部内容。本隐私权政策属于本应用服务使用协议不可分割的一部分。"
+      ),
+      _c("br", { attrs: { _i: 9 } }),
+      _vm._v("一、适用范围"),
+      _c("br", { attrs: { _i: 10 } }),
+      _vm._v("（1）在您注册本应用账号时，您根据本应用要求提供的个人注册信息；"),
+      _c("br", { attrs: { _i: 11 } }),
+      _vm._v(
+        "（2）在您使用本应用网络服务，或访问本应用平台网页时，本应用自动接收并记录您的浏览和计算机上的信息，包括但不限于您的1P地址、浏览器的类型、使用的语言、访问日期和时间、软硬件特征信息及您需求的网页记录等数据；"
+      ),
+      _c("br", { attrs: { _i: 12 } }),
+      _vm._v("（3）本应用通过合法途径从商业伙伴处取得用户个人数据。"),
+      _c("br", { attrs: { _i: 13 } }),
+      _vm._v("您了解并同意，以下信息不适用本隐私权政策："),
+      _c("br", { attrs: { _i: 14 } }),
+      _vm._v("（1）您在使用本应用平台提供的搜索服务时输入的关键字信息；"),
+      _c("br", { attrs: { _i: 15 } }),
+      _vm._v(
+        "（2）本应用收集到您在本应用发布的有关信息数据，包括但不限于参与活动、成交信息及详情；"
+      ),
+      _c("br", { attrs: { _i: 16 } }),
+      _vm._v("（3）违反法律规定或违反本应用规则行为及本应用已对您采取的措施。"),
       _c("br", { attrs: { _i: 17 } }),
-      _vm._v("一、我们如何收集和使用您的个人信息"),
+      _vm._v("二、信息使用"),
       _c("br", { attrs: { _i: 18 } }),
       _vm._v(
-        "椒云平台仅会出于本隐私政策所述的以下目的，收集和使用您的个人信息："
+        "（1）本应用不会向任何无关第三方提供、出售、出租、分享或交易您的个人信息，除非事先得到您的许可，或该第三方和本应用（含本应用关联公司）单独过共同为您提供服务，且在该服务结束后，其将被禁止访问包括其以前能够访问的所有这些资料。"
       ),
       _c("br", { attrs: { _i: 19 } }),
-      _vm._v("1.帮助您成为我们的注册用户"),
+      _vm._v(
+        "（2）本应用亦不允许任何第三方以任何手段收集、编辑、出售或者无偿传播您的个人信息。任何本应用平台用户如从事上述活动，一经发现，本应用有权立即终止与该用户的服务协议。"
+      ),
       _c("br", { attrs: { _i: 20 } }),
       _vm._v(
-        "您注册椒云帐号时须至少向我们提供帐号名称、手机号码及或电子邮箱，并创建密码。如果您仅需使用浏览、搜索等基本服务，您不需要注册成为我们的用户及提供上述信息。为了方便您的使用，当您在我们的特定产品中需要另行填写手机号等实名认证信息时，可能会默认显示您椒云帐号绑定的相关信息，您可以根据产品功能进行修改。\n\t您提供的上述信息，将在您使用椒云平台产品和服务期间持续授权我们使用。在您注销帐号时，我们将停止使用并删除上述信息或对您的个人信息进行匿名化处理，法律法规另有规定的除外。"
+        "（3）为服务用户的目的，本应用可能通过使用您的个人信息，向您提供您感兴趣的信息，包括但不限于向您发出产品和服务信息，或者与本应用合作伙伴共享信息以便他们向您发送有关其产品和服务的信息（后者需要您的事先同意）。"
       ),
       _c("br", { attrs: { _i: 21 } }),
-      _vm._v("2.向您提供产品和服务"),
+      _vm._v("三、信息披露"),
       _c("br", { attrs: { _i: 22 } }),
-      _vm._v("（1）您向我们提供的信息"),
+      _vm._v(
+        "在如下情况下，本应用将依据您的个人原因或法律的规定全部或部分的披露您的个人信息："
+      ),
       _c("br", { attrs: { _i: 23 } }),
-      _vm._v(
-        "您使用我们的特定产品和服务时（如支付、购买产品和服务、建立个人主页、发表文章等），为满足向您提供产品和服务之目的，除注册时提供的信息外，您可能还需要进一步向我们提供与上述产品和服务的功能相关的信息（例如您的真实姓名、性别、出生日期、身份证号码、常用地址、银行卡、头像和简介等），为了验证您提供信息的准确性和完整性，或保障您的帐号安全，我们会与合法留存您的信息的国家机关、金融机构、企事业单位进行核对。如果您不使用特定产品和服务，则无需提供相关信息。\n\t当您使用刷脸登录、验证功能时，我们会收集您的面部信息。您应按照页面的提示完成相应动作，椒云系统判断您的动作符合要求后，即可完成脸部拍摄。您同意仅使用您本人的面部信息为您本人所持有的椒云帐号使用刷脸登录、验证服务。为了提高验证的准确性，您同意椒云可在必要时将您向椒云提供的面部信息与法律法规允许的机构或政府机关授权的机构所保存的您的面部信息进行比对核验。您可以通过进入帐号与安全页面【刷脸登陆】中设置关闭。如果您不使用刷脸登录功能，则无需提供相关信息。\n\t我们还可能会记录您在使用我们的产品和/或服务时提供、形成或留存的信息。例如您在使用椒云搜索时输入的搜索关键词信息和点击的链接，您参与其他产品运营活动时提交的信息。您有权选择不提供前述信息，但这将导致您可能无法使用特定服务或功能，或者无法达到相关服务拟达到的效果。\n\t（2）我们在您使用服务过程中收集的信息"
-      ),
+      _vm._v("(a)经您事先同意，向第三方披露"),
       _c("br", { attrs: { _i: 24 } }),
-      _vm._v(
-        "我们可能会收集关于您使用产品和/或服务（包括使用方式）过程中的信息，此类信息包括："
-      ),
+      _vm._v("（b）为提供您所要求的产品和服务，而必须和地方分享您的个人信息。"),
       _c("br", { attrs: { _i: 25 } }),
-      _vm._v("1.设备信息"),
-      _c("br", { attrs: { _i: 26 } }),
-      _vm._v("2.日志信息"),
-      _c("br", { attrs: { _i: 27 } }),
-      _vm._v("3.位置信息"),
-      _c("br", { attrs: { _i: 28 } }),
-      _vm._v("4.唯一应用程序编号"),
-      _c("br", { attrs: { _i: 29 } }),
-      _vm._v("（3）我们通过间接获得方式收集到的您的个人信息"),
-      _c("br", { attrs: { _i: 30 } }),
       _vm._v(
-        "当您通过我们产品或服务使用椒云关联方、合作方服务时，您同意我们根据实际业务及合作需要从我们关联方、合作方处接收、使用、汇总、分析经您授权同意其向我们提供的您的个人信息。\n\t如您通过我们产品或服务使用椒云关联方、合作方服务并进行投诉时，为便于商家能与您有效联系并及时处理您的投诉，您同意我们从合作方处获取您投诉时所提供的个人信息，并同步给对应商家。\n\t（4）为您提供安全保障"
+        "（c）根据法律法规的有关规定，或者行政或司法机构的要求，向第三方或者行政、司法机构披露；"
       ),
+      _c("br", { attrs: { _i: 26 } }),
+      _vm._v(
+        "（d）如您出现违反中国有关法律、法规或者本应用服务协议或相关规则的情况，需要向第三方披露；"
+      ),
+      _c("br", { attrs: { _i: 27 } }),
+      _vm._v(
+        "（e）如您是适格的指示产权投诉人并已提起诉讼，应被投诉人要求，向被投诉人披露，以便双方处理可能的权利纠纷；"
+      ),
+      _c("br", { attrs: { _i: 28 } }),
+      _vm._v(
+        "（f）在本应用平台上创建的某一交易中，如交易任何一方 行或部分 行了交易义务并提出信息披露请求的，本应用有权决定向该用户提交其交易对方的联络方式等必要信息，以促成交易的完成或纠纷的解决。"
+      ),
+      _c("br", { attrs: { _i: 29 } }),
+      _vm._v("（g)其它本应用根据法律、法规或者网站政策认为合适的披露。"),
+      _c("br", { attrs: { _i: 30 } }),
+      _vm._v("（h）本应用集成友盟+SDK"),
       _c("br", { attrs: { _i: 31 } }),
       _vm._v(
-        "为提高您使用我们与椒云关联方、合作方提供的产品和服务的安全性，我们可能使用您的信息用于身份验证、客户服务、安全防范、诈骗监测、信贷分析等，以预防、发现、调查欺诈、危害安全、非法或违反与我们的协议、政策或规则的行为，以保护您、我们的其他用户、我们或椒云关联方、合作方及社会公众的合法权益。\n\t二、我们如何保存及保护您的个人信息"
+        "友盟+SDK需要收集您的设备信息（IMEI/Mac/IDFA/OPENUDID/GUID/SIM卡IMSI/地理位置信息）以提供统计分析服务，并通过地理位置校准报表数据准确性，提供基础反作弊能力。相关隐私政策请参阅 https://www.umeng.com/page/policy（SDK）（io.dcloud.common）"
       ),
       _c("br", { attrs: { _i: 32 } }),
-      _vm._v("1. 保存期限"),
-      _c("br", { attrs: { _i: 33 } }),
       _vm._v(
-        "您在使用椒云产品及服务期间，我们将持续为您保存您的个人信息。如果您注销帐户或主动删除上述信息，我们将依据网络安全法等法律法规规定保存您的信息。在您注销帐户或主动删除上述信息后，我们不会再对您的个人信息进行商业化使用，但我们可能会对您的个人信息进行匿名化处理后使用。\n\t2. 保存地域"
+        '在用户点击隐私协议“同意”按钮前，不要读取收集（获取设备IMEI）信息。用户点击“同意”前，APP或SDK不能和云端有任何数据交互(隐私政策的网页除外)，APP或SDK不能对设备进行任何数据读取，SDK必须做延迟初始化配置，用户同意《隐私政策》后再初始化SDK采数。""'
       ),
+      _c("br", { attrs: { _i: 33 } }),
+      _vm._v("四、信息存储和交换"),
       _c("br", { attrs: { _i: 34 } }),
       _vm._v(
-        "您的个人信息均储存于中华人民共和国境内。如部分产品或服务涉及跨境，我们需要向境外传输您的个人信息，我们会严格按照法律法规的规定执行，并保证您的个人信息安全。\n\t3. 安全措施"
+        "本应用收集的有关您的信息和资料将保存在本应用及（或）其关联公司的服务器上，这些信息和资料可能传送至您所在国家、地区或本应用收集信息和资料所在地的境外并在境外被访问、存储和展示。"
       ),
       _c("br", { attrs: { _i: 35 } }),
-      _vm._v(
-        "（1） 我们会以业界成熟的安全标准和规范收集、使用、存储和传输用户信息，并通过用户协议和隐私政策告知您相关信息的使用目的和范围。"
-      ),
+      _vm._v("1.Cookie使用"),
       _c("br", { attrs: { _i: 36 } }),
       _vm._v(
-        "（2） 我们非常重视信息安全。我们成立了专责团队负责研发和应用多种安全技术和程序等，我们会对安全管理负责人和关键安全岗位的人员进行安全背景审查，我们建立了完善的信息安全管理制度和内部安全事件处置机制等。我们会采取符合业界标准的合理可行的安全措施和技术手段存储和保护您的个人信息，以防止您的信息丢失、遭到被未经授权的访问、公开披露、使用、修改、毁损、丢失或泄漏。我们会采取一切合理可行的措施，保护您的个人信息。我们会使用加密技术确保数据的保密性；我们会使用受信赖的保护机制防止数据遭到恶意攻击。\n\t（3） 我们会对员工进行数据安全的意识培养和安全能力的培训和考核，加强员工对于保护个人信息重要性的认识。我们部署访问控制机制，对处理个人信息的员工进行身份认证及权限控制，并会与接触您个人信息的员工、合作伙伴签署保密协议，明确岗位职责及行为准则，确保只有授权人员才可访问个人信息。若有违反保密协议的行为，会被追究相关责任。"
+        "（a）在您未拒绝接受cookies的情况下，本应用会在您的计算机上设定或取用cookies，以便您能登陆或使用依赖于cookies的本应用平台服务或功能。本应用使用cookies可为您提供更加周到的个性化服务，包括推广服务"
       ),
       _c("br", { attrs: { _i: 37 } }),
       _vm._v(
-        "（4） 我们提醒您注意，互联网并非绝对安全的环境，当您通过电子邮件、短信等与其他用户交互信息时，不确定第三方软件对信息的传递是否完全加密，请注意确保您个人信息的安全，我们建议您不要通过此类方式发送个人信息，以免个人信息泄露。请使用复杂密码，协助我们保证您的帐号以及个人信息安全。"
+        "。\n\t（b）您由权选择接受或拒绝接受cookies。您可以通过修改浏览器设置的方式拒绝接受cookiea，但如果您选择拒绝接受cookies,则您可能无法登陆或使用依赖于cookies的本应用网络服务或功能。"
       ),
       _c("br", { attrs: { _i: 38 } }),
-      _vm._v(
-        "根据我们的安全管理制度，个人信息泄露、毁损或丢失事件被列为最特大安全事件，一经发生将启动公司最高级别的紧急预案，由【安全部、政府关系部、法务部】等多个部门组成联合应急响应小组处理。       4. 安全事件通知\n\t（1）我们会制定网络安全事件应急预案，及时处置系统漏洞、计算机病毒、网络攻击、网络侵入等安全风险，在发生危害网络安全的事件时，我们会立即启动应急预案，采取相应的补救措施，并按照规定向有关主管部门报告。\n\t（2）个人信息泄露、毁损、丢失属于公司级特大安全事件，我们会负责定期组织工作组成员进行安全预案演练，防止此类安全事件发生。若一旦不幸发生，我们将按照最高优先级启动应急预案，由安全部、政府关系部、法务部等多个部门组成应急响应小组，在最短时间内追溯原因并减少损失。"
-      ),
+      _vm._v("（c）通过本应用所设cookies所取得有关信息，将适用本政策。"),
       _c("br", { attrs: { _i: 39 } }),
-      _vm._v(
-        "（3） 在不幸发生个人信息安全事件后，我们将按照法律法规的要求，及时向您告知安全事件的基本情况和可能的影响、我们已采取或将要采取的处理措施、您可自主防范和降低的风险的建议、对您的补救措施等。我们将及时将事件相关情况以站内通知、短信通知、电话、邮件等您预留的联系方式告知您，难以逐一告知时我们会采取合理、有效的方式发布公告。同时，我们还将按照监管部门要求，主动上报个人信息安全事件的处置情况。"
-      ),
+      _vm._v("五、信息安全"),
       _c("br", { attrs: { _i: 40 } }),
-      _vm._v("三、您的权利"),
+      _vm._v(
+        "（a）本应用账号均有安全保护功能，请妥善保管您的用户名及密码信息。本应用将通过对用户密码进行加密等安全措施确保您的信息不丢失，不被滥用和变造。尽管有前述安全措施，但同时业请您注意在信息网络上不存在“完善的安全措施”。"
+      ),
       _c("br", { attrs: { _i: 41 } }),
       _vm._v(
-        "按照中国相关的法律、法规、标准，以及其他国家、地区的通行做法，我们保障您对自己的个人信息行使以下权利："
+        "（b）在使用本应用网络服务进行网上交易时，您不可避免的要向交易对方或潜在的交易对"
       ),
       _c("br", { attrs: { _i: 42 } }),
-      _vm._v("1.访问您的个人信息"),
+      _vm._v("六、本隐私政策的更改"),
       _c("br", { attrs: { _i: 43 } }),
       _vm._v(
-        "您有权访问您的个人信息，法律法规规定的例外情况除外。您可以通过以下方式自行访问您的个人信息："
+        "（a）如果决定更改隐私政策，我们会在本政策中、本公司网站中以及我们认为适当的位置发布这些更改，以便您了解我们如何收集、使用您的个人信息，哪些人可以访问这些信息，以及在什么情况下我们透露这些信息。"
       ),
       _c("br", { attrs: { _i: 44 } }),
       _vm._v(
-        "帐号信息——如果您希望访问或编辑您的帐号中的个人基本资料信息、联系方式信息、更改您的密码、添加安全信息、进行帐号关联、身份认证等，您可以通过产品"
+        "( 9）本公司保留随时修改政策的权利，因此经常查看。如对本政策作出重大更改，本公司会通过网站通知的形式告知。"
       ),
       _c("br", { attrs: { _i: 45 } }),
-      _vm._v("2.更正您的个人信息"),
-      _c("br", { attrs: { _i: 46 } }),
       _vm._v(
-        "您发现我们处理的关于您的个人信息有错误时，您有权对错误或不完整的信息作出更正或更新，您可以通过"
+        "方披露自己的个人信息，如联络方式或者邮政地址。请您妥善保护自己的个人信息，仅在必要的情形下向他人提供。如您发现自己的个人信息泄露，尤其时本应用用户名及密码发生泄露，请您立即联络本应用的客服，以便本应用采取相应的措施。"
       ),
-      _c("br", { attrs: { _i: 47 } }),
-      _vm._v("3. 删除您的个人信息"),
-      _c("br", { attrs: { _i: 48 } }),
-      _vm._v("在以下情形中，您可以向我们提出删除个人信息的请求，您可以通过"),
-      _c("br", { attrs: { _i: 49 } }),
-      _vm._v(
-        "1.如果我们违法法律法规或与您的约定收集、使用、与他人共享或转让您的个人信息；"
-      ),
-      _c("br", { attrs: { _i: 50 } }),
-      _vm._v(
-        "2. 如果我们违反法律法规规定或与您的约定，公开披露您的个人信息，您有权要求我们立即停止公开披露的行为，并发布通知要求相关接收方删除相应的信息。当您从我们的服务中删除信息后，我们可能不会立即从备份系统中删除相应的信息，但会在备份更新时删除这些信息。我们在产品设计的过程中及最终的呈现和用户体验环节，将尽可能地为您控制个人信息提供更为便捷的方式。由于不同产品的功能服务不同，因此为您提供的个人信息控制方式及设计可能不同，请您在使用具体产品时阅读相关产品隐私政策进一步了解。"
-      ),
-      _c("br", { attrs: { _i: 51 } }),
-      _vm._v(
-        "椒云愿一直陪伴您，若因特殊原因导致椒云平台产品和服务被迫停止运营，我们将按照法律法规要求在产品和/或服务的主页面或站内信或向您发送电子邮件或其他合适的能触达您的方式通知您，并将停止对您个人信息的收集，同时会按照法律规定对所持有的您的个人信息进行删除或匿名化处理等。"
-      ),
-      _c("br", { attrs: { _i: 52 } })
+      _c("br", { attrs: { _i: 46 } })
     ],
     1
   )
@@ -11793,6 +11859,626 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 278 */
+/*!**********************************************************************!*\
+  !*** D:/uniaapp文件/shuiguo/pages/agreement/agreement.vue?mpType=page ***!
+  \**********************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _agreement_vue_vue_type_template_id_71ff2e2c_mpType_page__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./agreement.vue?vue&type=template&id=71ff2e2c&mpType=page */ 279);
+/* harmony import */ var _agreement_vue_vue_type_script_lang_js_mpType_page__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./agreement.vue?vue&type=script&lang=js&mpType=page */ 281);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _agreement_vue_vue_type_script_lang_js_mpType_page__WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _agreement_vue_vue_type_script_lang_js_mpType_page__WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/runtime/componentNormalizer.js */ 16);
+
+var renderjs
+
+
+
+
+/* normalize component */
+
+var component = Object(_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _agreement_vue_vue_type_script_lang_js_mpType_page__WEBPACK_IMPORTED_MODULE_1__["default"],
+  _agreement_vue_vue_type_template_id_71ff2e2c_mpType_page__WEBPACK_IMPORTED_MODULE_0__["render"],
+  _agreement_vue_vue_type_template_id_71ff2e2c_mpType_page__WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null,
+  false,
+  _agreement_vue_vue_type_template_id_71ff2e2c_mpType_page__WEBPACK_IMPORTED_MODULE_0__["components"],
+  renderjs
+)
+
+component.options.__file = "pages/agreement/agreement.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+/* 279 */
+/*!****************************************************************************************************!*\
+  !*** D:/uniaapp文件/shuiguo/pages/agreement/agreement.vue?vue&type=template&id=71ff2e2c&mpType=page ***!
+  \****************************************************************************************************/
+/*! exports provided: render, staticRenderFns, recyclableRender, components */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_16_0_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_uni_app_loader_filter_modules_template_js_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_uni_app_loader_page_meta_js_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_index_js_vue_loader_options_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_uni_app_loader_view_style_js_agreement_vue_vue_type_template_id_71ff2e2c_mpType_page__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--16-0!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-uni-app-loader/filter-modules-template.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-uni-app-loader/page-meta.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-uni-app-loader/view/style.js!./agreement.vue?vue&type=template&id=71ff2e2c&mpType=page */ 280);
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_16_0_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_uni_app_loader_filter_modules_template_js_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_uni_app_loader_page_meta_js_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_index_js_vue_loader_options_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_uni_app_loader_view_style_js_agreement_vue_vue_type_template_id_71ff2e2c_mpType_page__WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_16_0_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_uni_app_loader_filter_modules_template_js_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_uni_app_loader_page_meta_js_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_index_js_vue_loader_options_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_uni_app_loader_view_style_js_agreement_vue_vue_type_template_id_71ff2e2c_mpType_page__WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "recyclableRender", function() { return _C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_16_0_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_uni_app_loader_filter_modules_template_js_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_uni_app_loader_page_meta_js_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_index_js_vue_loader_options_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_uni_app_loader_view_style_js_agreement_vue_vue_type_template_id_71ff2e2c_mpType_page__WEBPACK_IMPORTED_MODULE_0__["recyclableRender"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "components", function() { return _C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_16_0_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_uni_app_loader_filter_modules_template_js_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_uni_app_loader_page_meta_js_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_index_js_vue_loader_options_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_uni_app_loader_view_style_js_agreement_vue_vue_type_template_id_71ff2e2c_mpType_page__WEBPACK_IMPORTED_MODULE_0__["components"]; });
+
+
+
+/***/ }),
+/* 280 */
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--16-0!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-uni-app-loader/filter-modules-template.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-uni-app-loader/page-meta.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-uni-app-loader/view/style.js!D:/uniaapp文件/shuiguo/pages/agreement/agreement.vue?vue&type=template&id=71ff2e2c&mpType=page ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns, recyclableRender, components */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "recyclableRender", function() { return recyclableRender; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
+var components
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "v-uni-view",
+    { attrs: { _i: 0 } },
+    [
+      _vm._v("【首部及导言】"),
+      _c("br", { attrs: { _i: 1 } }),
+      _vm._v("欢迎您使用椒云椒云软件及服务！"),
+      _c("br", { attrs: { _i: 2 } }),
+      _vm._v(
+        "为使用椒云椒云软件（以下统称“本软件”）及服务（以下统称“本服务”），您应当阅读并遵守《椒云软件许可及服务协议》（以下简称“本协议”），以及《椒云服务协议》、《椒云号码规则》、《椒云隐私政策》《椒云隐私保护指引》。请您务必审慎阅读、充分理解各条款内容，特别是免除或者限制椒云责任的条款、对用户权利进行限制的条款、约定争议解决方式和司法管辖的条款（如第十五条相关约定）等，以及开通或使用某项服务的单独协议。限制、免责条款或者其他涉及您重大权益的条款可能以加粗、加下划线等形式提示您重点注意。\n\t除非您已充分阅读、完全理解并接受本协议所有条款，否则您无权下载、安装或使用本软件和/或相关服务。您点击“同意”、“下一步”或您的下载、安装、使用、登录等行为或者您以其他任何明示或者默示方式表示接受本协议的，即视为您已阅读并同意本协议的约束。本协议即在您与椒云之间产生法律效力，成为对双方均具有约束力的法律文件。\n\t如果您因年龄、智力等因素而不具有完全民事行为能力，请在法定监护人（以下简称“监护人”）的陪同下阅读和判断是否同意本协议。"
+      ),
+      _c("br", { attrs: { _i: 3 } }),
+      _vm._v(
+        "如果您是非中国大陆地区的用户，您订立或履行本协议以及使用本服务的行为还需要同时遵守您所属和/或所处国家或地区的法律。"
+      ),
+      _c("br", { attrs: { _i: 4 } }),
+      _vm._v("一、【协议的范围】"),
+      _c("br", { attrs: { _i: 5 } }),
+      _vm._v(
+        "1.1 本协议是您与椒云之间关于您下载、安装、使用、登录本软件，以及使用本服务所订立的协议。"
+      ),
+      _c("br", { attrs: { _i: 6 } }),
+      _vm._v(
+        "1.2 本协议的内容，包括但不限于以下与本软件和/或本服务相关的协议、规则、规范以及椒云可能不断发布的关于本软件和/或本服务的相关协议、规则、规范等内容。前述内容一经正式发布，即为本协议不可分割的组成部分，与其构成统一整体\n\t二、【关于本软件和本服务】"
+      ),
+      _c("br", { attrs: { _i: 7 } }),
+      _vm._v(
+        "2.1 本软件是指椒云开发并按照本协议及椒云其他协议、规则之约定，授权用户下载、安装、登录、使用的椒云椒云软件。"
+      ),
+      _c("br", { attrs: { _i: 8 } }),
+      _vm._v(
+        "2.2 您知晓并同意，椒云可能会根据需要更新或调整本软件和/或本服务的内容。"
+      ),
+      _c("br", { attrs: { _i: 9 } }),
+      _vm._v(
+        "2.3 您可能可以通过电脑、手机等终端以客户端等形式使用本服务，具体以椒云提供的为准。同时，椒云会不断丰富您使用本服务的终端、形式等。当您使用本服务时，您应选择与您的终端、系统等相匹配的本软件版本，否则，您可能无法正常使用本服务。"
+      ),
+      _c("br", { attrs: { _i: 10 } }),
+      _vm._v(
+        "2.4 椒云给予您一项个人的、不可转让及非排他性的许可，以按照本协议及椒云其他协议、规则限定的范围和方式使用本软件。"
+      ),
+      _c("br", { attrs: { _i: 11 } }),
+      _vm._v(
+        "2.4.1 您可以为非商业目的在单一台终端设备上下载、安装、使用、登录本软件。"
+      ),
+      _c("br", { attrs: { _i: 12 } }),
+      _vm._v(
+        "2.4.2 您可以制作本软件的一个副本，仅用作备份。备份副本必须包含原软件中含有的所有著作权信息。"
+      ),
+      _c("br", { attrs: { _i: 13 } }),
+      _vm._v(
+        "2.4.3 本条及本协议其他条款未明示授权的其他一切权利仍由椒云保留，您在行使这些权利时须另外取得椒云的书面许可。椒云如果未行使前述任何权利，并不构成对该权利的放弃。\n\t四、【软件的获取】"
+      ),
+      _c("br", { attrs: { _i: 14 } }),
+      _c("br", { attrs: { _i: 15 } }),
+      _vm._v(
+        "4.1 您可以直接从椒云的官方网站、官方应用分发平台以及椒云授权的第三方网站、应用分发平台等椒云官方或椒云授权的渠道获取本软件。"
+      ),
+      _c("br", { attrs: { _i: 16 } }),
+      _vm._v(
+        "4.2 如果您从未经椒云授权的第三方获取本软件或与本软件名称相同的安装程序，椒云无法保证该软件能够正常使用，并对因此给您造成的损失不予负责。"
+      ),
+      _c("br", { attrs: { _i: 17 } }),
+      _vm._v("五、【软件的安装与卸载】"),
+      _c("br", { attrs: { _i: 18 } }),
+      _vm._v(
+        "5.1 椒云可能为不同的终端、系统等开发不同的软件版本，您应当根据实际情况选择下载合适的版本进行安装。"
+      ),
+      _c("br", { attrs: { _i: 19 } }),
+      _vm._v("5.2 下载安装程序后，您需要按照该程序提示的步骤正确安装。"),
+      _c("br", { attrs: { _i: 20 } }),
+      _vm._v(
+        "5.3 为提供更加优质、安全的服务，在本软件安装时，椒云可能推荐您安装其他软件，您可以选择安装或不安装。"
+      ),
+      _c("br", { attrs: { _i: 21 } }),
+      _vm._v(
+        "5.4 因经营策略安排或调整等原因，不同地区的用户于本软件可使用的具体服务内容可能会存在差异，具体以椒云实际提供的为准。"
+      ),
+      _c("br", { attrs: { _i: 22 } }),
+      _vm._v(
+        "5.5 如果您不再需要使用本软件或者需要安装新版软件，可以自行卸载。如果您愿意帮助椒云改进产品服务，请告知卸载的原因。"
+      ),
+      _c("br", { attrs: { _i: 23 } }),
+      _vm._v("六、【软件的更新】"),
+      _c("br", { attrs: { _i: 24 } }),
+      _vm._v(
+        "6.1 为了增进用户体验、完善服务内容，椒云可能不断努力开发新的服务，并为您不时提供软件更新。"
+      ),
+      _c("br", { attrs: { _i: 25 } }),
+      _vm._v(
+        "6.2 为了改善用户体验或提高服务安全性、保证功能的一致性等目的，椒云有权不经向您特别通知而对本软件进行更新，或者对本软件的部分功能效果、服务内容进行改变。"
+      ),
+      _c("br", { attrs: { _i: 26 } }),
+      _vm._v(
+        "6.3 本软件新版本发布后，旧版本的软件可能无法使用。椒云不保证旧版本软件继续可用，也不保证继续对旧版本软件提供相应的客服和维护服务，请您随时核对并下载最新版本。"
+      ),
+      _c("br", { attrs: { _i: 27 } }),
+      _vm._v("七、【用户个人信息保护】"),
+      _c("br", { attrs: { _i: 28 } }),
+      _vm._v(
+        "7.1 保护用户个人信息是椒云的一项基本原则，椒云将按照本协议及《椒云隐私政策》的约定收集、使用、储存和分享您的个人信息。本协议对个人信息保护相关内容未作明确规定的，均以《椒云隐私政策》的内容为准。\n\t7.2 您在注册帐号或使用本服务的过程中，可能需要填写一些必要的信息。若国家法律法规（本协议中的“法律法规”指用户所属/所处地区、国家现行有效的法律、行政法规、司法解释、地方法规、地方规章、部门规章及其他规范性文件以及对于该等法律法规的不时修改和补充，以及相关政策规定等，下同。）有特殊规定的，您需要填写真实的身份信息（包括但不限于手机号等信息）。若您填写的信息不完整或不真实，则可能无法使用本服务或在使用过程中受到限制。\n\t7.3 一般情况下，您可根据相关产品规则浏览、修改自己提交的信息，但出于安全性和身份识别（如号码找回等）的考虑，您可能无法修改注册时提供的初始注册信息及其他验证信息。"
+      ),
+      _c("br", { attrs: { _i: 29 } }),
+      _vm._v(
+        "7.4 为增加用户使用本服务的娱乐性，促进用户之间的沟通和交流，改善、优化相应服务，椒云会对您的昵称、头像以及在本软件中的相关操作等信息进行使用，也可能通过椒云的其他服务或第三方提供的服务向您本人、其他用户展示您的相关信息（如同步您的椒云头像、昵称、性别、地区、好友关系等）。如果您拒绝向椒云或第三方提供上述信息，可在椒云或第三方提供的各种软件和服务中进行修改。但是您理解并同意，您的上述修改并不影响椒云此前基于您的同意而对您的个人信息开展的使用。\n\t7.5 椒云将运用各种安全技术和程序建立完善的管理制度来保护您的个人信息，以免遭受未经授权的访问、使用或披露。"
+      ),
+      _c("br", { attrs: { _i: 30 } }),
+      _vm._v("7.6 椒云不会将您的个人信息转移或披露给任何第三方，除非："),
+      _c("br", { attrs: { _i: 31 } }),
+      _vm._v(
+        ".（1）相关法律法规或司法机关、行政机关要求；或\n\t.（2）为完成合并、分立、收购或资产转让而转移；或\n\t.（3）为提供您要求的服务所必需。"
+      ),
+      _c("br", { attrs: { _i: 32 } }),
+      _vm._v(
+        ".（4）依据《椒云隐私政策》或其他相关协议规则可以转移或披露给任何第三方的情形。"
+      ),
+      _c("br", { attrs: { _i: 33 } }),
+      _vm._v(
+        "7.7 您使用椒云与其他软件或硬件互通功能时，您可以要求我们将您在椒云上的相关信息传输至其他软件或硬件的提供方，您在做出上述选择前应充分了解其他软件或硬件的产品功能及信息保护策略。\n\t7.8 椒云非常重视对未成年人个人信息的保护。若您不具备完全民事行为能力，在使用本服务前，应事先取得您的监护人的同意。"
+      ),
+      _c("br", { attrs: { _i: 34 } }),
+      _vm._v("八、【用户行为规范】"),
+      _c("br", { attrs: { _i: 35 } }),
+      _vm._v("8.1 【用户注意事项】"),
+      _c("br", { attrs: { _i: 36 } }),
+      _vm._v("您充分理解并同意："),
+      _c("br", { attrs: { _i: 37 } }),
+      _vm._v(
+        "8.1.1 您理解并同意：为了向您提供有效的服务，本软件会利用您终端设备的处理器和带宽等资源。本软件使用过程中可能产生数据流量的费用，用户需自行向运营商了解相关资费信息，并自行承担相关费用。\n\t8.1.2 本软件的某些功能可能会让第三方知晓用户的信息。例如：您可能会被推荐给其他椒云用户，其他椒云用户可以查询您提交的可公开的个人资料（包括但不限于头像、昵称、椒云号码、地区、性别、生日等）；使用手机号码注册椒云号码或手机号码与椒云号码关联的用户，椒云号码可以被通讯录存有该号码的好友查询；为了方便好友与您进行语音通话或视频聊天，会获取并展示您的设备信息、网络状态等；您关注服务号或使用椒云小程序后，相关服务号或小程序的开发者可以根据其功能权限获取关注您的头像、昵称、评论内容等信息，并可通过本软件与您进行互动。您应了解本部分的信息公开和透露可能会给您带来潜在风险，并自行承担由此造成的风险。\n\t8.1.3 您在使用本服务某一特定功能时，椒云可以使用您终端设备的相关权限、接口及相关信息等以实现相应的功能。"
+      ),
+      _c("br", { attrs: { _i: 38 } }),
+      _vm._v(
+        "8.1.4 您可以选择不向椒云提供您的某些信息，或者根据产品设置取消椒云收集某些信息的权利，但因此可能会导致相关服务功能无法实现。"
+      ),
+      _c("br", { attrs: { _i: 39 } }),
+      _vm._v(
+        "8.1.5 椒云将会尽其商业上的合理努力保障您在本服务中的数据存储安全，但是，椒云并不能就此提供完全保证，包括但不限于以下情形："
+      ),
+      _c("br", { attrs: { _i: 40 } }),
+      _vm._v(
+        ".（1）椒云不对由于非椒云原因造成的您在本软件和/或本服务中相关数据的删除或储存失败负责。"
+      ),
+      _c("br", { attrs: { _i: 41 } }),
+      _vm._v(
+        ".（2）您应自行备份存储在本软件和/或本服务中的数据、信息或与本软件和/或本服务相关的数据、信息，双方另有约定的按相应约定执行。"
+      ),
+      _c("br", { attrs: { _i: 42 } }),
+      _vm._v(
+        ".（3）如果您停止使用本软件和/或本服务，或因您违反法律法规或本协议而被取消或终止使用本服务，椒云有权从服务器上永久地删除您的数据。您的服务停止、终止或取消后，椒云没有义务向您返还任何数据。\n\t8.1.6 用户在使用本软件及服务时，须自行承担如下来自椒云不可掌控的风险内容，包括但不限于："
+      ),
+      _c("br", { attrs: { _i: 43 } }),
+      _vm._v(
+        ".（1）用户必须选择与所安装终端设备相匹配的软件版本，否则，由于软件与终端设备型号不相匹配所导致的任何问题或损害，均由用户自行承担；"
+      ),
+      _c("br", { attrs: { _i: 44 } }),
+      _vm._v(
+        ".（2）用户在使用本软件访问第三方网站时，因第三方网站及相关内容所可能导致的风险，由用户自行承担；"
+      ),
+      _c("br", { attrs: { _i: 45 } }),
+      _vm._v(
+        ".（3）用户发布的内容被他人评论、转发、分享、复制、修改或做其他用途，因此等传播可能带来的风险和责任；"
+      ),
+      _c("br", { attrs: { _i: 46 } }),
+      _vm._v(
+        ".（3）由于无线网络信号不稳定、无线网络带宽小等原因，所引起的本软件登录失败、资料同步不完整、页面打开速度慢等风险。"
+      ),
+      _c("br", { attrs: { _i: 47 } }),
+      _vm._v(
+        "8.1.7 本软件内的运营活动均由椒云或第三方举办，活动中涉及到的奖品，也均由椒云或第三方自行购买，除有特别声明外，活动中提供的奖品生产商（如奖品为苹果手机的苹果公司，下同）等均未参与本软件内的运营活动。因运营活动产生纠纷的，由椒云或第三方在法律规定的范围内承担责任，与奖品生产商无关。因活动奖品质量产生纠纷的,按照相关法律规定处理。"
+      ),
+      _c("br", { attrs: { _i: 48 } }),
+      _vm._v(
+        "8.1.8 您使用本服务时，本服务的内容可能会因您使用软件版本的不同而有差别。您理解当您在使用本软件的某些版本开通或进入椒云开发的应用分发类产品或应用分发类功能的相关页面时，此应用分发类产品或功能为更好地向您提供与终端设备上应用相关的升级提示等服务，可能会使用或向您的好友展示您终端设备上使用应用程序的相关信息。"
+      ),
+      _c("br", { attrs: { _i: 49 } }),
+      _vm._v(
+        "8.1.9 本服务可能会向您提供一些与地理位置、兴趣爱好等信息相关的基于非好友用户之间的交友、拓展好友的功能，您使用这些功能即表示您同意本服务获取、使用您的地理位置、兴趣爱好等信息。同时，您理解并同意：在前述相关功能中，相关信息的发布由用户自行发布，并自行确保其合法、健康、真实以及自行承担相关法律责任；您应自行通过各种手段认真核实相关用户及其发布信息的合法性、真实性，若您与其他用户涉及线下见面、约会或交友等各种实体活动的，要注意保护好自己的人身、财产安全；同时，椒云在前述相关功能中，仅提供技术支持和平台服务，基于互联网虚拟的特性，椒云无法核实相关用户及发布信息的真实性、合法性，也无法向您提供任何保证。若由于前述相关功能，导致您在线上、线下有任何人身、财产损失的，您同意自行承担全部责任，与椒云无关也不会追究椒云的任何责任"
+      ),
+      _c("br", { attrs: { _i: 50 } }),
+      _vm._v(
+        "8.1.10基于用户体验、椒云或相关服务平台运营安全、平台规则要求及健康发展等综合因素，椒云有权选择提供服务的对象，决定功能设置，决定功能开放、数据接口和相关数据披露的对象和范围。针对以下情形，有权视具体情况中止或终止提供相关服务，包括但不限于："
+      ),
+      _c("br", { attrs: { _i: 51 } }),
+      _vm._v(".（1）违反法律法规或本协议的。"),
+      _c("br", { attrs: { _i: 52 } }),
+      _vm._v(".（2）影响服务体验的。"),
+      _c("br", { attrs: { _i: 53 } }),
+      _vm._v(".（3）存在安全隐患的。"),
+      _c("br", { attrs: { _i: 54 } }),
+      _vm._v(
+        ".（4）与椒云或其服务平台已有主要功能或功能组件相似、相同，或可实现上述功能或功能组件的主要效用的。"
+      ),
+      _c("br", { attrs: { _i: 55 } }),
+      _vm._v(
+        ".（5）界面、风格、功能、描述或使用者体验与椒云或其服务平台类似，可能造成椒云用户认为其所使用的功能或服务来源于椒云或经椒云授权的。"
+      ),
+      _c("br", { attrs: { _i: 56 } }),
+      _vm._v(
+        ".（6）利诱用户分享：指通过各种形式的奖励来诱导用户在本软件和/或本服务中分享任何用户、公司或机构的商业或非商业信息，包括但不限于：邀请好友拆礼盒，集赞，分享可增加一次抽奖机会等，下同。"
+      ),
+      _c("br", { attrs: { _i: 57 } }),
+      _vm._v(
+        ".（7））非法获取用户数据、信息：指未经用户明确同意且并未向用户如实披露数据用途、使用范围等情形下复制、存储、使用或传输用户数据的，包括但不限于要求用户共享个人信息（手机号、出生日期等）才可使用其功能，或收集用户个人信息（包括但不限于用户密码、手机号、身份证号、生日、住址等），或未经椒云书面许可，通过本软件和/或本服务收集、存储、抓取、获得或要求用户提供包括但不限于椒云及椒云其相关服务平台的信息内容、用户数据等椒云认为属于敏感信息范畴的数据（包括但不限于椒云帐号、用户关系链、好友列表数据、银行账号和密码等），或者将所有获得的前述数据自行或提供给其用户、客户用于创建、补充或维护自身关系链。"
+      ),
+      _c("br", { attrs: { _i: 58 } }),
+      _vm._v(
+        ".（8）违背椒云或其服务平台运营原则，或不符合椒云其他管理要求的。"
+      ),
+      _c("br", { attrs: { _i: 59 } }),
+      _vm._v("8.2 【用户禁止行为】"),
+      _c("br", { attrs: { _i: 60 } }),
+      _vm._v(
+        "您在使用本软件和/或本服务的过程中，应遵守相关法律法规、用户协议、规则规范等，不得从事包括但不限于以下任何行为，也不得为以下任何行为提供便利："
+      ),
+      _c("br", { attrs: { _i: 61 } }),
+      _vm._v("8.2.1 法律法规禁止的行为"),
+      _c("br", { attrs: { _i: 62 } }),
+      _vm._v(
+        "您在使用本服务时须遵守法律法规，不得制作、复制、发布、传播含有下列内容的信息或从事相关行为，也不得为制作、复制、发布、传播含有下列内容的信息或从事相关行为提供便利："
+      ),
+      _c("br", { attrs: { _i: 63 } }),
+      _vm._v("（1）反对宪法所确定的基本原则的。"),
+      _c("br", { attrs: { _i: 64 } }),
+      _vm._v("（2）危害国家安全，泄露国家秘密，颠覆国家政权，破坏国家统一的。"),
+      _c("br", { attrs: { _i: 65 } }),
+      _vm._v("（3）损害国家荣誉和利益的。"),
+      _c("br", { attrs: { _i: 66 } }),
+      _vm._v("（4）煽动民族仇恨、民族歧视，破坏民族团结的。"),
+      _c("br", { attrs: { _i: 67 } }),
+      _vm._v("（5）破坏国家宗教政策，宣扬邪教和封建迷信的。"),
+      _c("br", { attrs: { _i: 68 } }),
+      _vm._v("（6）散布谣言，扰乱社会秩序，破坏社会稳定的。"),
+      _c("br", { attrs: { _i: 69 } }),
+      _vm._v("（7）散布淫秽、色情、赌博、暴力、凶杀、恐怖或者教唆犯罪的。"),
+      _c("br", { attrs: { _i: 70 } }),
+      _c("br", { attrs: { _i: 71 } }),
+      _vm._v("（8）侮辱或者诽谤他人，侵害他人合法权益的。"),
+      _c("br", { attrs: { _i: 72 } }),
+      _vm._v(
+        "（9）违反法律法规底线、社会主义制度底线、国家利益底线、公民合法权益底线、社会公共秩序底线、道德风尚底线和信息真实性底线的“七条底线”要求的。"
+      ),
+      _c("br", { attrs: { _i: 73 } }),
+      _vm._v("（10）法律法规、椒云协议或规则等禁止的其他行为。"),
+      _c("br", { attrs: { _i: 74 } }),
+      _vm._v("8.2.2 软件使用"),
+      _c("br", { attrs: { _i: 75 } }),
+      _vm._v("除非法律法规允许或椒云书面许可，您不得从事下列行为："),
+      _c("br", { attrs: { _i: 76 } }),
+      _vm._v(".（1）删除本软件及其副本上关于著作权的信息。"),
+      _c("br", { attrs: { _i: 77 } }),
+      _vm._v(
+        ".（2）对本软件进行反向工程、反向汇编、反向编译，或者以其他方式尝试发现本软件的源代码。"
+      ),
+      _c("br", { attrs: { _i: 78 } }),
+      _vm._v(
+        ".（3）对椒云拥有知识产权的内容进行使用、出租、出借、复制、修改、链接、转载、汇编、发表、出版、建立镜像站点等。"
+      ),
+      _c("br", { attrs: { _i: 79 } }),
+      _vm._v(
+        ".（4）对本软件或者本软件运行过程中释放到任何终端内存中的数据、软件运行过程中客户端与服务器端的交互数据，以及本软件运行所必需的系统数据，进行复制、修改、增加、删除、挂接运行或创作任何衍生作品，形式包括但不限于使用插件、外挂或非椒云经授权的第三方工具/服务接入本软件和相关系统。\n\t.（5）通过修改或伪造软件运行中的指令、数据，增加、删减、变动软件的功能或运行效果，或者将用于上述用途的软件、方法进行运营或向公众传播，无论这些行为是否为商业目的。\n\t.（6）通过非椒云开发、授权的第三方软件、插件、外挂、系统，登录或使用本软件和/或本服务，或制作、发布、传播上述工具。"
+      ),
+      _c("br", { attrs: { _i: 80 } }),
+      _vm._v(
+        ".（7）自行、授权他人或利用第三方软件对本软件和/或本服务及其组件、模块、数据等进行干扰。"
+      ),
+      _c("br", { attrs: { _i: 81 } }),
+      _vm._v(".（8）其他可能影响、干扰本软件和/或本服务正常运行的行为。"),
+      _c("br", { attrs: { _i: 82 } }),
+      _vm._v("8.2.3 平台健康和用户体验"),
+      _c("br", { attrs: { _i: 83 } }),
+      _vm._v(
+        "本软件和/或本服务的目的是为了好友之间、用户之间进行各种正常的沟通、交流，所以您不得从事包括但不限于以下任何行为，也不得为以下任何行为提供便利：\n\t.（1）进行任何超出本软件和/或本服务设定目的的非正常沟通、交流等行为，包括但不限于：向新发现好友、陌生人发起临时会话，打招呼等行为的频次、时间、地域等超出正常范围；向其他用户以各种形式发送、分享任何用户、公司或机构的商业或非商业信息（比如利诱用户分享，胁迫、煽动用户分享等）。"
+      ),
+      _c("br", { attrs: { _i: 84 } }),
+      _vm._v(
+        ".（2）出于超出本软件和/或本服务设定目的的好友或用户之间的非正常沟通、交流等目的（包括但不限于为发送广告、垃圾、骚扰或违法违规等信息的目的），通过自己添加或诱导他人添加等任何方式使自己与其他用户形成好友关系（好友关系包括但不限于单向好友关系和双向好友关系，下同）。您理解并同意：若您违反前述约定，椒云有权不经您同意而直接解除您的好友关系；若您的单向或双向好友(简称“违规用户”)违反前述约定，椒云有权按照本协议、相关协议或相关法律法规等，对违规用户进行处理，由此可能会影响您与违规用户之间的信息交流、好友关系等以及您对本服务的使用，这是椒云为了维护健康良好的网络环境而采取的必要措施，若由于椒云按照前述约定对违规用户采取措施而对您产生影响或任何损失的，您会自行承担相关损失。\n\t.（3）通过非人工或非手动方式（比如外挂软件、程序等）发送信息。"
+      ),
+      _c("br", { attrs: { _i: 85 } }),
+      _vm._v(".（4）发送各种形式的广告、推广、垃圾、骚扰或违法违规等信息。"),
+      _c("br", { attrs: { _i: 86 } }),
+      _vm._v(
+        ".（5）通过非人工或非手动方式（比如外挂软件、程序等）进行帐号登录、加好友、加群组、点赞、留言、发帖、发相片等非正常的操作行为。"
+      ),
+      _c("br", { attrs: { _i: 87 } }),
+      _vm._v("8.2.4 危害平台安全内容"),
+      _c("br", { attrs: { _i: 88 } }),
+      _vm._v(
+        "您不得从事包括但不限于以下任何行为，也不得为以下任何行为提供便利："
+      ),
+      _c("br", { attrs: { _i: 89 } }),
+      _vm._v(
+        ".（1）传播虚假中奖信息、钓鱼欺诈信息、非法或虚假理财信息等非法、诈骗或虚假信息。"
+      ),
+      _c("br", { attrs: { _i: 90 } }),
+      _c("br", { attrs: { _i: 91 } }),
+      _vm._v(
+        ".（2）传播包含病毒、木马等的文件、程序或相应制作教程等的内容、信息。"
+      ),
+      _c("br", { attrs: { _i: 92 } }),
+      _vm._v(".（3）其他危害椒云、本软件或其他主体安全的内容、信息或行为。"),
+      _c("br", { attrs: { _i: 93 } }),
+      _vm._v("8.2.5 数据获取使用"),
+      _c("br", { attrs: { _i: 94 } }),
+      _vm._v(
+        "为了保护数据安全，您不得从事包括但不限于以下行为，也不得为其他第三方提供便利："
+      ),
+      _c("br", { attrs: { _i: 95 } }),
+      _vm._v(
+        ".（1）未经其他椒云用户明确同意，或在未向其他椒云用户如实披露数据用途、使用范围等相关信息的情形下收集、复制、存储、使用或传输其他椒云用户数据，侵害其他椒云用户合法权益。"
+      ),
+      _c("br", { attrs: { _i: 96 } }),
+      _vm._v(
+        ".（2）将其他椒云用户椒云号、昵称、手机号、电子邮箱地址和出生日期等个人信息用于任何未经用户及椒云授权的用途。"
+      ),
+      _c("br", { attrs: { _i: 97 } }),
+      _vm._v(
+        ".（3）企图进行反射查找、跟踪、关联、挖掘、获取用户椒云号、手机号、电子邮箱地址和出生日期等个人信息。"
+      ),
+      _c("br", { attrs: { _i: 98 } }),
+      _vm._v(
+        ".（4）通过各种程序、软件等抓取任何用户的信息或与本软件和/或本服务相关的任何信息、数据。"
+      ),
+      _c("br", { attrs: { _i: 99 } }),
+      _vm._v(
+        ".（5）未经椒云授权使用任何第三方软件、插件、外挂、系统等查看、获取本软件和/或本服务中所包含的椒云、椒云合作伙伴或用户的任何相关信息、数据等内容。"
+      ),
+      _c("br", { attrs: { _i: 100 } }),
+      _vm._v(".（6）其他危害数据安全的行为。"),
+      _c("br", { attrs: { _i: 101 } }),
+      _vm._v("8.2.6 解封异常"),
+      _c("br", { attrs: { _i: 102 } }),
+      _c("br", { attrs: { _i: 103 } }),
+      _c("br", { attrs: { _i: 104 } }),
+      _vm._v(
+        "若您申请自助解除封号的，应自行通过人工手动的方式按照椒云指定流程、规则提交解封申请，您不得实施通过软件、程序等申请解封的行为，也不得提交虚假资料、相关信息等。"
+      ),
+      _c("br", { attrs: { _i: 105 } }),
+      _vm._v("8.3 【法律责任】"),
+      _c("br", { attrs: { _i: 106 } }),
+      _vm._v(
+        "8.3.1 您理解并同意：若您违反法律法规、本协议和/或椒云其他协议、规则的，椒云有权随时单方根据相应情形采取以下一项或多项措施（具体措施以及采取措施的时间长短由椒云根据您的违法、违约情节相应情况确定）："
+      ),
+      _c("br", { attrs: { _i: 107 } }),
+      _vm._v(".(1) 对您进行警告。"),
+      _c("br", { attrs: { _i: 108 } }),
+      _c("br", { attrs: { _i: 109 } }),
+      _vm._v(".(2) 限制您使用本软件和/或本服务部分或全部功能。"),
+      _c("br", { attrs: { _i: 110 } }),
+      _vm._v(
+        ".(3) 删除、屏蔽相关内容或断开链接。\n\t.(4) 中止、终止您对相应椒云号码的使用(简称“封号”) 。"
+      ),
+      _c("br", { attrs: { _i: 111 } }),
+      _vm._v(".(5) 采取其他合理、合法的措施。"),
+      _c("br", { attrs: { _i: 112 } }),
+      _vm._v(".(6) 依法追究您的法律责任。"),
+      _c("br", { attrs: { _i: 113 } }),
+      _vm._v(
+        "8.3.2 如果您违反法律法规、本协议和/或椒云其他协议、规则，椒云对您或您使用的本软件和/或本服务采取任何行为或措施后，导致您暂时或永久无法使用椒云、无法使用椒云登录或使用其他产品和/或服务，您应自行承担相应后果（包括但不限于通信中断，用户资料、邮件和虚拟财产及相关数据、增值服务、产品或服务等的清空或无法使用等）。由此造成您损失的，您应自行承担。"
+      ),
+      _c("br", { attrs: { _i: 114 } }),
+      _vm._v(
+        "8.3.3 您应自行对因使用本服务而产生或存储在本服务中的数据(包括但不限于好友信息、图片、个人资料信息、照片等) ，在本服务之外采取合理、安全的备份。若椒云根据本协议对您采取永久封号等措施的，对于您的与本服务相关的全部数据或您存储在本服务中的全部数据、信息等，椒云有权将该等数据全部予以删除，相应后果您应自行承担。"
+      ),
+      _c("br", { attrs: { _i: 115 } }),
+      _vm._v(
+        "8.3.4 您导致任何第三方损害的，您应当独立承担责任；椒云因此遭受损失的，您也应当一并赔偿。"
+      ),
+      _c("br", { attrs: { _i: 116 } }),
+      _vm._v("8.4 【对自己行为负责】"),
+      _c("br", { attrs: { _i: 117 } }),
+      _vm._v(
+        "您充分了解并同意，您必须为自己使用本软件和/或本服务的一切行为负责，包括您所发表的任何内容以及由此产生的任何后果。您应对使用本软件和/或本服务时接触到的内容自行加以判断，包括因对内容的正确性、完整性或实用性的依赖而产生的风险，并承担由此引起的相应风险。椒云在法律允许的范围内不对您因前述风险而导致的任何损失或损害承担责任。"
+      ),
+      _c("br", { attrs: { _i: 118 } }),
+      _vm._v("8.5 【用户发送、传播的内容与投诉处理】"),
+      _c("br", { attrs: { _i: 119 } }),
+      _vm._v(
+        "8.5.1 如果您发送或传播的内容违法违规或侵犯他人权利的，您同意椒云有权进行独立判断并采取删除、屏蔽或断开链接等措施。"
+      ),
+      _c("br", { attrs: { _i: 120 } }),
+      _vm._v(
+        "8.5.2如您被他人投诉或您投诉他人，椒云有权将争议中相关方的主体、联系方式、投诉相关内容等必要信息提供给相关当事方或相关部门，以便及时解决投诉纠纷，保护各方合法权益。\n\t九、【第三方提供的产品或服务】"
+      ),
+      _c("br", { attrs: { _i: 121 } }),
+      _vm._v(
+        "9.1 您在椒云平台上使用第三方提供的产品或服务时，除遵守本协议约定外，还应遵守第三方的用户协议。椒云和第三方对可能出现的纠纷在法律规定和约定的范围内各自承担责任。\n\t9.2 因用户使用本软件或要求椒云提供特定服务时，本软件可能会调用第三方系统或者通过第三方支持用户的使用或访问，使用或访问的结果由该第三方提供（包括但不限于您通过本服务跳转到的第三方提供的服务及内容，第三方通过椒云开放平台接入的服务及内容等）。"
+      ),
+      _c("br", { attrs: { _i: 122 } }),
+      _vm._v("十、【广告】"),
+      _c("br", { attrs: { _i: 123 } }),
+      _vm._v(
+        "10.1 您同意椒云可以自行或由第三方通过短信、电子邮件或电子信息等多种方式向您发送、展示广告或其他信息（包括商业与非商业信息），广告或其他信息的具体发送及展示形式、频次及内容等以椒云实际提供为准。"
+      ),
+      _c("br", { attrs: { _i: 124 } }),
+      _vm._v(
+        "10.2 椒云将依照相关法律法规要求开展广告业务。您同意，对本服务中出现的广告，您应审慎判断其真实性和可靠性，除法律明确规定外，您应对因该广告而实施的行为负责。\n\t十一、【知识产权声明】"
+      ),
+      _c("br", { attrs: { _i: 125 } }),
+      _vm._v(
+        "11.1 椒云是本软件的知识产权权利人。本软件的著作权、商标权、专利权、商业秘密等知识产权，以及与本软件相关的所有信息内容（包括但不限于文字、图片、音频、视频、图表、界面设计、版面框架、有关数据或电子文档等）均受法律法规和相应的国际条约保护，椒云依法享有上述相关知识产权，但相关权利人依照法律规定应享有的权利除外。"
+      ),
+      _c("br", { attrs: { _i: 126 } }),
+      _vm._v(
+        "11.2 未经椒云或相关权利人书面同意，您不得为任何商业或非商业目的自行或许可任何第三方实施、利用、转让上述知识产权。\n\t十二、【终端安全责任】"
+      ),
+      _c("br", { attrs: { _i: 127 } }),
+      _vm._v(
+        "12.1 您理解并同意，本软件和/或本服务同大多数互联网软件、服务一样，可能会受多种因素影响（包括但不限于用户原因、网络服务质量、社会环境等）；也可能会受各种安全问题的侵扰（包括但不限于他人非法利用用户资料，进行现实中的骚扰；用户下载安装的其他软件或访问的其他网站中可能含有病毒、木马程序或其他恶意程序，威胁您终端的信息和数据的安全，继而影响本软件、本服务的正常使用等），因此，您应加强信息安全及个人信息的保护意识，注意密码保护，以免遭受损失。"
+      ),
+      _c("br", { attrs: { _i: 128 } }),
+      _vm._v(
+        "12.2 您不得制作、发布、使用、传播用于窃取椒云号码和/或他人个人信息、财产的恶意程序。\n\t12.3 维护软件安全与正常使用是椒云和您的共同责任，椒云将按照行业标准合理审慎地采取必要技术措施保护您的终端信息和数据安全，但是您承认和同意椒云不能就此提供任何保证。\n\t十三、【第三方软件或技术】"
+      ),
+      _c("br", { attrs: { _i: 129 } }),
+      _vm._v(
+        "13.1 本软件可能会使用第三方软件或技术（包括本软件可能使用的开源代码和公共领域代码等，下同），这种使用已经获得合法授权。\n\t13.2 本软件如果使用了第三方的软件或技术，椒云将按照相关法规或约定，对相关的协议或其他文件，可能通过本协议附件、在本软件安装包特定文件夹中打包等形式进行展示，它们可能会以“软件使用许可协议”“授权协议”“开源代码许可证”或其他形式来表达。"
+      ),
+      _c("br", { attrs: { _i: 130 } }),
+      _vm._v(
+        "13.3 前述通过各种形式展现的相关协议或其他文件，均是本协议不可分割的组成部分，与本协议具有同等的法律效力，您应当遵守这些要求。如果您没有遵守这些要求，该第三方或者国家机关可能会对您提起诉讼、罚款或采取其他制裁措施，并要求椒云给予协助，您应当自行承担法律责任。"
+      ),
+      _c("br", { attrs: { _i: 131 } }),
+      _vm._v("十四、【不可抗力及其他免责事由】"),
+      _c("br", { attrs: { _i: 132 } }),
+      _vm._v(
+        "14.1 您理解并同意，在使用本服务的过程中，可能会遇到不可抗力等风险因素，使本服务受到影响。不可抗力是指不能预见、不能克服并不能避免且对一方或双方造成重大影响的客观事件，包括但不限于自然灾害如洪水、地震、瘟疫流行和风暴等以及社会事件如战争、动乱、政府行为等。出现上述情况时，椒云将努力在第一时间与相关单位配合，争取及时进行处理，但是由此给您造成的损失，椒云在法律允许的范围内免责。"
+      ),
+      _c("br", { attrs: { _i: 133 } }),
+      _vm._v(
+        "14.2 在法律允许的范围内，椒云对以下情形导致的服务中断或受阻不承担责任："
+      ),
+      _c("br", { attrs: { _i: 134 } }),
+      _vm._v(".（1）受到计算机病毒、木马或其他恶意程序、黑客攻击的破坏。"),
+      _c("br", { attrs: { _i: 135 } }),
+      _vm._v(".（2）用户或椒云的电脑软件、系统、硬件和通信线路出现故障。"),
+      _c("br", { attrs: { _i: 136 } }),
+      _vm._v(".（3）用户操作不当或用户通过非椒云授权的方式使用本服务。"),
+      _c("br", { attrs: { _i: 137 } }),
+      _vm._v(".（4）程序版本过时、设备的老化和/或其兼容性问题。"),
+      _c("br", { attrs: { _i: 138 } }),
+      _vm._v(".（5）其他椒云无法控制或合理预见的情形。"),
+      _c("br", { attrs: { _i: 139 } }),
+      _vm._v(
+        "14.3 您理解并同意，在使用本服务的过程中，可能会遇到网络信息或其他用户行为带来的风险，椒云不对任何信息的真实性、适用性、合法性承担责任，也不对因侵权行为给您造成的损害负责。这些风险包括但不限于："
+      ),
+      _c("br", { attrs: { _i: 140 } }),
+      _c("br", { attrs: { _i: 141 } }),
+      _vm._v(
+        ".（1）来自他人匿名或冒名的含有威胁、诽谤、令人反感或非法内容的信息。"
+      ),
+      _c("br", { attrs: { _i: 142 } }),
+      _vm._v(
+        ".（2）遭受他人误导、欺骗或其他导致或可能导致的任何心理、生理上的伤害以及经济上的损失。"
+      ),
+      _c("br", { attrs: { _i: 143 } }),
+      _vm._v(".（3）其他因网络信息或用户行为引起的风险。"),
+      _c("br", { attrs: { _i: 144 } }),
+      _vm._v(
+        "14.4 椒云依据本协议约定获得处理违法违规内容的权利，该权利不构成椒云的义务或承诺，椒云不能保证及时发现违法行为或进行相应处理。"
+      ),
+      _c("br", { attrs: { _i: 145 } }),
+      _vm._v(
+        "14.5 在任何情况下，您不应轻信借款、索要密码或其他涉及财产的信息。涉及财产操作的，请一定先核实对方身份，并请经常留意椒云有关防范诈骗犯罪的提示。"
+      ),
+      _c("br", { attrs: { _i: 146 } }),
+      _vm._v(
+        "14.6 您在使用本服务过程中所发布的内容有可能会被第三方评论、转发、复制、修改或做其他用途，从而脱离您的预期和控制，您必须充分意识此类风险的存在，椒云对由此产生的纠纷不予负责。"
+      ),
+      _c("br", { attrs: { _i: 147 } }),
+      _vm._v("十五、【其他】"),
+      _c("br", { attrs: { _i: 148 } }),
+      _vm._v(
+        "15.1 您使用本软件和/或本服务即视为您已阅读本协议并接受本协议的约束。椒云有权在必要时修改本协议条款。您可以在相关服务页面查阅最新版本的协议条款。本协议条款变更后，如果您继续使用椒云提供的软件或服务，即视为您已接受变更后的协议。"
+      ),
+      _c("br", { attrs: { _i: 149 } }),
+      _vm._v("15.2 本协议签订地为中华人民共和国广东省深圳市南山区。"),
+      _c("br", { attrs: { _i: 150 } }),
+      _vm._v(
+        "15.3 本协议的成立、生效、履行、解释及纠纷解决，适用中华人民共和国大陆地区法律（不包括冲突法）。"
+      ),
+      _c("br", { attrs: { _i: 151 } }),
+      _vm._v(
+        "15.4 若您和椒云之间发生任何纠纷或争议，首先应友好协商解决；协商不成的，您同意将纠纷或争议提交本协议签订地（即四川成都武侯区武兴四路）有管辖权的人民法院管辖。"
+      ),
+      _c("br", { attrs: { _i: 152 } }),
+      _vm._v(
+        "15.5 本协议所有条款的标题仅为阅读方便，本身并无实际涵义，不能作为本协议涵义解释的依据。"
+      ),
+      _c("br", { attrs: { _i: 153 } }),
+      _vm._v(
+        "15.6 本协议条款无论因何种原因部分无效或不可执行，其余条款仍有效，对双方具有约束力。"
+      ),
+      _c("br", { attrs: { _i: 154 } }),
+      _vm._v(
+        "15.7 若本协议有中文、英文等多个语言版本，相应内容不一致的，均以中文版的内容为准。（正文完）"
+      ),
+      _c("br", { attrs: { _i: 155 } })
+    ],
+    1
+  )
+}
+var recyclableRender = false
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+/* 281 */
+/*!**********************************************************************************************!*\
+  !*** D:/uniaapp文件/shuiguo/pages/agreement/agreement.vue?vue&type=script&lang=js&mpType=page ***!
+  \**********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_12_1_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_uni_app_loader_view_script_js_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_uni_app_loader_using_components_js_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_index_js_vue_loader_options_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_uni_app_loader_view_style_js_agreement_vue_vue_type_script_lang_js_mpType_page__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!./node_modules/babel-loader/lib!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--12-1!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-uni-app-loader/view/script.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-uni-app-loader/using-components.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-uni-app-loader/view/style.js!./agreement.vue?vue&type=script&lang=js&mpType=page */ 282);
+/* harmony import */ var _C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_12_1_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_uni_app_loader_view_script_js_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_uni_app_loader_using_components_js_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_index_js_vue_loader_options_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_uni_app_loader_view_style_js_agreement_vue_vue_type_script_lang_js_mpType_page__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_12_1_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_uni_app_loader_view_script_js_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_uni_app_loader_using_components_js_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_index_js_vue_loader_options_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_uni_app_loader_view_style_js_agreement_vue_vue_type_script_lang_js_mpType_page__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_12_1_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_uni_app_loader_view_script_js_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_uni_app_loader_using_components_js_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_index_js_vue_loader_options_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_uni_app_loader_view_style_js_agreement_vue_vue_type_script_lang_js_mpType_page__WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_12_1_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_uni_app_loader_view_script_js_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_uni_app_loader_using_components_js_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_index_js_vue_loader_options_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_uni_app_loader_view_style_js_agreement_vue_vue_type_script_lang_js_mpType_page__WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_12_1_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_uni_app_loader_view_script_js_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_uni_app_loader_using_components_js_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_index_js_vue_loader_options_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_uni_app_loader_view_style_js_agreement_vue_vue_type_script_lang_js_mpType_page__WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+/* 282 */
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--12-1!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-uni-app-loader/view/script.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-uni-app-loader/using-components.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-uni-app-loader/view/style.js!D:/uniaapp文件/shuiguo/pages/agreement/agreement.vue?vue&type=script&lang=js&mpType=page ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default =
+
+{
+
+  data: function data() {
+    return {
+      wxsProps: {} };
+
+  },
+  components: {} };exports.default = _default;
+
+/***/ }),
+/* 283 */
 /*!*********************************************************************!*\
   !*** D:/uniaapp文件/shuiguo/App.vue?vue&type=style&index=0&lang=css& ***!
   \*********************************************************************/
@@ -11801,13 +12487,13 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_app_vue_style_loader_index_js_ref_6_oneOf_1_0_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_loaders_stylePostLoader_js_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_6_oneOf_1_2_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_index_js_vue_loader_options_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_uni_app_loader_view_style_js_App_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/app-vue-style-loader??ref--6-oneOf-1-0!./node_modules/css-loader/dist/cjs.js??ref--6-oneOf-1-1!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--6-oneOf-1-2!./node_modules/postcss-loader/src??ref--6-oneOf-1-3!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-uni-app-loader/view/style.js!./App.vue?vue&type=style&index=0&lang=css& */ 279);
+/* harmony import */ var _C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_app_vue_style_loader_index_js_ref_6_oneOf_1_0_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_loaders_stylePostLoader_js_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_6_oneOf_1_2_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_index_js_vue_loader_options_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_uni_app_loader_view_style_js_App_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/app-vue-style-loader??ref--6-oneOf-1-0!./node_modules/css-loader/dist/cjs.js??ref--6-oneOf-1-1!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--6-oneOf-1-2!./node_modules/postcss-loader/src??ref--6-oneOf-1-3!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-uni-app-loader/view/style.js!./App.vue?vue&type=style&index=0&lang=css& */ 284);
 /* harmony import */ var _C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_app_vue_style_loader_index_js_ref_6_oneOf_1_0_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_loaders_stylePostLoader_js_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_6_oneOf_1_2_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_index_js_vue_loader_options_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_uni_app_loader_view_style_js_App_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_app_vue_style_loader_index_js_ref_6_oneOf_1_0_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_loaders_stylePostLoader_js_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_6_oneOf_1_2_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_index_js_vue_loader_options_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_uni_app_loader_view_style_js_App_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
 /* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_app_vue_style_loader_index_js_ref_6_oneOf_1_0_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_loaders_stylePostLoader_js_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_6_oneOf_1_2_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_index_js_vue_loader_options_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_uni_app_loader_view_style_js_App_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_app_vue_style_loader_index_js_ref_6_oneOf_1_0_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_loaders_stylePostLoader_js_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_6_oneOf_1_2_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_index_js_vue_loader_options_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_uni_app_loader_view_style_js_App_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
  /* harmony default export */ __webpack_exports__["default"] = (_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_app_vue_style_loader_index_js_ref_6_oneOf_1_0_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_loaders_stylePostLoader_js_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_6_oneOf_1_2_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_index_js_vue_loader_options_C_Users_Desktop_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_uni_app_loader_view_style_js_App_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
-/* 279 */
+/* 284 */
 /*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/app-vue-style-loader??ref--6-oneOf-1-0!./node_modules/css-loader/dist/cjs.js??ref--6-oneOf-1-1!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--6-oneOf-1-2!./node_modules/postcss-loader/src??ref--6-oneOf-1-3!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-uni-app-loader/view/style.js!D:/uniaapp文件/shuiguo/App.vue?vue&type=style&index=0&lang=css& ***!
   \***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
@@ -11817,7 +12503,7 @@ __webpack_require__.r(__webpack_exports__);
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(/*! !./node_modules/css-loader/dist/cjs.js??ref--6-oneOf-1-1!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--6-oneOf-1-2!./node_modules/postcss-loader/src??ref--6-oneOf-1-3!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-uni-app-loader/view/style.js!./App.vue?vue&type=style&index=0&lang=css& */ 280);
+var content = __webpack_require__(/*! !./node_modules/css-loader/dist/cjs.js??ref--6-oneOf-1-1!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--6-oneOf-1-2!./node_modules/postcss-loader/src??ref--6-oneOf-1-3!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-uni-app-loader/view/style.js!./App.vue?vue&type=style&index=0&lang=css& */ 285);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -11827,7 +12513,7 @@ var update = add("8873bc14", content, false, {"sourceMap":false,"shadowMode":fal
 if(false) {}
 
 /***/ }),
-/* 280 */
+/* 285 */
 /*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js??ref--6-oneOf-1-1!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--6-oneOf-1-2!./node_modules/postcss-loader/src??ref--6-oneOf-1-3!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-uni-app-loader/view/style.js!D:/uniaapp文件/shuiguo/App.vue?vue&type=style&index=0&lang=css& ***!
   \*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
