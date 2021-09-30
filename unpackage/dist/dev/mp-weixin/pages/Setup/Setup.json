@@ -1,8 +1,0 @@
-{
-  "navigationBarTitleText": "设置",
-  "enablePullDownRefresh": false,
-  "navigationBarBackgroundColor": "#FFFFFF",
-  "usingComponents": {
-    "uni-list-item": "/components/uni-list-item/uni-list-item"
-  }
-}

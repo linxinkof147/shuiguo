@@ -1,8 +1,0 @@
-{
-  "navigationBarTitleText": "热门推荐",
-  "enablePullDownRefresh": false,
-  "navigationBarBackgroundColor": "#FFFFFF",
-  "usingComponents": {
-    "use-hot-goods": "/components/use-hot-goods/use-hot-goods"
-  }
-}

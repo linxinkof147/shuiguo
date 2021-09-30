@@ -1,8 +1,0 @@
-{
-  "navigationBarTitleText": "增加地址",
-  "enablePullDownRefresh": false,
-  "navigationBarBackgroundColor": "#FFFFFF",
-  "usingComponents": {
-    "picker-address": "/components/wangding-pickerAddress/wangding-pickerAddress"
-  }
-}

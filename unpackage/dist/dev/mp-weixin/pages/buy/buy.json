@@ -1,8 +1,0 @@
-{
-  "navigationBarTitleText": "订单支付页面",
-  "enablePullDownRefresh": false,
-  "navigationBarBackgroundColor": "#f4f4f4",
-  "usingComponents": {
-    "use-listt-itle": "/components/use-list-title/use-list-title"
-  }
-}

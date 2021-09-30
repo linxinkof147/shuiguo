@@ -1,9 +1,0 @@
-{
-  "navigationBarTitleText": "商城首页",
-  "navigationBarBackgroundColor": "#ffffff",
-  "usingComponents": {
-    "use-header": "/components/use-header/use-header",
-    "use-listt-itle": "/components/use-list-title/use-list-title",
-    "use-hot-goods": "/components/use-hot-goods/use-hot-goods"
-  }
-}
