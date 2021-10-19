@@ -195,5 +195,4 @@
 <style>
 .mt{margin-top: 160rpx;width: 160rpx;height: 150rpx;}
 .loginlogo{width: 100%;height: 360rpx;}
-
 </style>

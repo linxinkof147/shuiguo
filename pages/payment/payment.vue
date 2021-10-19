@@ -70,7 +70,6 @@
 				} else if(this.cart[0] == ""){
 					return 0
 				} 
-				
 			}
 		},
 		onLoad(options) {

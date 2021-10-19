@@ -110,20 +110,20 @@
 			/* 热更新请求 */
 			async oldVersion(){
 				const { data: res } = await uni.$http.post('version/checkVersion')
-				console.log(res)
+				/* console.log(res) */
 				this.newedition = res.body.versionNo
 			},
 			async getSwiperList() {
 			  //发起请求swpier
 			 const { data: res } = await uni.$http.get('indexImg/indexImgs/1')
 			this.swiperDatas = res.body
-			 console.log(res.body)
+			 /* console.log(res.body) */
 			},
 			//发起请求热卖
 			async gethotList() {
 			  const { data: res } = await uni.$http.get('goods/list?pageSize=15&pageNum=1&field=createTime&order=asc')
 			  this.goodsHotDatas = res.body.rows
-			  console.log(res.body.rows)
+			/*  console.log(res.body.rows) */
 			},
 			
 			limit(){

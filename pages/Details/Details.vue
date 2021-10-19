@@ -62,7 +62,7 @@
 					<!-- 图片 -->
 					<view class="flex mt-3 flex-wrap">
 						<view class="w-40">
-							<image src="../../static/images/tab/top1.png" class="col-5 he-4" mode=""></image>
+							<image :src="openderailsList.mainPicture" class="col-5 he-4" mode=""></image>
 						</view>
 						<view class="w-40 mt-5 ml-2">
 							<view class="fonh"><!-- {{this.opencartList == ""? item.goods_name:'桃园义◆桃子四川成都龙泉水蜜桃5斤包邮新鲜现摘非奉化阳山无锡'}} -->
@@ -271,7 +271,7 @@
 			
 			 this.openderailsList = res.body
 			
-
+			 console.log(this.openderailsList)
 			},
 			openpon(){
 				uni.navigateTo({
