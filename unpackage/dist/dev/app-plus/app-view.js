@@ -3166,7 +3166,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ./node_modules/css-loader/dist/runtime/api.js */ 13);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n/* .cartv{background-color: #F7F7F7} */\n.cart{width: 95%;background-color: #FFFFFF;}\n.cart-img{width: 100%;height: 100%;-webkit-box-pack: center;-webkit-justify-content: center;justify-content: center;-webkit-box-align: center;-webkit-align-items: center;align-items: center;-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column;flex-direction:column;}\n.img-c{width: 200rpx;height: 200rpx;}\n.text-ccccc{color: #CCCCCC;font-size: 22rpx;}\n.cart-butt{width: 130rpx;height: 60rpx;background-color: #f8f8f8;}\n.carte{width: 95%;height: 300rpx;}\n.unroadi{width: 30rpx;height: 30rpx;border-radius: 500rpx;}\n.styleradio{background-color: #fd6801}\n.cartimges{width: 200rpx;height: 200rpx;}\n.di{border-radius: 20rpx;}\n.d2{-webkit-box-pack: justify;-webkit-justify-content: space-between;justify-content: space-between;}\n.footer{height:100rpx;width: 100%;background-color: #FFFFFF;position: fixed;bottom: 0;}\n.payment{padding: 0 20rpx;font-size: $font-base;background: $uni-color-primary;-webkit-box-shadow: 1px 2px 5px rgba(217, 60, 93, 0.72);box-shadow: 1px 2px 5px rgba(217, 60, 93, 0.72);\r\nbackground-color: #DC3545;margin-top: -28rpx;width: 180rpx;height: 80rpx;}\n.fonh{overflow : hidden;\r\n    \ttext-overflow: ellipsis;\r\n    \tdisplay: -webkit-box;\r\n   \t-webkit-line-clamp:2;\r\n   \t-webkit-box-orient: vertical;}\r\n\t\r\n", ""]);
+exports.push([module.i, "\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n/* .cartv{background-color: #F7F7F7} */\n.cart{width: 95%;background-color: #FFFFFF;}\n.cart-img{width: 100%;height: 100%;-webkit-box-pack: center;-webkit-justify-content: center;justify-content: center;-webkit-box-align: center;-webkit-align-items: center;align-items: center;-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column;flex-direction:column;}\n.img-c{width: 200rpx;height: 200rpx;}\n.text-ccccc{color: #CCCCCC;font-size: 22rpx;}\n.cart-butt{width: 130rpx;height: 60rpx;background-color: #f8f8f8;}\n.carte{width: 95%;height: 300rpx;}\n.unroadi{width: 30rpx;height: 30rpx;border-radius: 500rpx;}\n.styleradio{background-color: #fd6801}\n.cartimges{width: 200rpx;height: 200rpx;}\n.di{border-radius: 20rpx;}\n.d2{-webkit-box-pack: justify;-webkit-justify-content: space-between;justify-content: space-between;}\n.footer{height:100rpx;width: 100%;background-color: #FFFFFF;position: fixed;bottom: 0;}\n.payment{padding: 0 20rpx;font-size: $font-base;background: $uni-color-primary;-webkit-box-shadow: 1px 2px 5px rgba(217, 60, 93, 0.72);box-shadow: 1px 2px 5px rgba(217, 60, 93, 0.72);\r\nbackground-color: #DC3545;margin-top: -28rpx;width: 180rpx;height: 80rpx;}\n.fonh{overflow : hidden;\r\n    \ttext-overflow: ellipsis;\r\n    \tdisplay: -webkit-box;\r\n   \t-webkit-line-clamp:2;\r\n   \t-webkit-box-orient: vertical;}\r\n\t\r\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -5733,11 +5733,7 @@ var render = function() {
                                 staticClass: _vm._$g("23-" + $30, "sc"),
                                 attrs: { _i: "23-" + $30 }
                               },
-                              [
-                                _vm._v(
-                                  "超级大果子,净含量5斤，店长推荐超级大果子,净含量5斤，店长推荐"
-                                )
-                              ]
+                              [_vm._v(_vm._$g("23-" + $30, "t0-0") + "荐")]
                             ),
                             _c(
                               "v-uni-view",
@@ -5745,7 +5741,7 @@ var render = function() {
                                 staticClass: _vm._$g("24-" + $30, "sc"),
                                 attrs: { _i: "24-" + $30 }
                               },
-                              [_vm._v("超级大果子,净含量5斤，店长推荐")]
+                              [_vm._v("一箱装")]
                             ),
                             _c(
                               "v-uni-view",
@@ -7523,7 +7519,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ./node_modules/css-loader/dist/runtime/api.js */ 13);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "\n.mt{margin-top: 160rpx;width: 160rpx;height: 150rpx;}\n.loginlogo{width: 100%;height: 360rpx;}\r\n\r\n", ""]);
+exports.push([module.i, "\n.mt{margin-top: 160rpx;width: 160rpx;height: 150rpx;}\n.loginlogo{width: 100%;height: 360rpx;}\r\n", ""]);
 // Exports
 module.exports = exports;
 

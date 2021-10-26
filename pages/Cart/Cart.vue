@@ -17,7 +17,7 @@
 						
 					</view>
 					<view class="flex justify-center align-center" style="width: 35%;">
-						<image class="cartimges" src="../../static/images/tab/top1.png" mode=""></image>
+						<image class="cartimges" :src="item.goods_small_logo" mode=""></image>
 					</view>
 					<view class="" style="width: 56%;">
 						<view class="fonh mt-1">{{item.goods_name}}</view>
@@ -118,6 +118,7 @@
 			this.gethotList()
 			const sysInfo = uni.getSystemInfoSync()
 			this.wh =sysInfo.windowHeight
+			console.log(this.cart,this.cartlist)
 		},
 		onReachBottom() {
 			/* console.log(123) */

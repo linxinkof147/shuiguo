@@ -16,7 +16,7 @@
 		</view>
 		<view class="gap"></view>
 		<!-- 产品详情 -->
-		<view class=" w-95 m-auto buyht-shop border-radius-sm bg-white" v-for="(item,index) in cartlist" :key='index'>
+		<view class=" w-95 m-auto buyht-shop border-radius-sm bg-white mt-2" v-for="(item,index) in cartlist" :key='index'>
 			<view >
 				<!-- 店铺名字 -->
 				<view class="mt-2 ml-3 flex">
@@ -26,13 +26,13 @@
 				<!-- 图片详情 -->
 				<view class="flex flex-wrap mt-3" >
 					<view class="col-4  border-radius-sm ">
-						<image src="../../static/images/user/l1.jpg" class="col-4 he-3 border-radius-sm" mode=""></image>
+						<image :src="item.goods_small_logo" class="col-4 he-3 border-radius-sm" mode=""></image>
 					</view>
 					<view class="w-50 ml-2 line-0">
 						<view class="line-0">
-							<view class="text-ellipsis2 line-0 font-sm fonh">超级大果子,净含量5斤，店长推荐超级大果子,净含量5斤，店长推荐</view>
+							<view class="text-ellipsis2 line-0 font-sm fonh">{{item.goods_name}}荐</view>
 							<view class="text-ellipsis2 line-0 text-hover-light col-5-5 he-1-5 border-radius-sm
-							 bg-light flex justify-center align-center mt-1 font-sm">超级大果子,净含量5斤，店长推荐</view>
+							 bg-light flex justify-center align-center mt-1 font-sm ">一箱装</view>
 							<view class="text-warning font-sm">发货时间:支付后48小时发货</view>
 							<view class="col border-radius-sm he-1 bg-hover-info flex justify-center align-center text-info">运费满减</view>
 						</view>
@@ -178,7 +178,7 @@
 				this.piplick = options.pick-options.pick1
 			
 			}
-		/* 	console.log(options,this.cartlist) */
+			console.log(this.cartlist)
 			this.goodsid = options.goodsid
 			this.sukid = options.sukid
 		},

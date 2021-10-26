@@ -208,7 +208,7 @@
 				}
 				this.updateGoodsCount(valpoppe)
 			},
-			onClick(e) {
+			onClick(e,) {
 				uni.showToast({
 					title: `点击${e.content.text}`,
 					icon: 'none'
@@ -227,7 +227,7 @@
 						goods_name:this.openderailsList.name,
 						goods_price:this.openderailsList.salePrice,
 						goods_count:this.good_info.good_count,
-						goods_small_logo:this.good_info.goodslogo,
+						goods_small_logo:this.openderailsList.mainPicture,
 						goods_state:true,
 						goods_sukid:this.sukid
 					}
@@ -268,10 +268,8 @@
 			async detailsopen(optionsuserId) {
 			 //详情页
 			 const { data: res } = await uni.$http.get('mallGoods/goodsDetail/'+optionsuserId)
-			
 			 this.openderailsList = res.body
-			
-			 console.log(this.openderailsList)
+			 console.log(this.openderailsList.mainPicture)
 			},
 			openpon(){
 				uni.navigateTo({
